@@ -1,6 +1,18 @@
 {
   "versions": [
     {
+      "version": "0.10.0",
+      "date": "2026-11-14",
+      "title": "Modo Simulação com timeline",
+      "items": [
+        "Novo botão ▶ Simulação ao lado de Exportar: abre um ecrã só com o 3D, a timeline e as definições do vídeo.",
+        "Timeline com vários clips (vídeos, imagens ou demo): arrasta para mover, puxa as pontas para encurtar ou aparar, zoom com Ctrl + roda.",
+        "Play, pausa, parar, saltar 5 s e loop da timeline ou de cada vídeo.",
+        "Cada clip tem ajuste (esticar, caber, preencher), escala, posição, rotação, opacidade, velocidade e fade in/out.",
+        "Ambiente de noite, penumbra ou dia, brilho de referência e edge blending."
+      ]
+    },
+    {
       "version": "0.9.0",
       "date": "2026-11-14",
       "title": "Simulação do videomapping",
