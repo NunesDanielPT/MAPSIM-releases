@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": "2026.11.14.4",
+ "version": "2026.11.14.5",
  "updated": "2026-11-14",
  "sources": {
   "panaRQ25": {
@@ -114,6 +114,34 @@
   "chr4K32pw": {
    "t": "Christie Griffyn 4K32-RGB — datasheet Abr 2021 (cópia Projectisle)",
    "u": "https://www.projectisle.com.au/Images/Products/76393/Christie_4K32-RGB_Brochure.pdf"
+  },
+  "sonyFHZ131": {
+   "t": "Sony VPL-FHZ131L — especificações (folha Sony, cópia Euro-Trend)",
+   "u": "https://euro-trend.pl/wp-content/uploads/VPL-FHZ131L.pdf"
+  },
+  "sonyFHZ91": {
+   "t": "Sony VPL-FHZ91L — especificações (pro.sony)",
+   "u": "https://pro.sony/en_CA/pdf/vpl-fhz91l"
+  },
+  "sonyFHZds": {
+   "t": "Sony VPL-FHZ131L/101L/91L — datasheet (consumo e corrente por modelo)",
+   "u": "https://euro-trend.pl/wp-content/uploads/VPL-FHZ91L-Datasheet.pdf"
+  },
+  "sonyFHZman": {
+   "t": "Sony VPL-FHZ131L/101L/91L — manual, especificações (cópia ManualsDir)",
+   "u": "https://www.manualsdir.com/manuals/850609/sony-e-15mm-f_14-g-lens.html?page=53"
+  },
+  "sonyGTZjp": {
+   "t": "Sony VPL-GTZ380 — 仕様書 (Sony Japão): TR e shift por lente, peso, medidas",
+   "u": "https://www-origin.sony.jp/products/catalog/SPC_VPL-GTZ380.pdf"
+  },
+  "sonyGTZpw": {
+   "t": "Sony VPL-GTZ380 — especificações (pro.sony): consumo",
+   "u": "https://pro.sony/en_BG/pdf/vpl-gtz380-home"
+  },
+  "sonyGTZhelp": {
+   "t": "Sony VPL-GTZ380 — Help Guide, especificações",
+   "u": "https://helpguide.sony.net/vpl/gtz380/v1/en/contents/TP1000003577.html"
   }
  },
  "projectors": [
@@ -1043,6 +1071,156 @@
     "src": [
      "panaRZ14"
     ]
+   }
+  },
+  {
+   "id": "vpl-fhz131l",
+   "brand": "Sony",
+   "model": "VPL-FHZ131L",
+   "family": "sony",
+   "trCol": "sfhz",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD BrightEra 1\"",
+   "lumens": 13000,
+   "lumNote": "13 000 lm ISO 21118 (13 600 lm centro)  laser Z-Phosphor",
+   "body": {
+    "w": 0.544,
+    "h": 0.205,
+    "d": 0.564
+   },
+   "kg": 27,
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZ91",
+    "sonyFHZman"
+   ],
+   "verified": true,
+   "series": "VPL-FHZ Series (3LCD laser, lente intercambiável)",
+   "chip": 1.0,
+   "power": {
+    "max": 1033,
+    "amps": 4.4,
+    "stby": 0.5,
+    "src": [
+     "sonyFHZds",
+     "sonyFHZman"
+    ],
+    "note": "220-240 V: 1033 W; 100-120 V: 1076 W; corrente nominal 10.8–4.4 A (100–240 V)"
+   }
+  },
+  {
+   "id": "vpl-fhz101l",
+   "brand": "Sony",
+   "model": "VPL-FHZ101L",
+   "family": "sony",
+   "trCol": "sfhz",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD BrightEra 1\"",
+   "lumens": 10000,
+   "lumNote": "10 000 lm ISO 21118 (10 400 lm centro)  laser Z-Phosphor",
+   "body": {
+    "w": 0.544,
+    "h": 0.205,
+    "d": 0.564
+   },
+   "kg": 26,
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZ91",
+    "sonyFHZman"
+   ],
+   "verified": true,
+   "series": "VPL-FHZ Series (3LCD laser, lente intercambiável)",
+   "chip": 1.0,
+   "power": {
+    "max": 814,
+    "amps": 3.4,
+    "stby": 0.5,
+    "src": [
+     "sonyFHZds",
+     "sonyFHZman"
+    ],
+    "note": "220-240 V: 814 W; 100-120 V: 840 W; corrente nominal 8.4–3.4 A (100–240 V)"
+   }
+  },
+  {
+   "id": "vpl-fhz91l",
+   "brand": "Sony",
+   "model": "VPL-FHZ91L",
+   "family": "sony",
+   "trCol": "sfhz",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD BrightEra 1\"",
+   "lumens": 9000,
+   "lumNote": "9 000 lm ISO 21118 (9 800 lm centro)  laser Z-Phosphor",
+   "body": {
+    "w": 0.544,
+    "h": 0.205,
+    "d": 0.564
+   },
+   "kg": 26,
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZ91",
+    "sonyFHZman"
+   ],
+   "verified": true,
+   "series": "VPL-FHZ Series (3LCD laser, lente intercambiável)",
+   "chip": 1.0,
+   "power": {
+    "max": 814,
+    "amps": 3.4,
+    "stby": 0.5,
+    "src": [
+     "sonyFHZds",
+     "sonyFHZman"
+    ],
+    "note": "220-240 V: 814 W; 100-120 V: 840 W; corrente nominal 8.4–3.4 A (100–240 V)"
+   }
+  },
+  {
+   "id": "vpl-gtz380",
+   "brand": "Sony",
+   "model": "VPL-GTZ380",
+   "family": "sony",
+   "trCol": "sgtz",
+   "res": [
+    4096,
+    2160
+   ],
+   "resNote": "4K nativo 4096×2160; 3× SXRD 0.74\"",
+   "lumens": 10000,
+   "lumNote": "10 000 lm, laser (contraste nativo 16 000:1)",
+   "body": {
+    "w": 0.56,
+    "h": 0.228,
+    "d": 0.76
+   },
+   "kg": 51,
+   "src": [
+    "sonyGTZjp",
+    "sonyGTZhelp"
+   ],
+   "verified": true,
+   "series": "VPL-GTZ Series (4K SXRD laser)",
+   "chip": 0.74,
+   "power": {
+    "max": 1800,
+    "stby": 0.3,
+    "src": [
+     "sonyGTZpw",
+     "sonyGTZjp"
+    ],
+    "note": "200-240 V: 1800 W (máx. 2,0 kW na folha preliminar); 100-120 V: 1200 W com brilho reduzido"
    }
   }
  ],
@@ -3067,6 +3245,267 @@
    },
    "src": [
     "chrLens"
+   ]
+  },
+  {
+   "id": "VPLL-Z4107",
+   "brand": "Sony",
+   "model": "VPLL-Z4107",
+   "type": "Zoom (curta)",
+   "family": "sony",
+   "tr": {
+    "sfhz": [
+     0.75,
+     0.94
+    ]
+   },
+   "shift": {
+    "v": [
+     -50,
+     50
+    ],
+    "h": [
+     -24,
+     24
+    ],
+    "verified": true,
+    "note": "Sony: V ±50%, H ±24% (shift combinado reduz o alcance)."
+   },
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZman"
+   ]
+  },
+  {
+   "id": "VPLL-4008",
+   "brand": "Sony",
+   "model": "VPLL-4008 (fixa)",
+   "type": "Fixa",
+   "family": "sony",
+   "tr": {
+    "sfhz": [
+     1.0,
+     1.0
+    ]
+   },
+   "shift": {
+    "v": [
+     -32,
+     32
+    ],
+    "h": [
+     -15,
+     15
+    ],
+    "verified": true,
+    "note": "Sony: V ±32%, H ±15% (shift combinado reduz o alcance)."
+   },
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZman"
+   ]
+  },
+  {
+   "id": "VPLL-Z4111",
+   "brand": "Sony",
+   "model": "VPLL-Z4111",
+   "type": "Zoom (standard)",
+   "family": "sony",
+   "tr": {
+    "sfhz": [
+     1.3,
+     1.96
+    ]
+   },
+   "shift": {
+    "v": [
+     -99,
+     99
+    ],
+    "h": [
+     -51,
+     51
+    ],
+    "verified": true,
+    "note": "Sony: V ±99%, H ±51% (shift combinado reduz o alcance)."
+   },
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZman"
+   ]
+  },
+  {
+   "id": "VPLL-Z4015",
+   "brand": "Sony",
+   "model": "VPLL-Z4015",
+   "type": "Zoom",
+   "family": "sony",
+   "tr": {
+    "sfhz": [
+     1.85,
+     2.44
+    ]
+   },
+   "shift": {
+    "v": [
+     -98,
+     98
+    ],
+    "h": [
+     -51,
+     51
+    ],
+    "verified": true,
+    "note": "Sony: V ±98%, H ±51% (shift combinado reduz o alcance)."
+   },
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZman"
+   ]
+  },
+  {
+   "id": "VPLL-Z4019",
+   "brand": "Sony",
+   "model": "VPLL-Z4019",
+   "type": "Zoom (longa)",
+   "family": "sony",
+   "tr": {
+    "sfhz": [
+     2.41,
+     3.07
+    ]
+   },
+   "shift": {
+    "v": [
+     -107,
+     107
+    ],
+    "h": [
+     -57,
+     57
+    ],
+    "verified": true,
+    "note": "Sony: V ±107%, H ±57% (shift combinado reduz o alcance)."
+   },
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZman"
+   ]
+  },
+  {
+   "id": "VPLL-Z4025",
+   "brand": "Sony",
+   "model": "VPLL-Z4025",
+   "type": "Zoom (longa)",
+   "family": "sony",
+   "tr": {
+    "sfhz": [
+     3.02,
+     5.58
+    ]
+   },
+   "shift": {
+    "v": [
+     -107,
+     107
+    ],
+    "h": [
+     -57,
+     57
+    ],
+    "verified": true,
+    "note": "Sony: V ±107%, H ±57% (shift combinado reduz o alcance)."
+   },
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZman"
+   ]
+  },
+  {
+   "id": "VPLL-Z4045",
+   "brand": "Sony",
+   "model": "VPLL-Z4045",
+   "type": "Zoom (longa)",
+   "family": "sony",
+   "tr": {
+    "sfhz": [
+     5.56,
+     7.5
+    ]
+   },
+   "shift": {
+    "v": [
+     -107,
+     107
+    ],
+    "h": [
+     -57,
+     57
+    ],
+    "verified": true,
+    "note": "Sony: V ±107%, H ±57% (shift combinado reduz o alcance)."
+   },
+   "src": [
+    "sonyFHZ131",
+    "sonyFHZman"
+   ]
+  },
+  {
+   "id": "VPLL-Z8008",
+   "brand": "Sony",
+   "model": "VPLL-Z8008",
+   "type": "Zoom (curta)",
+   "family": "sony",
+   "tr": {
+    "sgtz": [
+     0.8,
+     1.02
+    ]
+   },
+   "shift": {
+    "v": [
+     -50,
+     50
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "verified": true,
+    "note": "Sony Japão (largura 4096): V ±50%, H ±18%. A Sony também publica 0,85–1,09:1 e H ±19% medidos com imagem 16:9 (3840)."
+   },
+   "src": [
+    "sonyGTZjp",
+    "sonyGTZhelp"
+   ]
+  },
+  {
+   "id": "VPLL-Z8014",
+   "brand": "Sony",
+   "model": "VPLL-Z8014",
+   "type": "Zoom (standard)",
+   "family": "sony",
+   "tr": {
+    "sgtz": [
+     1.4,
+     2.73
+    ]
+   },
+   "shift": {
+    "v": [
+     -80,
+     80
+    ],
+    "h": [
+     -31,
+     31
+    ],
+    "verified": true,
+    "note": "Sony Japão (largura 4096): V ±80%, H ±31%. A Sony também publica 1,49–2,91:1 e H ±33% medidos com imagem 16:9 (3840)."
+   },
+   "src": [
+    "sonyGTZjp",
+    "sonyGTZhelp"
    ]
   }
  ]

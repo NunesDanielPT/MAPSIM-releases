@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.20.0",
+      "date": "2026-11-14",
+      "title": "Projectores Sony profissionais",
+      "items": [
+        "Nova marca Sony na base de dados, com dados oficiais da Sony.",
+        "VPL-GTZ380: 4K nativo (4096×2160), 3 painéis SXRD, 10 000 lm, com as lentes VPLL-Z8008 (0,80–1,02:1) e VPLL-Z8014 (1,40–2,73:1).",
+        "VPL-FHZ131L (13 000 lm), VPL-FHZ101L (10 000 lm) e VPL-FHZ91L (9 000 lm): WUXGA 3LCD laser de lente intercambiável.",
+        "As 7 lentes da série FHZ (VPLL-Z4107 a VPLL-Z4045, de 0,75:1 a 7,5:1) com o lens shift oficial de cada uma.",
+        "Consumo e corrente de cada modelo Sony incluídos na ficha técnica e no desenho."
+      ],
+      "title_en": "Sony professional projectors",
+      "items_en": [
+        "New Sony brand in the database, with official Sony data.",
+        "VPL-GTZ380: native 4K (4096×2160), 3 SXRD panels, 10,000 lm, with the VPLL-Z8008 (0.80–1.02:1) and VPLL-Z8014 (1.40–2.73:1) lenses.",
+        "VPL-FHZ131L (13,000 lm), VPL-FHZ101L (10,000 lm) and VPL-FHZ91L (9,000 lm): WUXGA 3LCD laser with interchangeable lenses.",
+        "The 7 FHZ series lenses (VPLL-Z4107 to VPLL-Z4045, from 0.75:1 to 7.5:1) with the official lens shift of each.",
+        "Power and current of each Sony model included in the spec sheet and the drawing."
+      ]
+    },
+    {
       "version": "0.19.2",
       "date": "2026-11-14",
       "title": "Correcção de nomes no painel do projector",
