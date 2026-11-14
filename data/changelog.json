@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.15.0",
+      "date": "2026-11-14",
+      "title": "Gravação automática e a tua truss intacta",
+      "items": [
+        "O ajuste automático já não estende nem mexe na truss: os projectores distribuem-se dentro do comprimento que definiste (e avisa se não couberem).",
+        "Na lista da esquerda podes arrastar os projectores para cima e para baixo, também dentro de um array: a ordem passa a ser a ordem das zonas na superfície.",
+        "Gravação automática a cada X minutos, ao fechar e antes de actualizar; o MapSim abre sempre o último projecto.",
+        "Novo separador Ficheiros nas Definições: ligar/desligar, intervalo em minutos e pasta por defeito dos projectos."
+      ],
+      "title_en": "Automatic saving and your truss untouched",
+      "items_en": [
+        "Automatic adjustment no longer extends or moves the truss: projectors are spread within the length you set (with a warning if they don't fit).",
+        "In the left list you can drag projectors up and down, also inside an array: the order becomes the order of the zones on the surface.",
+        "Automatic saving every X minutes, when closing and before updating; MapSim always reopens the last project.",
+        "New Files tab in Settings: on/off, interval in minutes and default projects folder."
+      ]
+    },
+    {
       "version": "0.14.0",
       "date": "2026-11-14",
       "title": "Ajustar sem criar projectores",
