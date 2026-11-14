@@ -1,6 +1,16 @@
 {
   "versions": [
     {
+      "version": "0.9.0",
+      "date": "2026-11-14",
+      "title": "Simulação do videomapping",
+      "items": [
+        "Nova vista \"Simulação de conteúdo\": vê um vídeo ou uma imagem a passar na fachada através dos teus projectores, com a cena às escuras.",
+        "Usa a demo animada ou carrega o teu vídeo (MP4 ou WebM) ou imagem.",
+        "O brilho segue a luz real de cada projector: zonas sem cobertura ficam escuras e aparecem sombras e sobreposições."
+      ]
+    },
+    {
       "version": "0.8.0",
       "date": "2026-11-14",
       "title": "Truss curva, foco e luz mais realista",
