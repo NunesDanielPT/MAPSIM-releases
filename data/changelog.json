@@ -1,6 +1,22 @@
 {
   "versions": [
     {
+      "version": "0.21.0",
+      "date": "2026-11-14",
+      "title": "Destaque ao passar o rato e projectores centrados na truss",
+      "items": [
+        "Ao passar o rato por cima de um projector, truss ou superfície, o objecto fica destacado a azul e aparece uma etiqueta com o nome — sabes logo o que vais seleccionar.",
+        "Os projectores montados em truss ficam com o corpo centrado na truss (antes era a lente que ficava no eixo e o corpo ficava para trás).",
+        "O ajuste automático ⚡ na truss já conta com a nova posição: em projectos antigos, carrega outra vez em ⚡ para reajustar a imagem."
+      ],
+      "title_en": "Hover highlight and projectors centred on the truss",
+      "items_en": [
+        "When you move the mouse over a projector, truss or surface, the object is highlighted in blue and a label with its name appears — you know straight away what you are about to select.",
+        "Projectors mounted on a truss now have their body centred on the truss (before, the lens was on the axis and the body stuck out behind).",
+        "The ⚡ automatic truss adjustment already uses the new position: in older projects, press ⚡ again to readjust the image."
+      ]
+    },
+    {
       "version": "0.20.0",
       "date": "2026-11-14",
       "title": "Projectores Sony profissionais",
