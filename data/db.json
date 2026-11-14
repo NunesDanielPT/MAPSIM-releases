@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "version": "2026.11.14.3",
- "updated": "2026-11-13",
+ "version": "2026.11.14.4",
+ "updated": "2026-11-14",
  "sources": {
   "panaRQ25": {
    "t": "Panasonic PT-RQ25K series — Spec file (EU)",
@@ -78,6 +78,42 @@
   "chr4K32": {
    "t": "Christie Griffyn 4K32-RGB — datasheet (fim de produção 2023)",
    "u": "https://www.christiedigital.com/products/end-of-support/projectors/Mirage-4k32-rgb"
+  },
+  "barcoHDX": {
+   "t": "Barco HDX-W20 FLEX — Spec sheet (PT)",
+   "u": "https://assets.barco.com/m/6631c007e3845afc/original/HDX-W20-FLEX-pt-Spec-sheet.pdf"
+  },
+  "barcoTLD067": {
+   "t": "Barco — TLD+ lens (0.67:1 WUXGA) (0.73:1 SXGA+) R9862000",
+   "u": "https://www.barco.com/de/support/tld-067"
+  },
+  "agR9862000": {
+   "t": "Audio General — Barco R9862000 (TR por resolução, lens shift; revendedor)",
+   "u": "https://www.audiogeneral.com/store/products/view/0601-1307-UB"
+  },
+  "panaRZ24pw": {
+   "t": "Panasonic PT-RZ24K — Spec file (EU)",
+   "u": "https://eu.connect.panasonic.com/sites/default/files/media/document/2024-04/rz24kg_spec_en_0.pdf"
+  },
+  "panaRZ17pw": {
+   "t": "Panasonic PT-RZ17K — Spec file (EU)",
+   "u": "https://eu.connect.panasonic.com/sites/default/files/media/document/2024-04/rz17kg_spec_en_0.pdf"
+  },
+  "barcoW40pw": {
+   "t": "Barco UDX-W40 FLEX — página do produto",
+   "u": "https://www.barco.com/product/udx-w40"
+  },
+  "barco4K40pw": {
+   "t": "Barco UDX-4K40 FLEX — página do produto",
+   "u": "https://barco.com/product/udx-4k40"
+  },
+  "chr4K50pw": {
+   "t": "Christie Griffyn 4K50-RGB — datasheet (cópia Blooloop)",
+   "u": "https://blooloop.com/download/christie-griffyn-4k50-rgb-pure-laser-projector"
+  },
+  "chr4K32pw": {
+   "t": "Christie Griffyn 4K32-RGB — datasheet Abr 2021 (cópia Projectisle)",
+   "u": "https://www.projectisle.com.au/Images/Products/76393/Christie_4K32-RGB_Brochure.pdf"
   }
  },
  "projectors": [
@@ -106,7 +142,16 @@
    "verified": true,
    "series": "UDX Series (3-Chip DLP)",
    "chip": 0.96,
-   "uniformity": 0.95
+   "uniformity": 0.95,
+   "power": {
+    "max": 3750,
+    "circuit": 20,
+    "stby": 10,
+    "src": [
+     "barcoW40pw"
+    ],
+    "note": "200-240 V ±10%, 20 A"
+   }
   },
   {
    "id": "udx-4k40",
@@ -133,7 +178,16 @@
    "verified": true,
    "series": "UDX Series (3-Chip DLP)",
    "chip": 0.9,
-   "uniformity": 0.95
+   "uniformity": 0.95,
+   "power": {
+    "max": 3750,
+    "circuit": 20,
+    "stby": 10,
+    "src": [
+     "barco4K40pw"
+    ],
+    "note": "200-240 V ±10%, 20 A"
+   }
   },
   {
    "id": "udx-w32",
@@ -160,7 +214,17 @@
    "verified": true,
    "series": "UDX Series (3-Chip DLP)",
    "chip": 0.96,
-   "uniformity": 0.95
+   "uniformity": 0.95,
+   "power": {
+    "max": 3100,
+    "typ": 2900,
+    "circuit": 20,
+    "stby": 10,
+    "src": [
+     "barcoW32"
+    ],
+    "note": "200-240 V ±10%, 20 A"
+   }
   },
   {
    "id": "udx-4k32",
@@ -188,7 +252,17 @@
    "verified": true,
    "series": "UDX Series (3-Chip DLP)",
    "chip": 0.9,
-   "uniformity": 0.95
+   "uniformity": 0.95,
+   "power": {
+    "max": 3100,
+    "typ": 2900,
+    "circuit": 20,
+    "stby": 10,
+    "src": [
+     "barcoSpec"
+    ],
+    "note": "200-240 V ±10%, 20 A"
+   }
   },
   {
    "id": "udx-4k28",
@@ -215,7 +289,16 @@
    "verified": true,
    "series": "UDX Series (3-Chip DLP)",
    "chip": 0.9,
-   "uniformity": 0.95
+   "uniformity": 0.95,
+   "power": {
+    "max": 2650,
+    "typ": 2450,
+    "stby": 10,
+    "src": [
+     "barco4K28"
+    ],
+    "note": "Manual Barco: 200-240 V (±10%) \"32A\"; 120-160 V 20 A (potência reduzida)"
+   }
   },
   {
    "id": "udx-w26",
@@ -242,7 +325,17 @@
    "verified": true,
    "series": "UDX Series (3-Chip DLP)",
    "chip": 0.96,
-   "uniformity": 0.95
+   "uniformity": 0.95,
+   "power": {
+    "max": 2650,
+    "typ": 2450,
+    "circuit": 20,
+    "stby": 10,
+    "src": [
+     "barcoW26"
+    ],
+    "note": "200-240 V ±10%, 20 A"
+   }
   },
   {
    "id": "udx-4k22",
@@ -269,7 +362,50 @@
    "verified": true,
    "series": "UDX Series (3-Chip DLP)",
    "chip": 0.9,
-   "uniformity": 0.95
+   "uniformity": 0.95,
+   "power": {
+    "max": 1900,
+    "circuit": 20,
+    "stby": 10,
+    "src": [
+     "barco4K22"
+    ],
+    "note": "1900 W @ 230 V; 200-240 V ±10%, 20 A"
+   }
+  },
+  {
+   "id": "hdx-w20",
+   "brand": "Barco",
+   "model": "HDX-W20 FLEX",
+   "family": "barco",
+   "trCol": "bhdx",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3× DLP 0.96\"",
+   "lumens": 18500,
+   "lumNote": "20 000 lm centro (Barco); 18 500 ANSI; xénon 2.5 kW, FLEX 10–20 k",
+   "body": {
+    "w": 0.475,
+    "h": 0.382,
+    "d": 0.725
+   },
+   "kg": 50,
+   "src": [
+    "barcoHDX"
+   ],
+   "verified": true,
+   "series": "HDX Series (3-Chip DLP, xénon)",
+   "chip": 0.96,
+   "power": {
+    "max": 2850,
+    "stby": 8,
+    "src": [
+     "barcoHDX"
+    ],
+    "note": "200-240 V, 50-60 Hz; 2850 W; standby < 8 W"
+   }
   },
   {
    "id": "griffyn-4k50",
@@ -296,7 +432,16 @@
    ],
    "verified": true,
    "series": "Griffyn Series (3DLP RGB laser)",
-   "chip": 1.38
+   "chip": 1.38,
+   "power": {
+    "max": 3800,
+    "typ": 2800,
+    "amps": 19,
+    "src": [
+     "chr4K50pw"
+    ],
+    "note": "200-240 VAC, 19 A, monofásico; ficha IEC60309 30 A"
+   }
   },
   {
    "id": "griffyn-4k35",
@@ -323,7 +468,16 @@
    ],
    "verified": true,
    "series": "Griffyn Series (3DLP RGB laser)",
-   "chip": 1.38
+   "chip": 1.38,
+   "power": {
+    "max": 2800,
+    "typ": 1800,
+    "amps": 14,
+    "src": [
+     "chr4K35"
+    ],
+    "note": "200-240 VAC, 14 A, monofásico; entrada IEC60320 C20"
+   }
   },
   {
    "id": "griffyn-4k32",
@@ -350,7 +504,15 @@
    ],
    "verified": true,
    "series": "Griffyn Series (3DLP RGB laser)",
-   "chip": 1.38
+   "chip": 1.38,
+   "power": {
+    "max": 2600,
+    "amps": 13,
+    "src": [
+     "chr4K32pw"
+    ],
+    "note": "200-240 VAC, 13 A, monofásico; entrada IEC60320 C20"
+   }
   },
   {
    "id": "eb-pq2220b",
@@ -376,7 +538,16 @@
    ],
    "verified": true,
    "series": "EB-PQ2200 Series (3LCD 4K)",
-   "chip": 1.04
+   "chip": 1.04,
+   "power": {
+    "max": 1431,
+    "typ": 975,
+    "stby": 2,
+    "src": [
+     "epsonPQ"
+    ],
+    "note": "Normal 1431 W / Quiet 975 W (220-240 V)"
+   }
   },
   {
    "id": "eb-pq2216b",
@@ -402,7 +573,16 @@
    ],
    "verified": true,
    "series": "EB-PQ2200 Series (3LCD 4K)",
-   "chip": 1.04
+   "chip": 1.04,
+   "power": {
+    "max": 1114,
+    "typ": 784,
+    "stby": 2,
+    "src": [
+     "epsonPQ"
+    ],
+    "note": "Normal 1114 W / Quiet 784 W (220-240 V)"
+   }
   },
   {
    "id": "eb-pq2216w",
@@ -428,7 +608,16 @@
    ],
    "verified": true,
    "series": "EB-PQ2200 Series (3LCD 4K)",
-   "chip": 1.04
+   "chip": 1.04,
+   "power": {
+    "max": 1114,
+    "typ": 784,
+    "stby": 2,
+    "src": [
+     "epsonPQ"
+    ],
+    "note": "Normal 1114 W / Quiet 784 W (220-240 V)"
+   }
   },
   {
    "id": "eb-pq2213b",
@@ -454,7 +643,16 @@
    ],
    "verified": true,
    "series": "EB-PQ2200 Series (3LCD 4K)",
-   "chip": 1.04
+   "chip": 1.04,
+   "power": {
+    "max": 925,
+    "typ": 666,
+    "stby": 2,
+    "src": [
+     "epsonPQ"
+    ],
+    "note": "Normal 925 W / Quiet 666 W (220-240 V)"
+   }
   },
   {
    "id": "eb-pu2120w",
@@ -480,7 +678,17 @@
    ],
    "verified": true,
    "series": "EB-PU2200 Series (3LCD)",
-   "chip": 1.0
+   "chip": 1.0,
+   "power": {
+    "max": 1301,
+    "typ": 899,
+    "amps": 6.6,
+    "stby": 2,
+    "src": [
+     "epsonSpec"
+    ],
+    "note": "Normal 1301 W / Quiet 899 W (220-240 V)"
+   }
   },
   {
    "id": "eb-pu2220b",
@@ -506,7 +714,17 @@
    ],
    "verified": true,
    "series": "EB-PU2200 Series (3LCD)",
-   "chip": 1.0
+   "chip": 1.0,
+   "power": {
+    "max": 1301,
+    "typ": 899,
+    "amps": 6.6,
+    "stby": 2,
+    "src": [
+     "epsonSpec"
+    ],
+    "note": "Normal 1301 W / Quiet 899 W (220-240 V)"
+   }
   },
   {
    "id": "eb-pu2116w",
@@ -532,7 +750,17 @@
    ],
    "verified": true,
    "series": "EB-PU2200 Series (3LCD)",
-   "chip": 1.0
+   "chip": 1.0,
+   "power": {
+    "max": 1083,
+    "typ": 773,
+    "amps": 5.0,
+    "stby": 2,
+    "src": [
+     "epsonSpec"
+    ],
+    "note": "Normal 1083 W / Quiet 773 W (220-240 V); corrente nominal 11.2–5.0 A (100–240 V)"
+   }
   },
   {
    "id": "eb-pu2216b",
@@ -558,7 +786,17 @@
    ],
    "verified": true,
    "series": "EB-PU2200 Series (3LCD)",
-   "chip": 1.0
+   "chip": 1.0,
+   "power": {
+    "max": 1083,
+    "typ": 773,
+    "amps": 5.0,
+    "stby": 2,
+    "src": [
+     "epsonSpec"
+    ],
+    "note": "Normal 1083 W / Quiet 773 W (220-240 V); corrente nominal 11.2–5.0 A (100–240 V)"
+   }
   },
   {
    "id": "eb-pu2113w",
@@ -584,7 +822,17 @@
    ],
    "verified": true,
    "series": "EB-PU2200 Series (3LCD)",
-   "chip": 1.0
+   "chip": 1.0,
+   "power": {
+    "max": 864,
+    "typ": 633,
+    "amps": 4.0,
+    "stby": 2,
+    "src": [
+     "epsonSpec"
+    ],
+    "note": "Normal 864 W / Quiet 633 W (220-240 V); corrente nominal 8.9–4.0 A (100–240 V)"
+   }
   },
   {
    "id": "eb-pu2213b",
@@ -610,7 +858,17 @@
    ],
    "verified": true,
    "series": "EB-PU2200 Series (3LCD)",
-   "chip": 1.0
+   "chip": 1.0,
+   "power": {
+    "max": 864,
+    "typ": 633,
+    "amps": 4.0,
+    "stby": 2,
+    "src": [
+     "epsonSpec"
+    ],
+    "note": "Normal 864 W / Quiet 633 W (220-240 V); corrente nominal 8.9–4.0 A (100–240 V)"
+   }
   },
   {
    "id": "pt-rq25k",
@@ -636,7 +894,16 @@
    ],
    "verified": true,
    "series": "PT-RQ25K Series (3-Chip DLP)",
-   "chip": 0.8
+   "chip": 0.8,
+   "power": {
+    "max": 1490,
+    "va": 1520,
+    "typ": 1330,
+    "stby": 12,
+    "src": [
+     "panaRQ25"
+    ]
+   }
   },
   {
    "id": "pt-rz24k",
@@ -662,7 +929,16 @@
    ],
    "verified": true,
    "series": "PT-RQ25K Series (3-Chip DLP)",
-   "chip": 0.8
+   "chip": 0.8,
+   "power": {
+    "max": 1470,
+    "va": 1520,
+    "typ": 1310,
+    "stby": 12,
+    "src": [
+     "panaRZ24pw"
+    ]
+   }
   },
   {
    "id": "pt-rq18k",
@@ -689,7 +965,15 @@
    ],
    "verified": true,
    "series": "PT-RQ25K Series (3-Chip DLP)",
-   "chip": 0.8
+   "chip": 0.8,
+   "power": {
+    "max": 1190,
+    "va": 1220,
+    "typ": 1030,
+    "src": [
+     "panaRQ18"
+    ]
+   }
   },
   {
    "id": "pt-rz17k",
@@ -716,7 +1000,16 @@
    ],
    "verified": true,
    "series": "PT-RQ25K Series (3-Chip DLP)",
-   "chip": 0.8
+   "chip": 0.8,
+   "power": {
+    "max": 1170,
+    "va": 1220,
+    "typ": 1010,
+    "stby": 12,
+    "src": [
+     "panaRZ17pw"
+    ]
+   }
   },
   {
    "id": "pt-rz14k",
@@ -742,7 +1035,15 @@
    ],
    "verified": true,
    "series": "PT-RZ14K (3-Chip DLP)",
-   "chip": 0.8
+   "chip": 0.8,
+   "power": {
+    "max": 1050,
+    "va": 1060,
+    "typ": 950,
+    "src": [
+     "panaRZ14"
+    ]
+   }
   }
  ],
  "lenses": [
@@ -2055,6 +2356,39 @@
    ]
   },
   {
+   "id": "R9862000",
+   "brand": "Barco",
+   "model": "TLD+ 0.73 fixa (0.67:1 WUXGA) (R9862000)",
+   "type": "Fixa",
+   "family": "barco",
+   "tr": {
+    "bhdx": [
+     0.67,
+     0.67
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -35,
+     35
+    ],
+    "h": [
+     -20,
+     20
+    ],
+    "verified": false,
+    "note": "Lens shift ±35% V / ±20% H indicado por revendedor (Audio General); confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoTLD067",
+    "barcoHDX",
+    "agR9862000"
+   ]
+  },
+  {
    "id": "R9862005",
    "brand": "Barco",
    "model": "TLD+ 1.25–1.6 (R9862005)",
@@ -2066,6 +2400,10 @@
      1.6
     ],
     "bw": [
+     1.17,
+     1.5
+    ],
+    "bhdx": [
      1.17,
      1.5
     ]
@@ -2087,8 +2425,23 @@
    },
    "src": [
     "barcoLens",
-    "barcoSpec"
-   ]
+    "barcoSpec",
+    "barcoHDX"
+   ],
+   "shiftBy": {
+    "bhdx": {
+     "v": [
+      -30,
+      120
+     ],
+     "h": [
+      -40,
+      40
+     ],
+     "verified": true,
+     "note": "Barco HDX-W20: vertical −30% a +120%, horizontal ±40% com lentes zoom."
+    }
+   }
   },
   {
    "id": "R9862010",
@@ -2102,6 +2455,10 @@
      2.03
     ],
     "bw": [
+     1.39,
+     1.89
+    ],
+    "bhdx": [
      1.39,
      1.89
     ]
@@ -2123,8 +2480,23 @@
    },
    "src": [
     "barcoLens",
-    "barcoSpec"
-   ]
+    "barcoSpec",
+    "barcoHDX"
+   ],
+   "shiftBy": {
+    "bhdx": {
+     "v": [
+      -30,
+      120
+     ],
+     "h": [
+      -40,
+      40
+     ],
+     "verified": true,
+     "note": "Barco HDX-W20: vertical −30% a +120%, horizontal ±40% com lentes zoom."
+    }
+   }
   },
   {
    "id": "R9862020",
@@ -2138,6 +2510,10 @@
      2.73
     ],
     "bw": [
+     1.89,
+     2.55
+    ],
+    "bhdx": [
      1.89,
      2.55
     ]
@@ -2159,8 +2535,23 @@
    },
    "src": [
     "barcoLens",
-    "barcoSpec"
-   ]
+    "barcoSpec",
+    "barcoHDX"
+   ],
+   "shiftBy": {
+    "bhdx": {
+     "v": [
+      -30,
+      120
+     ],
+     "h": [
+      -40,
+      40
+     ],
+     "verified": true,
+     "note": "Barco HDX-W20: vertical −30% a +120%, horizontal ±40% com lentes zoom."
+    }
+   }
   },
   {
    "id": "R9862030",
@@ -2174,6 +2565,10 @@
      4.43
     ],
     "bw": [
+     2.56,
+     4.13
+    ],
+    "bhdx": [
      2.56,
      4.13
     ]
@@ -2195,8 +2590,23 @@
    },
    "src": [
     "barcoLens",
-    "barcoSpec"
-   ]
+    "barcoSpec",
+    "barcoHDX"
+   ],
+   "shiftBy": {
+    "bhdx": {
+     "v": [
+      -30,
+      120
+     ],
+     "h": [
+      -40,
+      40
+     ],
+     "verified": true,
+     "note": "Barco HDX-W20: vertical −30% a +120%, horizontal ±40% com lentes zoom."
+    }
+   }
   },
   {
    "id": "R9862040",
@@ -2210,6 +2620,10 @@
      7.46
     ],
     "bw": [
+     4.12,
+     6.97
+    ],
+    "bhdx": [
      4.12,
      6.97
     ]
@@ -2231,8 +2645,23 @@
    },
    "src": [
     "barcoLens",
-    "barcoSpec"
-   ]
+    "barcoSpec",
+    "barcoHDX"
+   ],
+   "shiftBy": {
+    "bhdx": {
+     "v": [
+      -30,
+      120
+     ],
+     "h": [
+      -40,
+      40
+     ],
+     "verified": true,
+     "note": "Barco HDX-W20: vertical −30% a +120%, horizontal ±40% com lentes zoom."
+    }
+   }
   },
   {
    "id": "R9829997",
@@ -2246,6 +2675,10 @@
      11.03
     ],
     "bw": [
+     6.92,
+     10.21
+    ],
+    "bhdx": [
      6.92,
      10.21
     ]
@@ -2267,8 +2700,23 @@
    },
    "src": [
     "barcoLens",
-    "barcoSpec"
-   ]
+    "barcoSpec",
+    "barcoHDX"
+   ],
+   "shiftBy": {
+    "bhdx": {
+     "v": [
+      -30,
+      120
+     ],
+     "h": [
+      -40,
+      40
+     ],
+     "verified": true,
+     "note": "Barco HDX-W20: vertical −30% a +120%, horizontal ±40% com lentes zoom."
+    }
+   }
   },
   {
    "id": "CHR-144-136101",

@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.17.0",
+      "date": "2026-11-14",
+      "title": "Barco HDX-W20, consumos eléctricos e projectores on/off na simulação",
+      "items": [
+        "Novo projector Barco HDX-W20 FLEX e a lente fixa TLD+ 0.73 (0.67:1 em WUXGA), com dados oficiais da Barco.",
+        "Consumo de cada projector na base de dados (watts máximos e típicos, de fontes oficiais) e corrente em amperes.",
+        "A ficha técnica mostra o consumo e os amperes de cada projector e o total da instalação, incluindo a corrente por fase em trifásico.",
+        "Nas Definições escolhes a tensão da rede usada no cálculo (230 V por defeito).",
+        "Na Simulação podes ligar e desligar projector a projector, para ver o que acontece se um falhar, sem alterar o projecto."
+      ],
+      "title_en": "Barco HDX-W20, power consumption and projectors on/off in simulation",
+      "items_en": [
+        "New Barco HDX-W20 FLEX projector and the TLD+ 0.73 fixed lens (0.67:1 at WUXGA), with official Barco data.",
+        "Power consumption of every projector in the database (maximum and typical watts, from official sources) and current in amps.",
+        "The spec sheet shows the power and amps of each projector and the installation total, including the per-phase current on three-phase.",
+        "In Settings you choose the mains voltage used for the calculation (230 V by default).",
+        "In Simulation you can turn projectors on and off one by one, to see what happens if one fails, without changing the project."
+      ]
+    },
+    {
       "version": "0.16.0",
       "date": "2026-11-14",
       "title": "Warp e keystone nos projectores",
