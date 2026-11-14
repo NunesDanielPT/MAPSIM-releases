@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.13.0",
+      "date": "2026-11-14",
+      "title": "Ajuste automático na truss",
+      "items": [
+        "Novo botão ⚡ Alinhar na truss e ajustar automaticamente, no array: os projectores passam a ficar mesmo em cima da truss.",
+        "Para cada projector o MapSim calcula a zona da imagem que tem de cobrir e escolhe sozinho a lente, o zoom, o lens shift e, se for preciso, a inclinação para baixo ou para o lado.",
+        "Prefere sempre não inclinar (sem keystone) usando lens shift; só inclina quando a lente não chega.",
+        "Se a truss for curta, é estendida; se estiver demasiado perto para qualquer lente, o MapSim avisa o que fazer."
+      ],
+      "title_en": "Automatic truss adjustment",
+      "items_en": [
+        "New ⚡ Align on truss and adjust automatically button on the array: the projectors now sit right on the truss.",
+        "For each projector MapSim works out the image zone it must cover and picks the lens, zoom, lens shift and, if needed, the downward or sideways tilt.",
+        "It always prefers no tilt (no keystone) using lens shift; it only tilts when the lens cannot reach.",
+        "If the truss is short it is extended; if it is too close for any lens, MapSim tells you what to do."
+      ]
+    },
+    {
       "version": "0.12.0",
       "date": "2026-11-14",
       "title": "Arrays montados em truss existente",
