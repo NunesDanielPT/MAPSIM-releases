@@ -1,7 +1,7 @@
 // MapSim — servidor de licenças (sem dependências; Node 18+)
 // Endpoints públicos: POST /api/activate, /api/check, /api/release · Painel: /admin (Basic Auth)
 'use strict';
-const SERVER_VERSION = '0.8.1';
+const SERVER_VERSION = '0.8.2';
 const http = require('http'), crypto = require('crypto'), fs = require('fs'), path = require('path');
 
 const DATA = process.env.DATA_DIR || '/data';
@@ -105,40 +105,67 @@ async function api(req, res, route, ip) {
   send(res, 200, { ok: true, license: sign(k) });
 }
 
-function adminPage(msg = '') {
-  const fmt = t => t ? new Date(t).toLocaleString('pt-PT') : '—';
-  const rows = db.keys.map(k => {
+const fmtT = t => t ? new Date(t).toLocaleString('pt-PT', { timeZone: process.env.TZ || 'Europe/Lisbon' }) : '—';
+const EV = { create: 'chave criada', activate: 'ativação', check: 'verificação', release: 'PC libertado pelo cliente', 'activate-fail': 'ativação recusada', 'check-fail': 'verificação recusada', 'release-fail': 'libertação recusada',
+  'admin-revoke': 'revogada', 'admin-unrevoke': 'reativada', 'admin-free': 'PC libertado', 'admin-setexp': 'validade alterada', 'admin-perm': 'validade permanente', 'admin-delete': 'chave apagada' };
+const layout = (section, title, inner, msg) => `<!doctype html><html lang="pt"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>MapSim — ${esc(title)}</title>
+<style>*{box-sizing:border-box}body{font:14px system-ui,sans-serif;background:#0b0e12;color:#d8e0ea;margin:0;display:flex;min-height:100vh}
+nav{width:220px;background:#0e1217;border-right:1px solid #232b35;padding:22px 14px;flex:0 0 auto}nav h1{font-size:19px;font-weight:500;margin:0 0 2px}nav h1 b{color:#14c4ef}nav .v{color:#7f8b99;font-size:11px;margin-bottom:22px;display:block}
+nav a{display:flex;justify-content:space-between;color:#c4ccd6;text-decoration:none;padding:9px 12px;border-radius:7px;margin:2px 0}nav a:hover{background:#151a21}nav a.on{background:#04222c;color:#14c4ef}nav a em{font-style:normal;color:#7f8b99;font-size:12px}
+main{flex:1;padding:26px 30px;min-width:0}h2{font-weight:500;margin:0 0 16px}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #232b35;padding:8px;text-align:left;vertical-align:top}th{color:#7f8b99;font-weight:500;font-size:12px;text-transform:uppercase}
+input,button,select{background:#151a21;color:#d8e0ea;border:1px solid #2b3540;border-radius:5px;padding:6px 9px;font:inherit}button{cursor:pointer}button:hover{border-color:#14c4ef}.danger{color:#ff7a7a}.ok{color:#3ddc97}.bad{color:#ff5d5d}.warn{color:#f5a524}
+.card{background:#0e1217;border:1px solid #232b35;border-radius:8px;padding:14px;margin:0 0 16px}code{font-family:Consolas,monospace;color:#9fd8ee}textarea{width:100%;background:#151a21;color:#d8e0ea;border:1px solid #2b3540;border-radius:5px;padding:8px;font:13px system-ui}
+.msg{background:#04222c;border:1px solid #14c4ef;padding:10px;border-radius:6px;margin-bottom:16px}small,.muted{color:#7f8b99}.news{border-top:1px solid #232b35;padding:12px 0}.news textarea{height:70px;margin:6px 0}.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}</style>
+<nav><h1><b>MapSim</b> licenças</h1><span class="v">servidor v${SERVER_VERSION}</span>
+${[['keys', '/admin', 'Chaves', db.keys.length], ['news', '/admin/news', 'Novidades', db.changelog.length], ['log', '/admin/log', 'Registo', db.log.length], ['config', '/admin/config', 'Configuração', '']]
+  .map(([k, u, t, n]) => `<a href="${u}" class="${k === section ? 'on' : ''}">${t}<em>${n}</em></a>`).join('')}</nav>
+<main><h2>${esc(title)}</h2>${msg ? `<div class="msg">${msg}</div>` : ''}${inner}</main></html>`;
+
+function pageKeys(msg, q) {
+  const f = (q.get('q') || '').toLowerCase(), list = db.keys.filter(k => !f || `${k.key} ${k.owner} ${k.note} ${k.pcName || ''}`.toLowerCase().includes(f));
+  const rows = list.map(k => {
     const st = k.revoked ? '<b class="bad">revogada</b>' : k.expires && Date.now() > k.expires ? '<b class="bad">expirada</b>' : '<b class="ok">ativa</b>';
-    return `<tr><td><code>${esc(k.key)}</code></td><td>${esc(k.owner)}<br><small>${esc(k.note)}</small></td><td>${st}</td><td>${k.expires ? fmt(k.expires).split(',')[0] : 'permanente'}</td>
-    <td>${k.machine ? `<small>${esc(k.pcName || '')}<br><code>${esc(k.machine.slice(0, 12))}…</code></small>` : '<small>livre</small>'}</td><td><small>${fmt(k.lastCheck)}<br>${esc(k.lastVersion || '')}</small></td>
-    <td><form method="post" action="/admin/act"><input type="hidden" name="key" value="${esc(k.key)}">
+    return `<tr><td><code>${esc(k.key)}</code><br><small>criada ${fmtT(k.created).split(',')[0]}</small></td><td>${esc(k.owner)}<br><small>${esc(k.note)}</small></td><td>${st}</td><td>${k.expires ? fmtT(k.expires).split(',')[0] : 'permanente'}</td>
+    <td>${k.machine ? `<small>${esc(k.pcName || '')}<br><code>${esc(k.machine.slice(0, 12))}…</code></small>` : '<small>livre</small>'}</td><td><small>${fmtT(k.lastCheck)}<br>${esc(k.lastVersion || '')}</small><br><a href="/admin/log?q=${encodeURIComponent(k.key)}" style="color:#14c4ef;font-size:12px">ver registo</a></td>
+    <td><form method="post" action="/admin/act" class="row"><input type="hidden" name="key" value="${esc(k.key)}">
       ${k.machine ? '<button name="do" value="free">Libertar PC</button>' : ''}
       ${k.revoked ? '<button name="do" value="unrevoke">Reativar</button>' : '<button name="do" value="revoke" class="danger">Revogar</button>'}
       <input type="date" name="exp"><button name="do" value="setexp">Validade</button><button name="do" value="perm">Permanente</button>
       <button name="do" value="delete" class="danger" onclick="return confirm('Apagar definitivamente a chave ${esc(k.key)} (${esc(k.owner)})? Quem a usa perde o acesso na próxima verificação.')">Apagar</button></form></td></tr>`;
   }).join('');
-  return `<!doctype html><html lang="pt"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>MapSim — Licenças</title>
-<style>body{font:14px system-ui,sans-serif;background:#0b0e12;color:#d8e0ea;margin:24px}h1{font-weight:500}h1 b{color:#14c4ef}table{border-collapse:collapse;width:100%;margin-top:16px}td,th{border-bottom:1px solid #232b35;padding:8px;text-align:left;vertical-align:top}th{color:#7f8b99;font-weight:500;font-size:12px;text-transform:uppercase}
-input,button{background:#151a21;color:#d8e0ea;border:1px solid #2b3540;border-radius:5px;padding:6px 9px;font:inherit}button{cursor:pointer}button:hover{border-color:#14c4ef}.danger{color:#ff7a7a}.ok{color:#3ddc97}.bad{color:#ff5d5d}
-.card{background:#0e1217;border:1px solid #232b35;border-radius:8px;padding:14px;margin:14px 0}code{font-family:Consolas,monospace;color:#9fd8ee}textarea{width:100%;height:110px;background:#151a21;color:#9fd8ee;border:1px solid #2b3540;font:12px Consolas,monospace}.news{border-top:1px solid #232b35;padding:10px 0}.news textarea{height:64px;margin:6px 0;color:#d8e0ea;font:13px system-ui}.msg{background:#04222c;border:1px solid #14c4ef;padding:10px;border-radius:6px}small{color:#7f8b99}</style>
-<h1><b>MapSim</b> — licenças <small>servidor v${SERVER_VERSION}</small></h1>${msg ? `<p class="msg">${msg}</p>` : ''}
-<div class="card"><form method="post" action="/admin/new"><b>Nova chave</b>&nbsp; <input name="owner" placeholder="Nome / empresa" required> <input name="note" placeholder="Nota (opcional)"> Validade <input type="date" name="exp"> <small>(vazio = permanente)</small> <button>Criar chave</button></form></div>
-<table><tr><th>Chave</th><th>Cliente</th><th>Estado</th><th>Validade</th><th>PC</th><th>Última verificação</th><th>Acções</th></tr>${rows || '<tr><td colspan="7"><small>Ainda não há chaves.</small></td></tr>'}</table>
-<div class="card"><b>Novidades (aparecem na app ao actualizar e em Definições → Updates)</b>
-<form method="post" action="/admin/news" style="display:inline"><button name="do" value="sync">Sincronizar com o GitHub</button></form>
-<small> · uma linha por novidade · as versões editadas aqui não são substituídas pelo GitHub</small>
-${[{ version: '', date: new Date().toISOString().slice(0, 10), title: '', items: [], hidden: false, isNew: true }, ...db.changelog].map(e => `<form method="post" action="/admin/news" class="news">
-<div><input name="version" value="${esc(e.version)}" placeholder="0.7.1" ${e.isNew ? '' : 'readonly'} style="width:80px"> <input type="date" name="date" value="${esc(e.date)}"> <input name="title" value="${esc(e.title)}" placeholder="Título curto" style="width:320px">
+  return layout('keys', 'Chaves', `<div class="card"><form method="post" action="/admin/new" class="row"><b>Nova chave</b> <input name="owner" placeholder="Nome / empresa" required> <input name="note" placeholder="Nota (opcional)"> Validade <input type="date" name="exp"> <small>(vazio = permanente)</small> <button>Criar chave</button></form></div>
+<form method="get" action="/admin" class="row" style="margin-bottom:10px"><input name="q" value="${esc(q.get('q') || '')}" placeholder="Procurar chave, cliente, PC…" style="width:280px"><button>Procurar</button>${f ? ' <a href="/admin" style="color:#14c4ef">limpar</a>' : ''}</form>
+<table><tr><th>Chave</th><th>Cliente</th><th>Estado</th><th>Validade</th><th>PC</th><th>Última verificação</th><th>Acções</th></tr>${rows || '<tr><td colspan="7"><small>Sem chaves.</small></td></tr>'}</table>`, msg);
+}
+function pageNews(msg) {
+  const forms = [{ version: '', date: new Date().toISOString().slice(0, 10), title: '', items: [], hidden: false, isNew: true }, ...db.changelog].map(e => `<form method="post" action="/admin/news" class="news">
+<div class="row"><input name="version" value="${esc(e.version)}" placeholder="0.9.0" ${e.isNew ? '' : 'readonly'} style="width:84px"> <input type="date" name="date" value="${esc(e.date)}"> <input name="title" value="${esc(e.title)}" placeholder="Título curto" style="width:340px">
 <label><input type="checkbox" name="hidden" ${e.hidden ? 'checked' : ''}> esconder</label> ${e.isNew ? '<b>nova versão</b>' : e.edited ? '<small class="ok">editado por ti</small>' : '<small>do GitHub</small>'}</div>
 <textarea name="items" placeholder="Uma novidade por linha">${esc((e.items || []).join('\n'))}</textarea>
-<button name="do" value="save">Guardar</button>${e.isNew ? '' : ` ${e.edited ? '<button name="do" value="reset">Repor texto do GitHub</button>' : ''} <button name="do" value="delete" class="danger">Remover</button>`}</form>`).join('')}</div>
-<div class="card"><b>Chave pública de assinatura</b> — envia isto para meter na app (não é secreta):<textarea readonly>${esc(publicRaw)}</textarea></div>
-<div class="card"><b>Registo</b><br><small>${db.log.slice(0, 40).map(l => `${fmt(l.t)} · ${esc(l.ev)} · ${esc(l.key)} · ${esc(l.ip)} ${esc(l.extra)}`).join('<br>')}</small></div></html>`;
+<div class="row"><button name="do" value="save">Guardar</button>${e.isNew ? '' : ` ${e.edited ? '<button name="do" value="reset">Repor texto do GitHub</button>' : ''} <button name="do" value="delete" class="danger" onclick="return confirm('Remover a versão ${esc(e.version)} das novidades?')">Remover</button>`}</div></form>`).join('');
+  return layout('news', 'Novidades', `<div class="card row"><form method="post" action="/admin/news"><button name="do" value="sync">Sincronizar com o GitHub</button></form>
+<small>Aparecem na app ao actualizar e em Definições → Updates · uma linha por novidade · as versões editadas aqui não são substituídas pelo GitHub</small></div><div class="card">${forms}</div>`, msg);
+}
+function pageLog(q) {
+  const f = (q.get('q') || '').toLowerCase(), ev = q.get('ev') || '';
+  const list = db.log.filter(l => (!f || `${l.key} ${l.ip} ${l.extra}`.toLowerCase().includes(f)) && (!ev || l.ev === ev));
+  const opts = [...new Set(db.log.map(l => l.ev))].map(e => `<option value="${esc(e)}" ${e === ev ? 'selected' : ''}>${esc(EV[e] || e)}</option>`).join('');
+  return layout('log', 'Registo', `<form method="get" action="/admin/log" class="row" style="margin-bottom:10px"><input name="q" value="${esc(q.get('q') || '')}" placeholder="Chave, IP…" style="width:260px"><select name="ev"><option value="">Todos os eventos</option>${opts}</select><button>Filtrar</button>${f || ev ? ' <a href="/admin/log" style="color:#14c4ef">limpar</a>' : ''}</form>
+<table><tr><th>Data</th><th>Evento</th><th>Chave</th><th>Cliente</th><th>IP</th><th>Detalhe</th></tr>${list.slice(0, 300).map(l => { const k = db.keys.find(x => x.key === l.key);
+  return `<tr><td><small>${fmtT(l.t)}</small></td><td class="${/fail/.test(l.ev) ? 'warn' : ''}">${esc(EV[l.ev] || l.ev)}</td><td><code>${esc(l.key)}</code></td><td>${esc(k?.owner || '')}</td><td><small>${esc(l.ip)}</small></td><td><small>${esc(l.extra)}</small></td></tr>`; }).join('') || '<tr><td colspan="6"><small>Sem registos.</small></td></tr>'}</table>
+<p class="muted">Mostra os últimos ${Math.min(list.length, 300)} de ${list.length} eventos (o servidor guarda os 500 mais recentes).</p>`, '');
+}
+function pageConfig() {
+  return layout('config', 'Configuração', `<div class="card"><b>Chave pública de assinatura</b><p class="muted">Está dentro da app (license-config.json). Não é secreta. Se a chave privada do servidor mudar, as licenças existentes deixam de ser válidas.</p><textarea readonly style="height:60px;font-family:Consolas,monospace;color:#9fd8ee">${esc(publicRaw)}</textarea></div>
+<div class="card"><b>Servidor</b><table><tr><td>Versão</td><td>${SERVER_VERSION}</td></tr><tr><td>Chaves</td><td>${db.keys.length} (${db.keys.filter(k => !k.revoked && !(k.expires && Date.now() > k.expires)).length} ativas, ${db.keys.filter(k => k.machine).length} com PC)</td></tr>
+<tr><td>Novidades — origem</td><td><code>${esc(CHANGELOG_URL)}</code></td></tr><tr><td>Dados</td><td><code>${esc(DATA)}</code></td></tr></table>
+<p class="muted">Para actualizar o servidor basta reiniciar o contentor no Portainer.</p></div>`, '');
 }
 
 async function admin(req, res, url) {
   if (!authed(req)) { res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="MapSim"' }); return res.end('Autenticação necessária'); }
-  if (req.method === 'GET') return send(res, 200, adminPage(), 'text/html; charset=utf-8');
+  const q = new URLSearchParams(req.url.split('?')[1] || ''), html = h => send(res, 200, h, 'text/html; charset=utf-8');
+  if (req.method === 'GET') return html(url === '/admin/news' ? pageNews('') : url === '/admin/log' ? pageLog(q) : url === '/admin/config' ? pageConfig() : pageKeys('', q));
   // proteção CSRF: o POST tem de vir da própria página do painel
   const origin = req.headers.origin || req.headers.referer || '';
   try { if (new URL(origin).host !== req.headers.host) return send(res, 403, 'Origem inválida', 'text/plain'); } catch { return send(res, 403, 'Origem inválida', 'text/plain'); }
@@ -170,7 +197,7 @@ async function admin(req, res, url) {
       else { log('admin-' + d, k.key, 'admin'); save(); msg = `${esc(k.key)}: feito (${esc(d)}).`; }
     }
   }
-  send(res, 200, adminPage(msg), 'text/html; charset=utf-8');
+  html(url === '/admin/news' ? pageNews(msg) : pageKeys(msg, new URLSearchParams()));
 }
 
 http.createServer(async (req, res) => {
