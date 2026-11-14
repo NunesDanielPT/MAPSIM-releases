@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.18.0",
+      "date": "2026-11-14",
+      "title": "Gravar a simulação em vídeo",
+      "items": [
+        "Novo botão ⏺ Gravar vídeo na Simulação: grava a cena em MP4 para mostrares ao cliente como vai ficar.",
+        "Escolhes a resolução (HD, Full HD, QHD, 4K ou igual à janela), as imagens por segundo e a qualidade.",
+        "Grava a timeline toda de uma vez, do início ao fim, ou começa já e páras quando quiseres.",
+        "Câmara livre (podes mexer durante a gravação) ou órbita lenta automática à volta da cena.",
+        "Legenda opcional no vídeo com o nome do projecto."
+      ],
+      "title_en": "Record the simulation as a video",
+      "items_en": [
+        "New ⏺ Record video button in Simulation: records the scene as MP4 so you can show the client how it will look.",
+        "Choose the resolution (HD, Full HD, QHD, 4K or same as window), frames per second and quality.",
+        "Record the whole timeline in one go, start to end, or start now and stop whenever you want.",
+        "Free camera (you can move it while recording) or an automatic slow orbit around the scene.",
+        "Optional caption on the video with the project name."
+      ]
+    },
+    {
       "version": "0.17.0",
       "date": "2026-11-14",
       "title": "Barco HDX-W20, consumos eléctricos e projectores on/off na simulação",
