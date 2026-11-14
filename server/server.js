@@ -1,7 +1,7 @@
 // MapSim — servidor de licenças (sem dependências; Node 18+)
 // Endpoints públicos: POST /api/activate, /api/check, /api/release · Painel: /admin (Basic Auth)
 'use strict';
-const SERVER_VERSION = '0.8.2';
+const SERVER_VERSION = '0.9.0';
 const http = require('http'), crypto = require('crypto'), fs = require('fs'), path = require('path');
 
 const DATA = process.env.DATA_DIR || '/data';
@@ -47,7 +47,8 @@ function status(k) {
 /* ---------- novidades (changelog): base no GitHub, editável no painel ---------- */
 const CHANGELOG_URL = process.env.CHANGELOG_URL || 'https://raw.githubusercontent.com/NunesDanielPT/MAPSIM-releases/main/data/changelog.json';
 const vnum = v => String(v).split('.').map(n => +n || 0), vcmp = (a, b) => { const x = vnum(a), y = vnum(b); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0); return 0; };
-const cleanEntry = e => ({ version: String(e.version || '').slice(0, 20), date: String(e.date || '').slice(0, 10), title: String(e.title || '').slice(0, 120), items: (Array.isArray(e.items) ? e.items : []).map(x => String(x).slice(0, 400)).filter(Boolean).slice(0, 30) });
+const lines = a => (Array.isArray(a) ? a : []).map(x => String(x).slice(0, 400)).filter(Boolean).slice(0, 30);
+const cleanEntry = e => ({ version: String(e.version || '').slice(0, 20), date: String(e.date || '').slice(0, 10), title: String(e.title || '').slice(0, 120), items: lines(e.items), title_en: String(e.title_en || '').slice(0, 120), items_en: lines(e.items_en) });
 let lastSync = 0;
 async function syncChangelog(force) {
   if (!force && Date.now() - lastSync < 10 * 60e3) return;
@@ -59,7 +60,8 @@ async function syncChangelog(force) {
       if (!/^\d+\.\d+\.\d+$/.test(e.version)) continue;
       const cur = db.changelog.find(x => x.version === e.version);
       if (!cur) { db.changelog.push({ ...e, hidden: false, edited: false }); changed = true; }
-      else if (!cur.edited && JSON.stringify([cur.date, cur.title, cur.items]) !== JSON.stringify([e.date, e.title, e.items])) { Object.assign(cur, e); changed = true; }
+      else if (!cur.edited && JSON.stringify([cur.date, cur.title, cur.items, cur.title_en, cur.items_en]) !== JSON.stringify([e.date, e.title, e.items, e.title_en, e.items_en])) { Object.assign(cur, e); changed = true; }
+      else if (cur.edited && !cur.title_en && e.title_en) { cur.title_en = e.title_en; cur.items_en = e.items_en; changed = true; }
     }
     if (changed) { db.changelog.sort((a, b) => vcmp(b.version, a.version)); save(); }
   } catch (e) { console.error('changelog:', e.message); }
@@ -141,7 +143,8 @@ function pageNews(msg) {
   const forms = [{ version: '', date: new Date().toISOString().slice(0, 10), title: '', items: [], hidden: false, isNew: true }, ...db.changelog].map(e => `<form method="post" action="/admin/news" class="news">
 <div class="row"><input name="version" value="${esc(e.version)}" placeholder="0.9.0" ${e.isNew ? '' : 'readonly'} style="width:84px"> <input type="date" name="date" value="${esc(e.date)}"> <input name="title" value="${esc(e.title)}" placeholder="Título curto" style="width:340px">
 <label><input type="checkbox" name="hidden" ${e.hidden ? 'checked' : ''}> esconder</label> ${e.isNew ? '<b>nova versão</b>' : e.edited ? '<small class="ok">editado por ti</small>' : '<small>do GitHub</small>'}</div>
-<textarea name="items" placeholder="Uma novidade por linha">${esc((e.items || []).join('\n'))}</textarea>
+<div class="row" style="align-items:flex-start"><div style="flex:1"><small>Português</small><textarea name="items" placeholder="Uma novidade por linha">${esc((e.items || []).join('\n'))}</textarea></div>
+<div style="flex:1"><small>English</small> <input name="title_en" value="${esc(e.title_en || '')}" placeholder="Title (English)" style="width:100%;margin:2px 0 0"><textarea name="items_en" placeholder="One item per line (English)">${esc((e.items_en || []).join('\n'))}</textarea></div></div>
 <div class="row"><button name="do" value="save">Guardar</button>${e.isNew ? '' : ` ${e.edited ? '<button name="do" value="reset">Repor texto do GitHub</button>' : ''} <button name="do" value="delete" class="danger" onclick="return confirm('Remover a versão ${esc(e.version)} das novidades?')">Remover</button>`}</div></form>`).join('');
   return layout('news', 'Novidades', `<div class="card row"><form method="post" action="/admin/news"><button name="do" value="sync">Sincronizar com o GitHub</button></form>
 <small>Aparecem na app ao actualizar e em Definições → Updates · uma linha por novidade · as versões editadas aqui não são substituídas pelo GitHub</small></div><div class="card">${forms}</div>`, msg);
@@ -182,7 +185,8 @@ async function admin(req, res, url) {
       if (d === 'reset' && e) { e.edited = false; save(); await syncChangelog(true); msg = `Versão ${esc(v)}: texto original reposto.`; }
       else if (d === 'delete' && e) { db.changelog = db.changelog.filter(x => x !== e); save(); msg = `Versão ${esc(v)} removida.`; }
       else if (d === 'save') {
-        const ne = cleanEntry({ version: v, date: f.get('date'), title: f.get('title'), items: String(f.get('items') || '').split(/\r?\n/).map(x => x.replace(/^[-•*]\s*/, '').trim()) });
+        const split = k => String(f.get(k) || '').split(/\r?\n/).map(x => x.replace(/^[-•*]\s*/, '').trim());
+        const ne = cleanEntry({ version: v, date: f.get('date'), title: f.get('title'), items: split('items'), title_en: f.get('title_en'), items_en: split('items_en') });
         if (!e) { e = { hidden: false }; db.changelog.push(e); }
         Object.assign(e, ne, { hidden: f.get('hidden') === 'on', edited: true });
         db.changelog.sort((a, b) => vcmp(b.version, a.version)); save(); msg = `Versão ${esc(v)} guardada.`;

@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.11.0",
+      "date": "2026-11-14",
+      "title": "Inglês, definições e painéis",
+      "items": [
+        "O MapSim passa a estar também em inglês (Definições → Interface → Língua).",
+        "Feixes de luz: luz branca realista que enfraquece com a distância, ou a cor de cada projector, com intensidade ajustável.",
+        "As Definições têm sempre o mesmo tamanho; novo separador Atalhos para mudar as teclas; o Diagnóstico passou para o Sobre.",
+        "Podes alargar os painéis laterais arrastando a borda e arrastar itens na árvore para os reordenar."
+      ],
+      "title_en": "English, settings and panels",
+      "items_en": [
+        "MapSim is now also available in English (Settings → Interface → Language).",
+        "Light beams: realistic white light that fades with distance, or the projector colour, with adjustable intensity.",
+        "Settings keep the same size; new Shortcuts tab to change keyboard keys; Diagnostics moved to About.",
+        "Resize the side panels by dragging their edges, and drag items in the tree to reorder them."
+      ]
+    },
+    {
       "version": "0.10.0",
       "date": "2026-11-14",
       "title": "Modo Simulação com timeline",
@@ -10,6 +28,14 @@
         "Play, pausa, parar, saltar 5 s e loop da timeline ou de cada vídeo.",
         "Cada clip tem ajuste (esticar, caber, preencher), escala, posição, rotação, opacidade, velocidade e fade in/out.",
         "Ambiente de noite, penumbra ou dia, brilho de referência e edge blending."
+      ],
+      "title_en": "Simulation mode with timeline",
+      "items_en": [
+        "New ▶ Simulation button next to Export: a screen with only the 3D view, the timeline and the video settings.",
+        "Timeline with several clips (videos, images or demo): drag to move, pull the ends to shorten or trim, Ctrl + wheel to zoom.",
+        "Play, pause, stop, skip 5 s, and loop the timeline or each video.",
+        "Each clip has fit (stretch, fit, fill), scale, position, rotation, opacity, speed and fade in/out.",
+        "Night, dusk or day ambience, reference brightness and edge blending."
       ]
     },
     {
@@ -20,6 +46,12 @@
         "Nova vista \"Simulação de conteúdo\": vê um vídeo ou uma imagem a passar na fachada através dos teus projectores, com a cena às escuras.",
         "Usa a demo animada ou carrega o teu vídeo (MP4 ou WebM) ou imagem.",
         "O brilho segue a luz real de cada projector: zonas sem cobertura ficam escuras e aparecem sombras e sobreposições."
+      ],
+      "title_en": "Projection mapping simulation",
+      "items_en": [
+        "New \"Content simulation\" view: watch a video or image play on the facade through your projectors, in a dark scene.",
+        "Use the animated demo or load your own video (MP4 or WebM) or image.",
+        "Brightness follows the real light of each projector: uncovered areas stay dark, shadows and overlaps show."
       ]
     },
     {
@@ -31,6 +63,13 @@
         "Nova vista Foco: mostra onde a imagem fica nítida e onde desfoca. Cada projector foca automaticamente no melhor plano, ou podes escolher a distância de foco.",
         "A iluminância conta agora com a perda de brilho nas bordas da lente, além da distância e do ângulo: a parte mais perto do projector aparece mais forte.",
         "No resumo: uniformidade do brilho e percentagem da superfície focada."
+      ],
+      "title_en": "Curved truss, focus and more realistic light",
+      "items_en": [
+        "Curved truss: choose Straight or Curved and set the radius and angle. On curved screens, \"Create truss for this array\" builds a curved truss around the projectors.",
+        "New Focus view: shows where the image is sharp and where it blurs. Each projector focuses automatically on the best plane, or you choose the focus distance.",
+        "Illuminance now includes the lens edge falloff as well as distance and angle: the part closest to the projector is brighter.",
+        "Summary: brightness uniformity and percentage of the surface in focus."
       ]
     },
     {
@@ -40,6 +79,11 @@
       "items": [
         "Quando sai uma versão nova, o MapSim mostra o que mudou e és tu que decides se actualizas agora ou mais tarde.",
         "Novo separador Updates nas Definições com o histórico de todas as versões."
+      ],
+      "title_en": "What's new before updating",
+      "items_en": [
+        "When a new version is out, MapSim shows what changed and you decide whether to update now or later.",
+        "New Changelog tab in Settings with the history of all versions."
       ]
     },
     {
@@ -50,6 +94,12 @@
         "O MapSim passa a precisar de uma chave de licença, ativada uma vez com internet.",
         "Depois de ativado funciona offline; a chave é confirmada só quando há actualizações.",
         "Nas Definições → Sobre podes ver a tua licença ou desativá-la para mudar de computador."
+      ],
+      "title_en": "Licences",
+      "items_en": [
+        "MapSim now needs a licence key, activated once with the internet.",
+        "After activation it works offline; the key is only confirmed when there are updates.",
+        "In Settings → About you can see your licence or deactivate it to change computer."
       ]
     },
     {
@@ -59,6 +109,11 @@
       "items": [
         "Novos projectores Christie Griffyn (4K50, 4K35 e 4K32) com as respectivas lentes.",
         "Novos projectores Epson EB-PQ 4K (PQ2220B, PQ2216B/W e PQ2213B)."
+      ],
+      "title_en": "Christie and Epson 4K",
+      "items_en": [
+        "New Christie Griffyn projectors (4K50, 4K35 and 4K32) with their lenses.",
+        "New Epson EB-PQ 4K projectors (PQ2220B, PQ2216B/W and PQ2213B)."
       ]
     },
     {
@@ -67,6 +122,10 @@
       "title": "Exportação para PIXERA melhorada",
       "items": [
         "O modelo 3D exportado faz o vídeo cobrir a fachada inteira no PIXERA, em vez de se repetir por cada parede."
+      ],
+      "title_en": "Better export to PIXERA",
+      "items_en": [
+        "The exported 3D model makes the video cover the whole facade in PIXERA instead of repeating on each wall."
       ]
     },
     {
@@ -76,6 +135,11 @@
       "items": [
         "Escolha de projectores por marca e série, com pesquisa pelo nome, resolução ou lúmens.",
         "Mais modelos Panasonic, Epson e Barco, com dados oficiais dos fabricantes."
+      ],
+      "title_en": "Projector library",
+      "items_en": [
+        "Choose projectors by brand and series, with search by name, resolution or lumens.",
+        "More Panasonic, Epson and Barco models with official manufacturer data."
       ]
     },
     {
@@ -86,6 +150,12 @@
         "Importar os projectores que já existem no PIXERA para o MapSim.",
         "Régua de medição mais fácil: medições temporárias, fixar, esconder e apagar.",
         "Correcção do menu Exportar."
+      ],
+      "title_en": "PIXERA link",
+      "items_en": [
+        "Import the projectors that already exist in PIXERA into MapSim.",
+        "Easier measuring ruler: temporary measurements, pin, hide and delete.",
+        "Export menu fix."
       ]
     },
     {
@@ -97,6 +167,13 @@
         "Desenho técnico em PDF com planta, alçados, cotas e mapa de blending.",
         "Linhas de truss com medidas oficiais, peças necessárias e projectores montados.",
         "Nome do projecto ao criar e ícone MapSim nos ficheiros e no instalador."
+      ],
+      "title_en": "Exports and technical drawing",
+      "items_en": [
+        "Export to WATCHOUT, PIXERA, Resolume and disguise.",
+        "Technical drawing PDF with plan, elevations, dimensions and blending map.",
+        "Truss lines with official dimensions, required pieces and mounted projectors.",
+        "Project name when creating and MapSim icon on files and installer."
       ]
     },
     {
@@ -106,6 +183,11 @@
       "items": [
         "Escolha da placa gráfica, qualidade e monitor de GPU, CPU, RAM e FPS.",
         "Correcção do arranque em alguns computadores Windows."
+      ],
+      "title_en": "Settings and performance",
+      "items_en": [
+        "Choice of graphics card, quality and GPU, CPU, RAM and FPS monitor.",
+        "Start-up fix on some Windows computers."
       ]
     },
     {
@@ -116,6 +198,12 @@
         "Simulação 3D de projecção com projectores e lentes reais.",
         "Ecrãs planos, curvos, cúpulas, salas imersivas, edifícios e modelos 3D importados.",
         "Gerador de arrays com cálculo de distâncias, sobreposição, brilho e densidade."
+      ],
+      "title_en": "First version",
+      "items_en": [
+        "3D projection simulation with real projectors and lenses.",
+        "Flat and curved screens, domes, immersive rooms, buildings and imported 3D models.",
+        "Array generator with distance, overlap, brightness and density calculations."
       ]
     }
   ]
