@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "0.8.0",
+      "date": "2026-11-14",
+      "title": "Truss curva, foco e luz mais realista",
+      "items": [
+        "Truss curva: escolhe Recta ou Curva na truss e define o raio e o ângulo. Em ecrãs curvos, \"Criar truss para este array\" faz uma truss curva à volta dos projectores.",
+        "Nova vista Foco: mostra onde a imagem fica nítida e onde desfoca. Cada projector foca automaticamente no melhor plano, ou podes escolher a distância de foco.",
+        "A iluminância conta agora com a perda de brilho nas bordas da lente, além da distância e do ângulo: a parte mais perto do projector aparece mais forte.",
+        "No resumo: uniformidade do brilho e percentagem da superfície focada."
+      ]
+    },
+    {
       "version": "0.7.0",
       "date": "2026-11-14",
       "title": "Novidades antes de actualizar",

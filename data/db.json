@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": "2026.11.14.2",
+ "version": "2026.11.14.3",
  "updated": "2026-11-13",
  "sources": {
   "panaRQ25": {
@@ -104,7 +104,9 @@
     "barcoW40"
    ],
    "verified": true,
-   "series": "UDX Series (3-Chip DLP)"
+   "series": "UDX Series (3-Chip DLP)",
+   "chip": 0.96,
+   "uniformity": 0.95
   },
   {
    "id": "udx-4k40",
@@ -129,7 +131,9 @@
     "barco4K40"
    ],
    "verified": true,
-   "series": "UDX Series (3-Chip DLP)"
+   "series": "UDX Series (3-Chip DLP)",
+   "chip": 0.9,
+   "uniformity": 0.95
   },
   {
    "id": "udx-w32",
@@ -154,7 +158,9 @@
     "barcoW32"
    ],
    "verified": true,
-   "series": "UDX Series (3-Chip DLP)"
+   "series": "UDX Series (3-Chip DLP)",
+   "chip": 0.96,
+   "uniformity": 0.95
   },
   {
    "id": "udx-4k32",
@@ -180,7 +186,9 @@
     "barcoManual"
    ],
    "verified": true,
-   "series": "UDX Series (3-Chip DLP)"
+   "series": "UDX Series (3-Chip DLP)",
+   "chip": 0.9,
+   "uniformity": 0.95
   },
   {
    "id": "udx-4k28",
@@ -205,7 +213,9 @@
     "barco4K28"
    ],
    "verified": true,
-   "series": "UDX Series (3-Chip DLP)"
+   "series": "UDX Series (3-Chip DLP)",
+   "chip": 0.9,
+   "uniformity": 0.95
   },
   {
    "id": "udx-w26",
@@ -230,7 +240,9 @@
     "barcoW26"
    ],
    "verified": true,
-   "series": "UDX Series (3-Chip DLP)"
+   "series": "UDX Series (3-Chip DLP)",
+   "chip": 0.96,
+   "uniformity": 0.95
   },
   {
    "id": "udx-4k22",
@@ -255,7 +267,9 @@
     "barco4K22"
    ],
    "verified": true,
-   "series": "UDX Series (3-Chip DLP)"
+   "series": "UDX Series (3-Chip DLP)",
+   "chip": 0.9,
+   "uniformity": 0.95
   },
   {
    "id": "griffyn-4k50",
@@ -281,7 +295,8 @@
     "chrLens"
    ],
    "verified": true,
-   "series": "Griffyn Series (3DLP RGB laser)"
+   "series": "Griffyn Series (3DLP RGB laser)",
+   "chip": 1.38
   },
   {
    "id": "griffyn-4k35",
@@ -307,7 +322,8 @@
     "chrLens"
    ],
    "verified": true,
-   "series": "Griffyn Series (3DLP RGB laser)"
+   "series": "Griffyn Series (3DLP RGB laser)",
+   "chip": 1.38
   },
   {
    "id": "griffyn-4k32",
@@ -333,7 +349,8 @@
     "chrLens"
    ],
    "verified": true,
-   "series": "Griffyn Series (3DLP RGB laser)"
+   "series": "Griffyn Series (3DLP RGB laser)",
+   "chip": 1.38
   },
   {
    "id": "eb-pq2220b",
@@ -358,7 +375,8 @@
     "epsonPQ"
    ],
    "verified": true,
-   "series": "EB-PQ2200 Series (3LCD 4K)"
+   "series": "EB-PQ2200 Series (3LCD 4K)",
+   "chip": 1.04
   },
   {
    "id": "eb-pq2216b",
@@ -383,7 +401,8 @@
     "epsonPQ"
    ],
    "verified": true,
-   "series": "EB-PQ2200 Series (3LCD 4K)"
+   "series": "EB-PQ2200 Series (3LCD 4K)",
+   "chip": 1.04
   },
   {
    "id": "eb-pq2216w",
@@ -408,7 +427,8 @@
     "epsonPQ"
    ],
    "verified": true,
-   "series": "EB-PQ2200 Series (3LCD 4K)"
+   "series": "EB-PQ2200 Series (3LCD 4K)",
+   "chip": 1.04
   },
   {
    "id": "eb-pq2213b",
@@ -433,7 +453,8 @@
     "epsonPQ"
    ],
    "verified": true,
-   "series": "EB-PQ2200 Series (3LCD 4K)"
+   "series": "EB-PQ2200 Series (3LCD 4K)",
+   "chip": 1.04
   },
   {
    "id": "eb-pu2120w",
@@ -458,7 +479,8 @@
     "epsonSpec"
    ],
    "verified": true,
-   "series": "EB-PU2200 Series (3LCD)"
+   "series": "EB-PU2200 Series (3LCD)",
+   "chip": 1.0
   },
   {
    "id": "eb-pu2220b",
@@ -483,7 +505,8 @@
     "epsonSpec"
    ],
    "verified": true,
-   "series": "EB-PU2200 Series (3LCD)"
+   "series": "EB-PU2200 Series (3LCD)",
+   "chip": 1.0
   },
   {
    "id": "eb-pu2116w",
@@ -508,7 +531,8 @@
     "epsonSpec"
    ],
    "verified": true,
-   "series": "EB-PU2200 Series (3LCD)"
+   "series": "EB-PU2200 Series (3LCD)",
+   "chip": 1.0
   },
   {
    "id": "eb-pu2216b",
@@ -533,7 +557,8 @@
     "epsonSpec"
    ],
    "verified": true,
-   "series": "EB-PU2200 Series (3LCD)"
+   "series": "EB-PU2200 Series (3LCD)",
+   "chip": 1.0
   },
   {
    "id": "eb-pu2113w",
@@ -558,7 +583,8 @@
     "epsonSpec"
    ],
    "verified": true,
-   "series": "EB-PU2200 Series (3LCD)"
+   "series": "EB-PU2200 Series (3LCD)",
+   "chip": 1.0
   },
   {
    "id": "eb-pu2213b",
@@ -583,7 +609,8 @@
     "epsonSpec"
    ],
    "verified": true,
-   "series": "EB-PU2200 Series (3LCD)"
+   "series": "EB-PU2200 Series (3LCD)",
+   "chip": 1.0
   },
   {
    "id": "pt-rq25k",
@@ -608,7 +635,8 @@
     "panaRQ25"
    ],
    "verified": true,
-   "series": "PT-RQ25K Series (3-Chip DLP)"
+   "series": "PT-RQ25K Series (3-Chip DLP)",
+   "chip": 0.8
   },
   {
    "id": "pt-rz24k",
@@ -633,7 +661,8 @@
     "panaRQ25"
    ],
    "verified": true,
-   "series": "PT-RQ25K Series (3-Chip DLP)"
+   "series": "PT-RQ25K Series (3-Chip DLP)",
+   "chip": 0.8
   },
   {
    "id": "pt-rq18k",
@@ -659,7 +688,8 @@
     "panaRQ25"
    ],
    "verified": true,
-   "series": "PT-RQ25K Series (3-Chip DLP)"
+   "series": "PT-RQ25K Series (3-Chip DLP)",
+   "chip": 0.8
   },
   {
    "id": "pt-rz17k",
@@ -685,7 +715,8 @@
     "panaRQ25"
    ],
    "verified": true,
-   "series": "PT-RQ25K Series (3-Chip DLP)"
+   "series": "PT-RQ25K Series (3-Chip DLP)",
+   "chip": 0.8
   },
   {
    "id": "pt-rz14k",
@@ -710,7 +741,8 @@
     "panaRZ14"
    ],
    "verified": true,
-   "series": "PT-RZ14K (3-Chip DLP)"
+   "series": "PT-RZ14K (3-Chip DLP)",
+   "chip": 0.8
   }
  ],
  "lenses": [

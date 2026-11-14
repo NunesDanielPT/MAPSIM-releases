@@ -113,7 +113,8 @@ function adminPage(msg = '') {
     <td><form method="post" action="/admin/act"><input type="hidden" name="key" value="${esc(k.key)}">
       ${k.machine ? '<button name="do" value="free">Libertar PC</button>' : ''}
       ${k.revoked ? '<button name="do" value="unrevoke">Reativar</button>' : '<button name="do" value="revoke" class="danger">Revogar</button>'}
-      <input type="date" name="exp"><button name="do" value="setexp">Validade</button><button name="do" value="perm">Permanente</button></form></td></tr>`;
+      <input type="date" name="exp"><button name="do" value="setexp">Validade</button><button name="do" value="perm">Permanente</button>
+      <button name="do" value="delete" class="danger" onclick="return confirm('Apagar definitivamente a chave ${esc(k.key)} (${esc(k.owner)})? Quem a usa perde o acesso na próxima verificação.')">Apagar</button></form></td></tr>`;
   }).join('');
   return `<!doctype html><html lang="pt"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>MapSim — Licenças</title>
 <style>body{font:14px system-ui,sans-serif;background:#0b0e12;color:#d8e0ea;margin:24px}h1{font-weight:500}h1 b{color:#14c4ef}table{border-collapse:collapse;width:100%;margin-top:16px}td,th{border-bottom:1px solid #232b35;padding:8px;text-align:left;vertical-align:top}th{color:#7f8b99;font-weight:500;font-size:12px;text-transform:uppercase}
@@ -164,7 +165,8 @@ async function admin(req, res, url) {
     if (k) {
       if (d === 'revoke') k.revoked = true; if (d === 'unrevoke') k.revoked = false; if (d === 'free') k.machine = null;
       if (d === 'setexp' && f.get('exp')) k.expires = dateMs(f.get('exp')); if (d === 'perm') k.expires = null;
-      log('admin-' + d, k.key, 'admin'); save(); msg = `${esc(k.key)}: feito (${esc(d)}).`;
+      if (d === 'delete') { db.keys = db.keys.filter(x => x !== k); log('admin-delete', k.key, 'admin', k.owner); save(); msg = `Chave ${esc(k.key)} (${esc(k.owner)}) apagada.`; }
+      else { log('admin-' + d, k.key, 'admin'); save(); msg = `${esc(k.key)}: feito (${esc(d)}).`; }
     }
   }
   send(res, 200, adminPage(msg), 'text/html; charset=utf-8');
