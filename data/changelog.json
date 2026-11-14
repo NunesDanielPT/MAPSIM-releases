@@ -1,0 +1,89 @@
+{
+  "versions": [
+    {
+      "version": "0.7.0",
+      "date": "2026-11-14",
+      "title": "Novidades antes de actualizar",
+      "items": [
+        "Quando sai uma versão nova, o MapSim mostra o que mudou e és tu que decides se actualizas agora ou mais tarde.",
+        "Novo separador Updates nas Definições com o histórico de todas as versões."
+      ]
+    },
+    {
+      "version": "0.6.5",
+      "date": "2026-11-14",
+      "title": "Licenças",
+      "items": [
+        "O MapSim passa a precisar de uma chave de licença, ativada uma vez com internet.",
+        "Depois de ativado funciona offline; a chave é confirmada só quando há actualizações.",
+        "Nas Definições → Sobre podes ver a tua licença ou desativá-la para mudar de computador."
+      ]
+    },
+    {
+      "version": "0.5.2",
+      "date": "2026-11-14",
+      "title": "Christie e Epson 4K",
+      "items": [
+        "Novos projectores Christie Griffyn (4K50, 4K35 e 4K32) com as respectivas lentes.",
+        "Novos projectores Epson EB-PQ 4K (PQ2220B, PQ2216B/W e PQ2213B)."
+      ]
+    },
+    {
+      "version": "0.5.1",
+      "date": "2026-11-14",
+      "title": "Exportação para PIXERA melhorada",
+      "items": [
+        "O modelo 3D exportado faz o vídeo cobrir a fachada inteira no PIXERA, em vez de se repetir por cada parede."
+      ]
+    },
+    {
+      "version": "0.5.0",
+      "date": "2026-11-14",
+      "title": "Biblioteca de projectores",
+      "items": [
+        "Escolha de projectores por marca e série, com pesquisa pelo nome, resolução ou lúmens.",
+        "Mais modelos Panasonic, Epson e Barco, com dados oficiais dos fabricantes."
+      ]
+    },
+    {
+      "version": "0.4.4",
+      "date": "2026-11-13",
+      "title": "Ligação ao PIXERA",
+      "items": [
+        "Importar os projectores que já existem no PIXERA para o MapSim.",
+        "Régua de medição mais fácil: medições temporárias, fixar, esconder e apagar.",
+        "Correcção do menu Exportar."
+      ]
+    },
+    {
+      "version": "0.4.0",
+      "date": "2026-11-13",
+      "title": "Exportações e desenho técnico",
+      "items": [
+        "Exportar para WATCHOUT, PIXERA, Resolume e disguise.",
+        "Desenho técnico em PDF com planta, alçados, cotas e mapa de blending.",
+        "Linhas de truss com medidas oficiais, peças necessárias e projectores montados.",
+        "Nome do projecto ao criar e ícone MapSim nos ficheiros e no instalador."
+      ]
+    },
+    {
+      "version": "0.2.3",
+      "date": "2026-11-12",
+      "title": "Definições e desempenho",
+      "items": [
+        "Escolha da placa gráfica, qualidade e monitor de GPU, CPU, RAM e FPS.",
+        "Correcção do arranque em alguns computadores Windows."
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "date": "2026-11-12",
+      "title": "Primeira versão",
+      "items": [
+        "Simulação 3D de projecção com projectores e lentes reais.",
+        "Ecrãs planos, curvos, cúpulas, salas imersivas, edifícios e modelos 3D importados.",
+        "Gerador de arrays com cálculo de distâncias, sobreposição, brilho e densidade."
+      ]
+    }
+  ]
+}

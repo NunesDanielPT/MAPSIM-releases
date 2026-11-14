@@ -5,8 +5,8 @@ services:
     container_name: mapsim-licencas
     restart: unless-stopped
     working_dir: /app
-    # descarrega o servidor uma vez para o volume; para actualizar, apaga /data/server.js e reinicia
-    command: sh -c "[ -s /data/server.js ] || wget -qO /data/server.js https://raw.githubusercontent.com/NunesDanielPT/MAPSIM-releases/main/server/server.js; exec node /data/server.js"
+    # ao (re)iniciar descarrega a versão mais recente do servidor; se falhar, usa a que já tem
+    command: sh -c "wget -qO /data/server.new https://raw.githubusercontent.com/NunesDanielPT/MAPSIM-releases/main/server/server.js && node --check /data/server.new && mv /data/server.new /data/server.js; exec node /data/server.js"
     environment:
       ADMIN_USER: admin
       ADMIN_PASSWORD: "MUDA-ESTA-PASSWORD-LONGA"

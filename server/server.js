@@ -25,6 +25,7 @@ const publicRaw = crypto.createPublicKey(publicPem).export({ type: 'spki', forma
 /* ---------- base de dados (JSON) ---------- */
 const DBF = path.join(DATA, 'keys.json');
 let db = fs.existsSync(DBF) ? JSON.parse(fs.readFileSync(DBF, 'utf8')) : { keys: [], log: [] };
+db.changelog ||= []; // [{version,date,title,items[],hidden,edited}]
 const save = () => { const t = DBF + '.tmp'; fs.writeFileSync(t, JSON.stringify(db, null, 1)); fs.renameSync(t, DBF); };
 const log = (ev, k, ip, extra = '') => { db.log.unshift({ t: Date.now(), ev, key: k, ip, extra }); db.log = db.log.slice(0, 500); };
 const newKey = () => 'MAPS-' + Array.from({ length: 4 }, () => crypto.randomBytes(3).toString('hex').toUpperCase().slice(0, 5)).join('-');
@@ -41,6 +42,28 @@ function status(k) {
   if (k.expires && Date.now() > k.expires) return 'Esta chave expirou. Contacta o Daniel Nunes.';
   return null;
 }
+
+/* ---------- novidades (changelog): base no GitHub, editável no painel ---------- */
+const CHANGELOG_URL = process.env.CHANGELOG_URL || 'https://raw.githubusercontent.com/NunesDanielPT/MAPSIM-releases/main/data/changelog.json';
+const vnum = v => String(v).split('.').map(n => +n || 0), vcmp = (a, b) => { const x = vnum(a), y = vnum(b); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0); return 0; };
+const cleanEntry = e => ({ version: String(e.version || '').slice(0, 20), date: String(e.date || '').slice(0, 10), title: String(e.title || '').slice(0, 120), items: (Array.isArray(e.items) ? e.items : []).map(x => String(x).slice(0, 400)).filter(Boolean).slice(0, 30) });
+let lastSync = 0;
+async function syncChangelog(force) {
+  if (!force && Date.now() - lastSync < 10 * 60e3) return;
+  lastSync = Date.now();
+  try {
+    const r = await fetch(CHANGELOG_URL, { signal: AbortSignal.timeout(8000) }); if (!r.ok) return;
+    const j = await r.json(); let changed = false;
+    for (const e of (j.versions || []).map(cleanEntry)) {
+      if (!/^\d+\.\d+\.\d+$/.test(e.version)) continue;
+      const cur = db.changelog.find(x => x.version === e.version);
+      if (!cur) { db.changelog.push({ ...e, hidden: false, edited: false }); changed = true; }
+      else if (!cur.edited && JSON.stringify([cur.date, cur.title, cur.items]) !== JSON.stringify([e.date, e.title, e.items])) { Object.assign(cur, e); changed = true; }
+    }
+    if (changed) { db.changelog.sort((a, b) => vcmp(b.version, a.version)); save(); }
+  } catch (e) { console.error('changelog:', e.message); }
+}
+syncChangelog(true); setInterval(() => syncChangelog(true), 30 * 60e3);
 
 /* ---------- limite de tentativas por IP ---------- */
 const hits = new Map();
@@ -95,10 +118,18 @@ function adminPage(msg = '') {
   return `<!doctype html><html lang="pt"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>MapSim — Licenças</title>
 <style>body{font:14px system-ui,sans-serif;background:#0b0e12;color:#d8e0ea;margin:24px}h1{font-weight:500}h1 b{color:#14c4ef}table{border-collapse:collapse;width:100%;margin-top:16px}td,th{border-bottom:1px solid #232b35;padding:8px;text-align:left;vertical-align:top}th{color:#7f8b99;font-weight:500;font-size:12px;text-transform:uppercase}
 input,button{background:#151a21;color:#d8e0ea;border:1px solid #2b3540;border-radius:5px;padding:6px 9px;font:inherit}button{cursor:pointer}button:hover{border-color:#14c4ef}.danger{color:#ff7a7a}.ok{color:#3ddc97}.bad{color:#ff5d5d}
-.card{background:#0e1217;border:1px solid #232b35;border-radius:8px;padding:14px;margin:14px 0}code{font-family:Consolas,monospace;color:#9fd8ee}textarea{width:100%;height:110px;background:#151a21;color:#9fd8ee;border:1px solid #2b3540;font:12px Consolas,monospace}.msg{background:#04222c;border:1px solid #14c4ef;padding:10px;border-radius:6px}small{color:#7f8b99}</style>
+.card{background:#0e1217;border:1px solid #232b35;border-radius:8px;padding:14px;margin:14px 0}code{font-family:Consolas,monospace;color:#9fd8ee}textarea{width:100%;height:110px;background:#151a21;color:#9fd8ee;border:1px solid #2b3540;font:12px Consolas,monospace}.news{border-top:1px solid #232b35;padding:10px 0}.news textarea{height:64px;margin:6px 0;color:#d8e0ea;font:13px system-ui}.msg{background:#04222c;border:1px solid #14c4ef;padding:10px;border-radius:6px}small{color:#7f8b99}</style>
 <h1><b>MapSim</b> — licenças</h1>${msg ? `<p class="msg">${msg}</p>` : ''}
 <div class="card"><form method="post" action="/admin/new"><b>Nova chave</b>&nbsp; <input name="owner" placeholder="Nome / empresa" required> <input name="note" placeholder="Nota (opcional)"> Validade <input type="date" name="exp"> <small>(vazio = permanente)</small> <button>Criar chave</button></form></div>
 <table><tr><th>Chave</th><th>Cliente</th><th>Estado</th><th>Validade</th><th>PC</th><th>Última verificação</th><th>Acções</th></tr>${rows || '<tr><td colspan="7"><small>Ainda não há chaves.</small></td></tr>'}</table>
+<div class="card"><b>Novidades (aparecem na app ao actualizar e em Definições → Updates)</b>
+<form method="post" action="/admin/news" style="display:inline"><button name="do" value="sync">Sincronizar com o GitHub</button></form>
+<small> · uma linha por novidade · as versões editadas aqui não são substituídas pelo GitHub</small>
+${[{ version: '', date: new Date().toISOString().slice(0, 10), title: '', items: [], hidden: false, isNew: true }, ...db.changelog].map(e => `<form method="post" action="/admin/news" class="news">
+<div><input name="version" value="${esc(e.version)}" placeholder="0.7.1" ${e.isNew ? '' : 'readonly'} style="width:80px"> <input type="date" name="date" value="${esc(e.date)}"> <input name="title" value="${esc(e.title)}" placeholder="Título curto" style="width:320px">
+<label><input type="checkbox" name="hidden" ${e.hidden ? 'checked' : ''}> esconder</label> ${e.isNew ? '<b>nova versão</b>' : e.edited ? '<small class="ok">editado por ti</small>' : '<small>do GitHub</small>'}</div>
+<textarea name="items" placeholder="Uma novidade por linha">${esc((e.items || []).join('\n'))}</textarea>
+<button name="do" value="save">Guardar</button>${e.isNew ? '' : ` ${e.edited ? '<button name="do" value="reset">Repor texto do GitHub</button>' : ''} <button name="do" value="delete" class="danger">Remover</button>`}</form>`).join('')}</div>
 <div class="card"><b>Chave pública de assinatura</b> — envia isto para meter na app (não é secreta):<textarea readonly>${esc(publicRaw)}</textarea></div>
 <div class="card"><b>Registo</b><br><small>${db.log.slice(0, 40).map(l => `${fmt(l.t)} · ${esc(l.ev)} · ${esc(l.key)} · ${esc(l.ip)} ${esc(l.extra)}`).join('<br>')}</small></div></html>`;
 }
@@ -114,6 +145,20 @@ async function admin(req, res, url) {
   if (url === '/admin/new') {
     const k = { key: newKey(), owner: f.get('owner')?.slice(0, 80) || '—', note: f.get('note')?.slice(0, 120) || '', created: Date.now(), expires: dateMs(f.get('exp')), revoked: false, machine: null };
     db.keys.unshift(k); log('create', k.key, 'admin', k.owner); save(); msg = `Chave criada para <b>${esc(k.owner)}</b>: <code>${k.key}</code>`;
+  } else if (url === '/admin/news') {
+    const d = f.get('do'), v = String(f.get('version') || '').trim();
+    if (d === 'sync') { await syncChangelog(true); msg = 'Novidades sincronizadas com o GitHub.'; }
+    else if (/^\d+\.\d+\.\d+$/.test(v)) {
+      let e = db.changelog.find(x => x.version === v);
+      if (d === 'reset' && e) { e.edited = false; save(); await syncChangelog(true); msg = `Versão ${esc(v)}: texto original reposto.`; }
+      else if (d === 'delete' && e) { db.changelog = db.changelog.filter(x => x !== e); save(); msg = `Versão ${esc(v)} removida.`; }
+      else if (d === 'save') {
+        const ne = cleanEntry({ version: v, date: f.get('date'), title: f.get('title'), items: String(f.get('items') || '').split(/\r?\n/).map(x => x.replace(/^[-•*]\s*/, '').trim()) });
+        if (!e) { e = { hidden: false }; db.changelog.push(e); }
+        Object.assign(e, ne, { hidden: f.get('hidden') === 'on', edited: true });
+        db.changelog.sort((a, b) => vcmp(b.version, a.version)); save(); msg = `Versão ${esc(v)} guardada.`;
+      }
+    } else msg = 'Versão inválida (usa o formato 0.7.0).';
   } else if (url === '/admin/act') {
     const k = db.keys.find(x => x.key === f.get('key')); const d = f.get('do');
     if (k) {
@@ -129,6 +174,7 @@ http.createServer(async (req, res) => {
   try {
     const url = req.url.split('?')[0], ip = ipOf(req);
     if (url === '/health') return send(res, 200, { ok: true });
+    if (url === '/api/changelog' && req.method === 'GET') { await syncChangelog(false); return send(res, 200, { ok: true, versions: db.changelog.filter(e => !e.hidden).map(cleanEntry) }); }
     if (req.method === 'POST' && ['/api/activate', '/api/check', '/api/release'].includes(url)) return await api(req, res, url.slice(5), ip);
     if (url === '/admin' || url.startsWith('/admin/')) return await admin(req, res, url);
     send(res, 404, { ok: false, error: 'Não encontrado' });
