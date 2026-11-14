@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.22.1",
+      "date": "2026-11-14",
+      "title": "Painel da esquerda mais arrumado",
+      "items": [
+        "O bloco do sistema (placa gráfica, CPU, RAM e FPS) fica fixo no fundo do painel da esquerda.",
+        "A lista da Instalação ocupa o resto do painel e tem a sua própria barra de deslocamento, para projectos com muitos objectos."
+      ],
+      "title_en": "Tidier left panel",
+      "items_en": [
+        "The system block (graphics card, CPU, RAM and FPS) is now fixed at the bottom of the left panel.",
+        "The Installation list uses the rest of the panel and has its own scroll bar, for projects with many objects."
+      ]
+    },
+    {
       "version": "0.22.0",
       "date": "2026-11-14",
       "title": "Mover objectos com as setas",
