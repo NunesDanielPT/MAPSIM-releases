@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.19.2",
+      "date": "2026-11-14",
+      "title": "Correcção de nomes no painel do projector",
+      "items": [
+        "A secção para mover o projector chama-se agora Posição do projector (antes dizia Posição da lente).",
+        "Os campos de altura e montagem passam a falar em projector, com a nota de que as coordenadas são medidas no centro óptico da lente."
+      ],
+      "title_en": "Projector panel label fixes",
+      "items_en": [
+        "The section for moving the projector is now called Projector position (it used to say Lens position).",
+        "The height and mounting fields now refer to the projector, with a note that the coordinates are measured at the optical centre of the lens."
+      ]
+    },
+    {
       "version": "0.19.1",
       "date": "2026-11-14",
       "title": "Consumos no desenho técnico e na visão geral",
