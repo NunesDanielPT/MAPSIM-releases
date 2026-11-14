@@ -1,0 +1,2593 @@
+{
+ "schema": 1,
+ "version": "2026.11.14.2",
+ "updated": "2026-11-13",
+ "sources": {
+  "panaRQ25": {
+   "t": "Panasonic PT-RQ25K series — Spec file (EU)",
+   "u": "https://eu.connect.panasonic.com/sites/default/files/media/document/2024-04/rq25kg_spec_en.pdf"
+  },
+  "panaLensQR": {
+   "t": "Panasonic — Optional Lenses Quick Reference (Jun 2026)",
+   "u": "https://eu.connect.panasonic.com/sites/default/files/media/document/2025-03/Lens_QR_June26_cmyk.pdf"
+  },
+  "epsonSpec": {
+   "t": "Epson EB-PU2220B series — Specifications (Rev.D)",
+   "u": "https://files.support.epson.com/pdf/specs/specifications_ebpu2220series_en_r103.pdf"
+  },
+  "barcoSpec": {
+   "t": "Barco UDX-4K32 — Spec sheet",
+   "u": "https://assets.barco.com/m/68e96a3b1d09716e/original/UDX-4K32-en-Spec-sheet.pdf"
+  },
+  "barcoManual": {
+   "t": "Barco UDX user manual — Specifications",
+   "u": "https://www.barco.com/manuals/R5906112/cl0gagr9mdkb.html"
+  },
+  "barcoW32": {
+   "t": "Barco UDX user manual — UDX-W32",
+   "u": "https://www.barco.com/manuals/R5906112/zh47py8bn5bj.html"
+  },
+  "barcoLens": {
+   "t": "Barco M00939 — TLD+ compatible lenses & throw ratio (UDM/UDX)",
+   "u": "https://files.hdtvsupply.com/barco-f50-lens-manual.pdf"
+  },
+  "panaRQ18": {
+   "t": "Panasonic PT-RQ18K — especificações",
+   "u": "https://eu.connect.panasonic.com/gb/en/pt-rq18k"
+  },
+  "panaRZ14": {
+   "t": "Panasonic PT-RZ14K — especificações",
+   "u": "https://docs.connect.panasonic.com/projector/products/rz14k/spec"
+  },
+  "barco4K40": {
+   "t": "Barco UDX user manual — UDX-4K40",
+   "u": "https://www.barco.com/manuals/R5906112/o7imrw4wd1q2.html"
+  },
+  "barco4K28": {
+   "t": "Barco UDX user manual — UDX-4K28",
+   "u": "https://www.barco.com/manuals/R5906112/hg9vlm9o116y.html"
+  },
+  "barco4K22": {
+   "t": "Barco UDX user manual — UDX-4K22",
+   "u": "https://www.barco.com/manuals/R5906112/nw607jqo2w3i.html"
+  },
+  "barcoW40": {
+   "t": "Barco UDX user manual — UDX-W40",
+   "u": "https://www.barco.com/manuals/R5906112/np2z38cjrf9l.html"
+  },
+  "barcoW26": {
+   "t": "Barco UDX user manual — UDX-W26",
+   "u": "https://www.barco.com/manuals/R5906112RU/ajllh91btu0v.html"
+  },
+  "epsonPQ": {
+   "t": "Epson EB-PQ2220B/PQ2216B/W/PQ2213B — Specifications (Rev02)",
+   "u": "https://download3.ebz.epson.net/dsc/f/03/00/15/88/32/3fe37a314a2f5816b0569acfb2d9262dc5eddfab/Specifications_EBPQ2220B_EBPQ2216BW_EBPQ2213B_EN_Rev02.pdf"
+  },
+  "chrLens": {
+   "t": "Christie Griffyn Series lens throw ratios (020-103422-08, 02-2026)",
+   "u": "https://www.christiedigital.com/globalassets/resources/public/020-103422-08-Christie-LIT-TECH-REF-Griffyn-Series-LTR.pdf"
+  },
+  "chr4K50": {
+   "t": "Christie Griffyn 4K50-RGB — datasheet",
+   "u": "https://www.christiedigital.com/products/projectors/all-projectors/griffyn-series/griffyn-4k50-rgb/"
+  },
+  "chr4K35": {
+   "t": "Christie Griffyn 4K35-RGB — datasheet",
+   "u": "https://www.christiedigital.com/globalassets/resources/public/Griffyn-4K35-rgb-datasheet.pdf"
+  },
+  "chr4K32": {
+   "t": "Christie Griffyn 4K32-RGB — datasheet (fim de produção 2023)",
+   "u": "https://www.christiedigital.com/products/end-of-support/projectors/Mirage-4k32-rgb"
+  }
+ },
+ "projectors": [
+  {
+   "id": "udx-w40",
+   "brand": "Barco",
+   "model": "UDX-W40",
+   "family": "barco",
+   "trCol": "bw",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3× DLP 0.96\"",
+   "lumens": 39000,
+   "lumNote": "39 000 ANSI lm, ±10%",
+   "body": {
+    "w": 0.66,
+    "h": 0.35,
+    "d": 0.83
+   },
+   "kg": 92,
+   "src": [
+    "barcoW40"
+   ],
+   "verified": true,
+   "series": "UDX Series (3-Chip DLP)"
+  },
+  {
+   "id": "udx-4k40",
+   "brand": "Barco",
+   "model": "UDX-4K40",
+   "family": "barco",
+   "trCol": "b4k",
+   "res": [
+    3840,
+    2400
+   ],
+   "resNote": "4K UHD 3840×2400; nativo WQXGA 2560×1600; 3× DLP 0.9\"",
+   "lumens": 35500,
+   "lumNote": "35 500 ANSI lm (4K UHD) / 36 500 (WQ), ±10%",
+   "body": {
+    "w": 0.66,
+    "h": 0.35,
+    "d": 0.83
+   },
+   "kg": 92,
+   "src": [
+    "barco4K40"
+   ],
+   "verified": true,
+   "series": "UDX Series (3-Chip DLP)"
+  },
+  {
+   "id": "udx-w32",
+   "brand": "Barco",
+   "model": "UDX-W32",
+   "family": "barco",
+   "trCol": "bw",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3× DLP 0.96\"",
+   "lumens": 31000,
+   "lumNote": "31 000 ANSI lm, ±10%",
+   "body": {
+    "w": 0.66,
+    "h": 0.35,
+    "d": 0.83
+   },
+   "kg": 92,
+   "src": [
+    "barcoW32"
+   ],
+   "verified": true,
+   "series": "UDX Series (3-Chip DLP)"
+  },
+  {
+   "id": "udx-4k32",
+   "brand": "Barco",
+   "model": "UDX-4K32",
+   "family": "barco",
+   "trCol": "b4k",
+   "res": [
+    3840,
+    2400
+   ],
+   "resNote": "4K UHD 3840×2400; nativo WQXGA 2560×1600; 3× DLP 0.9\"",
+   "lumens": 29000,
+   "lumNote": "29 000 ANSI lm (4K UHD) / 30 000 (WQ), ±10%",
+   "body": {
+    "w": 0.66,
+    "h": 0.35,
+    "d": 0.83
+   },
+   "kg": 92,
+   "src": [
+    "barcoSpec",
+    "barcoManual"
+   ],
+   "verified": true,
+   "series": "UDX Series (3-Chip DLP)"
+  },
+  {
+   "id": "udx-4k28",
+   "brand": "Barco",
+   "model": "UDX-4K28",
+   "family": "barco",
+   "trCol": "b4k",
+   "res": [
+    3840,
+    2400
+   ],
+   "resNote": "4K UHD 3840×2400; nativo WQXGA 2560×1600; 3× DLP 0.9\"",
+   "lumens": 26500,
+   "lumNote": "26 500 ANSI lm, ±10%",
+   "body": {
+    "w": 0.66,
+    "h": 0.35,
+    "d": 0.83
+   },
+   "kg": 92,
+   "src": [
+    "barco4K28"
+   ],
+   "verified": true,
+   "series": "UDX Series (3-Chip DLP)"
+  },
+  {
+   "id": "udx-w26",
+   "brand": "Barco",
+   "model": "UDX-W26",
+   "family": "barco",
+   "trCol": "bw",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3× DLP 0.96\"",
+   "lumens": 25000,
+   "lumNote": "25 000 ANSI lm, ±10%",
+   "body": {
+    "w": 0.66,
+    "h": 0.35,
+    "d": 0.83
+   },
+   "kg": 92,
+   "src": [
+    "barcoW26"
+   ],
+   "verified": true,
+   "series": "UDX Series (3-Chip DLP)"
+  },
+  {
+   "id": "udx-4k22",
+   "brand": "Barco",
+   "model": "UDX-4K22",
+   "family": "barco",
+   "trCol": "b4k",
+   "res": [
+    3840,
+    2400
+   ],
+   "resNote": "4K UHD 3840×2400; nativo WQXGA 2560×1600; 3× DLP 0.9\"",
+   "lumens": 18000,
+   "lumNote": "18 000 ANSI lm (4K UHD) / 19 000 (WQ), ±10%",
+   "body": {
+    "w": 0.66,
+    "h": 0.35,
+    "d": 0.83
+   },
+   "kg": 87.5,
+   "src": [
+    "barco4K22"
+   ],
+   "verified": true,
+   "series": "UDX Series (3-Chip DLP)"
+  },
+  {
+   "id": "griffyn-4k50",
+   "brand": "Christie",
+   "model": "Griffyn 4K50-RGB",
+   "family": "christie",
+   "trCol": "chr4k",
+   "res": [
+    4096,
+    2160
+   ],
+   "resNote": "4K nativo 4096×2160; 3DLP 1.38\"",
+   "lumens": 44500,
+   "lumNote": "50 000 ISO / 44 500 ANSI lm",
+   "body": {
+    "w": 0.635,
+    "h": 0.38,
+    "d": 0.922
+   },
+   "kg": 89.3,
+   "src": [
+    "chr4K50",
+    "chrLens"
+   ],
+   "verified": true,
+   "series": "Griffyn Series (3DLP RGB laser)"
+  },
+  {
+   "id": "griffyn-4k35",
+   "brand": "Christie",
+   "model": "Griffyn 4K35-RGB",
+   "family": "christie",
+   "trCol": "chr4k",
+   "res": [
+    4096,
+    2160
+   ],
+   "resNote": "4K nativo 4096×2160; 3DLP 1.38\"",
+   "lumens": 32500,
+   "lumNote": "36 500 ISO / 32 500 ANSI lm",
+   "body": {
+    "w": 0.635,
+    "h": 0.38,
+    "d": 0.922
+   },
+   "kg": 81,
+   "src": [
+    "chr4K35",
+    "chrLens"
+   ],
+   "verified": true,
+   "series": "Griffyn Series (3DLP RGB laser)"
+  },
+  {
+   "id": "griffyn-4k32",
+   "brand": "Christie",
+   "model": "Griffyn 4K32-RGB",
+   "family": "christie",
+   "trCol": "chr4k",
+   "res": [
+    4096,
+    2160
+   ],
+   "resNote": "4K nativo 4096×2160; 3DLP 1.38\"",
+   "lumens": 30000,
+   "lumNote": "34 000 ISO / 30 000 ANSI lm (fim de produção 2023)",
+   "body": {
+    "w": 0.635,
+    "h": 0.38,
+    "d": 0.922
+   },
+   "kg": 77.3,
+   "src": [
+    "chr4K32",
+    "chrLens"
+   ],
+   "verified": true,
+   "series": "Griffyn Series (3DLP RGB laser)"
+  },
+  {
+   "id": "eb-pq2220b",
+   "brand": "Epson",
+   "model": "EB-PQ2220B",
+   "family": "epson",
+   "trCol": "epq",
+   "res": [
+    3840,
+    2160
+   ],
+   "resNote": "4K UHD 3840×2160 (4K Crystal Motion sobre 3LCD 1.04\" 1920×1080)",
+   "lumens": 20000,
+   "lumNote": "20 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 29.2,
+   "src": [
+    "epsonPQ"
+   ],
+   "verified": true,
+   "series": "EB-PQ2200 Series (3LCD 4K)"
+  },
+  {
+   "id": "eb-pq2216b",
+   "brand": "Epson",
+   "model": "EB-PQ2216B",
+   "family": "epson",
+   "trCol": "epq",
+   "res": [
+    3840,
+    2160
+   ],
+   "resNote": "4K UHD 3840×2160 (4K Crystal Motion sobre 3LCD 1.04\" 1920×1080)",
+   "lumens": 16000,
+   "lumNote": "16 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 28.8,
+   "src": [
+    "epsonPQ"
+   ],
+   "verified": true,
+   "series": "EB-PQ2200 Series (3LCD 4K)"
+  },
+  {
+   "id": "eb-pq2216w",
+   "brand": "Epson",
+   "model": "EB-PQ2216W",
+   "family": "epson",
+   "trCol": "epq",
+   "res": [
+    3840,
+    2160
+   ],
+   "resNote": "4K UHD 3840×2160 (4K Crystal Motion sobre 3LCD 1.04\" 1920×1080) · chassis branco",
+   "lumens": 16000,
+   "lumNote": "16 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 28.8,
+   "src": [
+    "epsonPQ"
+   ],
+   "verified": true,
+   "series": "EB-PQ2200 Series (3LCD 4K)"
+  },
+  {
+   "id": "eb-pq2213b",
+   "brand": "Epson",
+   "model": "EB-PQ2213B",
+   "family": "epson",
+   "trCol": "epq",
+   "res": [
+    3840,
+    2160
+   ],
+   "resNote": "4K UHD 3840×2160 (4K Crystal Motion sobre 3LCD 1.04\" 1920×1080)",
+   "lumens": 13000,
+   "lumNote": "13 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 28.8,
+   "src": [
+    "epsonPQ"
+   ],
+   "verified": true,
+   "series": "EB-PQ2200 Series (3LCD 4K)"
+  },
+  {
+   "id": "eb-pu2120w",
+   "brand": "Epson",
+   "model": "EB-PU2120W",
+   "family": "epson",
+   "trCol": "epson",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD 1.0\" · chassis branco",
+   "lumens": 20000,
+   "lumNote": "20 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 24.4,
+   "src": [
+    "epsonSpec"
+   ],
+   "verified": true,
+   "series": "EB-PU2200 Series (3LCD)"
+  },
+  {
+   "id": "eb-pu2220b",
+   "brand": "Epson",
+   "model": "EB-PU2220B",
+   "family": "epson",
+   "trCol": "epson",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD 1.0\" (4K enhancement)",
+   "lumens": 20000,
+   "lumNote": "20 000 lm (Normal); depende da lente — ver tabela",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 24.4,
+   "src": [
+    "epsonSpec"
+   ],
+   "verified": true,
+   "series": "EB-PU2200 Series (3LCD)"
+  },
+  {
+   "id": "eb-pu2116w",
+   "brand": "Epson",
+   "model": "EB-PU2116W",
+   "family": "epson",
+   "trCol": "epson",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD 1.0\" · chassis branco",
+   "lumens": 16000,
+   "lumNote": "16 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 24.3,
+   "src": [
+    "epsonSpec"
+   ],
+   "verified": true,
+   "series": "EB-PU2200 Series (3LCD)"
+  },
+  {
+   "id": "eb-pu2216b",
+   "brand": "Epson",
+   "model": "EB-PU2216B",
+   "family": "epson",
+   "trCol": "epson",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD 1.0\"",
+   "lumens": 16000,
+   "lumNote": "16 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 24.2,
+   "src": [
+    "epsonSpec"
+   ],
+   "verified": true,
+   "series": "EB-PU2200 Series (3LCD)"
+  },
+  {
+   "id": "eb-pu2113w",
+   "brand": "Epson",
+   "model": "EB-PU2113W",
+   "family": "epson",
+   "trCol": "epson",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD 1.0\" · chassis branco",
+   "lumens": 13000,
+   "lumNote": "13 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 23.8,
+   "src": [
+    "epsonSpec"
+   ],
+   "verified": true,
+   "series": "EB-PU2200 Series (3LCD)"
+  },
+  {
+   "id": "eb-pu2213b",
+   "brand": "Epson",
+   "model": "EB-PU2213B",
+   "family": "epson",
+   "trCol": "epson",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3LCD 1.0\"",
+   "lumens": 13000,
+   "lumNote": "13 000 lm (Normal); depende da lente",
+   "body": {
+    "w": 0.586,
+    "h": 0.185,
+    "d": 0.492
+   },
+   "kg": 23.7,
+   "src": [
+    "epsonSpec"
+   ],
+   "verified": true,
+   "series": "EB-PU2200 Series (3LCD)"
+  },
+  {
+   "id": "pt-rq25k",
+   "brand": "Panasonic",
+   "model": "PT-RQ25K",
+   "family": "pana",
+   "trCol": "pana",
+   "res": [
+    3840,
+    2400
+   ],
+   "resNote": "4K (3840×2400) com Quad Pixel Drive; 3× DLP 0.8\" 1920×1200",
+   "lumens": 20000,
+   "lumNote": "20 000 lm (Normal), 21 000 lm centro",
+   "body": {
+    "w": 0.55,
+    "h": 0.22,
+    "d": 0.57
+   },
+   "kg": 35,
+   "src": [
+    "panaRQ25"
+   ],
+   "verified": true,
+   "series": "PT-RQ25K Series (3-Chip DLP)"
+  },
+  {
+   "id": "pt-rz24k",
+   "brand": "Panasonic",
+   "model": "PT-RZ24K",
+   "family": "pana",
+   "trCol": "pana",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3× DLP 0.8\"",
+   "lumens": 20000,
+   "lumNote": "20 000 lm (Normal)",
+   "body": {
+    "w": 0.55,
+    "h": 0.22,
+    "d": 0.57
+   },
+   "kg": 35,
+   "src": [
+    "panaRQ25"
+   ],
+   "verified": true,
+   "series": "PT-RQ25K Series (3-Chip DLP)"
+  },
+  {
+   "id": "pt-rq18k",
+   "brand": "Panasonic",
+   "model": "PT-RQ18K",
+   "family": "pana",
+   "trCol": "pana",
+   "res": [
+    3840,
+    2400
+   ],
+   "resNote": "4K (3840×2400) com Quad Pixel Drive; 3× DLP 0.8\" 1920×1200",
+   "lumens": 16000,
+   "lumNote": "16 000 lm (Normal), 16 800 lm centro",
+   "body": {
+    "w": 0.55,
+    "h": 0.22,
+    "d": 0.57
+   },
+   "kg": 35,
+   "src": [
+    "panaRQ18",
+    "panaRQ25"
+   ],
+   "verified": true,
+   "series": "PT-RQ25K Series (3-Chip DLP)"
+  },
+  {
+   "id": "pt-rz17k",
+   "brand": "Panasonic",
+   "model": "PT-RZ17K",
+   "family": "pana",
+   "trCol": "pana",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3× DLP 0.8\"",
+   "lumens": 16000,
+   "lumNote": "16 000 lm (Normal), 16 800 lm centro",
+   "body": {
+    "w": 0.55,
+    "h": 0.22,
+    "d": 0.57
+   },
+   "kg": 35,
+   "src": [
+    "panaRQ18",
+    "panaRQ25"
+   ],
+   "verified": true,
+   "series": "PT-RQ25K Series (3-Chip DLP)"
+  },
+  {
+   "id": "pt-rz14k",
+   "brand": "Panasonic",
+   "model": "PT-RZ14K",
+   "family": "pana",
+   "trCol": "pana",
+   "res": [
+    1920,
+    1200
+   ],
+   "resNote": "WUXGA 1920×1200; 3× DLP 0.8\"",
+   "lumens": 14000,
+   "lumNote": "14 000 lm (ISO/ANSI), 14 700 lm centro",
+   "body": {
+    "w": 0.55,
+    "h": 0.22,
+    "d": 0.57
+   },
+   "kg": 35,
+   "src": [
+    "panaRZ14"
+   ],
+   "verified": true,
+   "series": "PT-RZ14K (3-Chip DLP)"
+  }
+ ],
+ "lenses": [
+  {
+   "id": "ET-D3LEW200",
+   "brand": "Panasonic",
+   "model": "ET-D3LEW200",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     0.779,
+     1.02
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     0.6798,
+     -0.1001
+    ],
+    "LT": [
+     0.891,
+     -0.1076
+    ]
+   },
+   "shift": {
+    "v": [
+     -57,
+     57
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D3LEW300",
+   "brand": "Panasonic",
+   "model": "ET-D3LEW300",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     0.924,
+     1.12
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     0.7919,
+     -0.0272
+    ],
+    "LT": [
+     0.9585,
+     -0.0231
+    ]
+   },
+   "shift": {
+    "v": [
+     -52,
+     52
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D75LE6",
+   "brand": "Panasonic",
+   "model": "ET-D75LE6",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     1.12,
+     1.32
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     0.9574,
+     -0.0566
+    ],
+    "LT": [
+     1.1471,
+     -0.0736
+    ]
+   },
+   "shift": {
+    "v": [
+     -52,
+     52
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D3LEW600",
+   "brand": "Panasonic",
+   "model": "ET-D3LEW600",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     1.12,
+     1.55
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     0.9677,
+     -0.0835
+    ],
+    "LT": [
+     1.3469,
+     -0.1185
+    ]
+   },
+   "shift": {
+    "v": [
+     -52,
+     52
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D3LEW10",
+   "brand": "Panasonic",
+   "model": "ET-D3LEW10",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     1.52,
+     2.07
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     1.3063,
+     -0.0867
+    ],
+    "LT": [
+     1.7852,
+     -0.1025
+    ]
+   },
+   "shift": {
+    "v": [
+     -66,
+     66
+    ],
+    "h": [
+     -24,
+     24
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D75LE10",
+   "brand": "Panasonic",
+   "model": "ET-D75LE10",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     1.56,
+     2.01
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     1.3423,
+     -0.0857
+    ],
+    "LT": [
+     1.7349,
+     -0.1085
+    ]
+   },
+   "shift": {
+    "v": [
+     -66,
+     66
+    ],
+    "h": [
+     -24,
+     24
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D75LE20",
+   "brand": "Panasonic",
+   "model": "ET-D75LE20",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     2,
+     2.9
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     1.7174,
+     -0.0832
+    ],
+    "LT": [
+     2.4954,
+     -0.1162
+    ]
+   },
+   "shift": {
+    "v": [
+     -66,
+     66
+    ],
+    "h": [
+     -24,
+     24
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D75LE30",
+   "brand": "Panasonic",
+   "model": "ET-D75LE30",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     2.89,
+     5.61
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     2.4776,
+     -0.1131
+    ],
+    "LT": [
+     4.805,
+     -0.1765
+    ]
+   },
+   "shift": {
+    "v": [
+     -66,
+     66
+    ],
+    "h": [
+     -24,
+     24
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D75LE40",
+   "brand": "Panasonic",
+   "model": "ET-D75LE40",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     5.55,
+     8.86
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     4.7439,
+     -0.1577
+    ],
+    "LT": [
+     7.5632,
+     -0.1615
+    ]
+   },
+   "shift": {
+    "v": [
+     -66,
+     66
+    ],
+    "h": [
+     -24,
+     24
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D75LE8",
+   "brand": "Panasonic",
+   "model": "ET-D75LE8",
+   "type": "Zoom",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     8.83,
+     16.6
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     7.5832,
+     -0.3862
+    ],
+    "LT": [
+     14.2081,
+     -0.3598
+    ]
+   },
+   "shift": {
+    "v": [
+     -66,
+     66
+    ],
+    "h": [
+     -24,
+     24
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D3LEU100",
+   "brand": "Panasonic",
+   "model": "ET-D3LEU100 / LEU101",
+   "type": "Fixa (UST)",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     0.447,
+     0.447
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     0.3917,
+     -0.0664
+    ],
+    "LT": [
+     0.3917,
+     -0.0664
+    ]
+   },
+   "shift": {
+    "v": [
+     -66,
+     66
+    ],
+    "h": [
+     -25,
+     30
+    ],
+    "verified": true
+   },
+   "src": [
+    "panaRQ25"
+   ]
+  },
+  {
+   "id": "ET-D75LE95",
+   "brand": "Panasonic",
+   "model": "ET-D75LE95",
+   "type": "Fixa (UST espelho)",
+   "family": "pana",
+   "tr": {
+    "pana": [
+     0.436,
+     0.436
+    ]
+   },
+   "formula": {
+    "kind": "pana",
+    "LW": [
+     0.364,
+     0.02
+    ],
+    "LT": [
+     0.364,
+     0.02
+    ]
+   },
+   "shift": {
+    "v": [
+     71,
+     93
+    ],
+    "h": [
+     -14,
+     14
+    ],
+    "verified": false,
+    "note": "Spec file indica \"+93/+71%\" vertical; interpretado como imagem sempre acima do eixo (71–93%). Confirmar no spec file da lente."
+   },
+   "src": [
+    "panaRQ25",
+    "panaLensQR"
+   ]
+  },
+  {
+   "id": "ELPLX02S",
+   "brand": "Epson",
+   "model": "ELPLX02S",
+   "type": "Fixa (UST)",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     0.35,
+     0.35
+    ],
+    "epq": [
+     0.34,
+     0.34
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     0.77,
+     3.4
+    ],
+    "max": [
+     0.77,
+     3.4
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 16900,
+    "eb-pu2120w": 16900,
+    "eb-pu2216b": 13500,
+    "eb-pu2116w": 13500,
+    "eb-pu2213b": 11000,
+    "eb-pu2113w": 11000,
+    "eb-pq2220b": 16900,
+    "eb-pq2216b": 13500,
+    "eb-pq2216w": 13500,
+    "eb-pq2213b": 11000
+   },
+   "shift": null,
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 68,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      0.77,
+      3.41
+     ],
+     "max": [
+      0.77,
+      3.41
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": null
+   }
+  },
+  {
+   "id": "ELPLU03S",
+   "brand": "Epson",
+   "model": "ELPLU03S",
+   "type": "Zoom (curta)",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     0.48,
+     0.57
+    ],
+    "epq": [
+     0.46,
+     0.56
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     1.05,
+     3.49
+    ],
+    "max": [
+     1.26,
+     3.28
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 17400,
+    "eb-pu2120w": 17400,
+    "eb-pu2216b": 13900,
+    "eb-pu2116w": 13900,
+    "eb-pu2213b": 11300,
+    "eb-pu2113w": 11300,
+    "eb-pq2220b": 17100,
+    "eb-pq2216b": 13700,
+    "eb-pq2216w": 13700,
+    "eb-pq2213b": 11100
+   },
+   "shift": {
+    "v": [
+     -24,
+     24
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "vAtHmax": 0,
+    "verified": true,
+    "note": "Com H no máximo, V tem de estar a 0%."
+   },
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 60,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      1.04,
+      3.47
+     ],
+     "max": [
+      1.25,
+      3.28
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": {
+     "v": [
+      -18,
+      18
+     ],
+     "h": [
+      -16,
+      16
+     ],
+     "vAtHmax": 0,
+     "verified": true
+    }
+   }
+  },
+  {
+   "id": "ELPLU04",
+   "brand": "Epson",
+   "model": "ELPLU04",
+   "type": "Zoom (curta)",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     0.64,
+     0.77
+    ],
+    "epq": [
+     0.62,
+     0.75
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     1.42,
+     5.65
+    ],
+    "max": [
+     1.71,
+     5.52
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 19000,
+    "eb-pu2120w": 19000,
+    "eb-pu2216b": 15200,
+    "eb-pu2116w": 15200,
+    "eb-pu2213b": 12300,
+    "eb-pu2113w": 12300,
+    "eb-pq2220b": 18900,
+    "eb-pq2216b": 15100,
+    "eb-pq2216w": 15100,
+    "eb-pq2213b": 12300
+   },
+   "shift": {
+    "v": [
+     -60,
+     60
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "vAtHmax": 32,
+    "verified": true,
+    "note": "V e H não atingem o máximo em simultâneo: com H no máximo, V fica limitado a ±32%."
+   },
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 89,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      1.4,
+      5.23
+     ],
+     "max": [
+      1.69,
+      5.3
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": {
+     "v": [
+      -58,
+      58
+     ],
+     "h": [
+      -16,
+      16
+     ],
+     "vAtHmax": 33,
+     "verified": true
+    }
+   }
+  },
+  {
+   "id": "ELPLW08",
+   "brand": "Epson",
+   "model": "ELPLW08",
+   "type": "Zoom (grande-angular)",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     0.86,
+     1.21
+    ],
+    "epq": [
+     0.83,
+     1.17
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     1.88,
+     3.92
+    ],
+    "max": [
+     2.64,
+     5.1
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 19100,
+    "eb-pu2120w": 19100,
+    "eb-pu2216b": 15300,
+    "eb-pu2116w": 15300,
+    "eb-pu2213b": 12400,
+    "eb-pu2113w": 12400,
+    "eb-pq2220b": 19000,
+    "eb-pq2216b": 15200,
+    "eb-pq2216w": 15200,
+    "eb-pq2213b": 12300
+   },
+   "shift": {
+    "v": [
+     -60,
+     60
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "vAtHmax": 32,
+    "verified": true,
+    "note": "V e H não atingem o máximo em simultâneo: com H no máximo, V fica limitado a ±32%."
+   },
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 89,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      1.87,
+      3.98
+     ],
+     "max": [
+      2.63,
+      5.13
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": {
+     "v": [
+      -58,
+      58
+     ],
+     "h": [
+      -16,
+      16
+     ],
+     "vAtHmax": 33,
+     "verified": true
+    }
+   }
+  },
+  {
+   "id": "ELPLW06",
+   "brand": "Epson",
+   "model": "ELPLW06",
+   "type": "Zoom (grande-angular)",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     1.19,
+     1.62
+    ],
+    "epq": [
+     1.15,
+     1.57
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     2.61,
+     7.51
+    ],
+    "max": [
+     3.55,
+     6.99
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 19200,
+    "eb-pu2120w": 19200,
+    "eb-pu2216b": 15300,
+    "eb-pu2116w": 15300,
+    "eb-pu2213b": 12400,
+    "eb-pu2113w": 12400,
+    "eb-pq2220b": 19100,
+    "eb-pq2216b": 15300,
+    "eb-pq2216w": 15300,
+    "eb-pq2213b": 12400
+   },
+   "shift": {
+    "v": [
+     -60,
+     60
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "vAtHmax": 32,
+    "verified": true,
+    "note": "V e H não atingem o máximo em simultâneo: com H no máximo, V fica limitado a ±32%."
+   },
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 59,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      2.6,
+      7.47
+     ],
+     "max": [
+      3.53,
+      6.97
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": {
+     "v": [
+      -58,
+      58
+     ],
+     "h": [
+      -16,
+      16
+     ],
+     "vAtHmax": 33,
+     "verified": true
+    }
+   }
+  },
+  {
+   "id": "ELPLM15",
+   "brand": "Epson",
+   "model": "ELPLM15",
+   "type": "Zoom (média) — standard",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     1.57,
+     2.56
+    ],
+    "epq": [
+     1.52,
+     2.47
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     3.45,
+     8.18
+    ],
+    "max": [
+     5.57,
+     8.02
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 20000,
+    "eb-pu2120w": 20000,
+    "eb-pu2216b": 16000,
+    "eb-pu2116w": 16000,
+    "eb-pu2213b": 13000,
+    "eb-pu2113w": 13000,
+    "eb-pq2220b": 20000,
+    "eb-pq2216b": 16000,
+    "eb-pq2216w": 16000,
+    "eb-pq2213b": 13000
+   },
+   "shift": {
+    "v": [
+     -60,
+     60
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "vAtHmax": 32,
+    "verified": true,
+    "note": "V e H não atingem o máximo em simultâneo: com H no máximo, V fica limitado a ±32%."
+   },
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 26,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      3.43,
+      8.09
+     ],
+     "max": [
+      5.54,
+      8.0
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": {
+     "v": [
+      -58,
+      58
+     ],
+     "h": [
+      -16,
+      16
+     ],
+     "vAtHmax": 33,
+     "verified": true
+    }
+   }
+  },
+  {
+   "id": "ELPLM10",
+   "brand": "Epson",
+   "model": "ELPLM10",
+   "type": "Zoom (média)",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     2.42,
+     3.71
+    ],
+    "epq": [
+     2.34,
+     3.59
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     5.33,
+     13.21
+    ],
+    "max": [
+     8.1,
+     13.08
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 19900,
+    "eb-pu2120w": 19900,
+    "eb-pu2216b": 15900,
+    "eb-pu2116w": 15900,
+    "eb-pu2213b": 12900,
+    "eb-pu2113w": 12900,
+    "eb-pq2220b": 19800,
+    "eb-pq2216b": 15800,
+    "eb-pq2216w": 15800,
+    "eb-pq2213b": 12800
+   },
+   "shift": {
+    "v": [
+     -60,
+     60
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "vAtHmax": 32,
+    "verified": true,
+    "note": "V e H não atingem o máximo em simultâneo: com H no máximo, V fica limitado a ±32%."
+   },
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 69,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      5.29,
+      13.19
+     ],
+     "max": [
+      8.05,
+      13.07
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": {
+     "v": [
+      -58,
+      58
+     ],
+     "h": [
+      -16,
+      16
+     ],
+     "vAtHmax": 33,
+     "verified": true
+    }
+   }
+  },
+  {
+   "id": "ELPLM11",
+   "brand": "Epson",
+   "model": "ELPLM11",
+   "type": "Zoom (média)",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     3.54,
+     5.41
+    ],
+    "epq": [
+     3.42,
+     5.23
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     7.81,
+     23.86
+    ],
+    "max": [
+     11.83,
+     23.55
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 19000,
+    "eb-pu2120w": 19000,
+    "eb-pu2216b": 15200,
+    "eb-pu2116w": 15200,
+    "eb-pu2213b": 12300,
+    "eb-pu2113w": 12300,
+    "eb-pq2220b": 19000,
+    "eb-pq2216b": 15200,
+    "eb-pq2216w": 15200,
+    "eb-pq2213b": 12300
+   },
+   "shift": {
+    "v": [
+     -60,
+     60
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "vAtHmax": 32,
+    "verified": true,
+    "note": "V e H não atingem o máximo em simultâneo: com H no máximo, V fica limitado a ±32%."
+   },
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 76,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      7.76,
+      23.84
+     ],
+     "max": [
+      11.75,
+      23.54
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": {
+     "v": [
+      -58,
+      58
+     ],
+     "h": [
+      -16,
+      16
+     ],
+     "vAtHmax": 33,
+     "verified": true
+    }
+   }
+  },
+  {
+   "id": "ELPLL08",
+   "brand": "Epson",
+   "model": "ELPLL08",
+   "type": "Zoom (longa)",
+   "family": "epson",
+   "tr": {
+    "epson": [
+     5.27,
+     7.41
+    ],
+    "epq": [
+     5.09,
+     7.16
+    ]
+   },
+   "formula": {
+    "kind": "epson",
+    "min": [
+     11.59,
+     31.52
+    ],
+    "max": [
+     16.21,
+     31.81
+    ]
+   },
+   "lumens": {
+    "eb-pu2220b": 19000,
+    "eb-pu2120w": 19000,
+    "eb-pu2216b": 15200,
+    "eb-pu2116w": 15200,
+    "eb-pu2213b": 12300,
+    "eb-pu2113w": 12300,
+    "eb-pq2220b": 19000,
+    "eb-pq2216b": 15200,
+    "eb-pq2216w": 15200,
+    "eb-pq2213b": 12300
+   },
+   "shift": {
+    "v": [
+     -60,
+     60
+    ],
+    "h": [
+     -18,
+     18
+    ],
+    "vAtHmax": 32,
+    "verified": true,
+    "note": "V e H não atingem o máximo em simultâneo: com H no máximo, V fica limitado a ±32%."
+   },
+   "src": [
+    "epsonSpec",
+    "epsonPQ"
+   ],
+   "protrusion": 74,
+   "formulaBy": {
+    "epq": {
+     "kind": "epson",
+     "min": [
+      11.53,
+      32.22
+     ],
+     "max": [
+      16.1,
+      31.78
+     ]
+    }
+   },
+   "shiftBy": {
+    "epq": {
+     "v": [
+      -58,
+      58
+     ],
+     "h": [
+      -16,
+      16
+     ],
+     "vAtHmax": 33,
+     "verified": true
+    }
+   }
+  },
+  {
+   "id": "R9801661",
+   "brand": "Barco",
+   "model": "TLD+ 0.38 UST 90° (R9801661)",
+   "type": "Fixa (UST 90°)",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     0.42,
+     0.42
+    ],
+    "bw": [
+     0.39,
+     0.39
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -150,
+     150
+    ],
+    "h": [
+     -150,
+     150
+    ],
+    "verified": false,
+    "note": "Barco: \"±150% dependendo do projector\". Sem tabela oficial por lente; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "R9862001",
+   "brand": "Barco",
+   "model": "TLD+ 0.65–0.85 UST 90° (R9862001)",
+   "type": "Zoom (UST 90°)",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     0.71,
+     0.93
+    ],
+    "bw": [
+     0.67,
+     0.88
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -150,
+     150
+    ],
+    "h": [
+     -150,
+     150
+    ],
+    "verified": false,
+    "note": "Barco: \"±150% dependendo do projector\". Sem tabela oficial por lente; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "R9801414",
+   "brand": "Barco",
+   "model": "TLD+ 0.8–1.16 (R9801414)",
+   "type": "Zoom",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     0.93,
+     1.33
+    ],
+    "bw": [
+     0.85,
+     1.24
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -100,
+     130
+    ],
+    "h": [
+     -40,
+     40
+    ],
+    "verified": false,
+    "note": "Barco: \"vertical −100% a +130%, horizontal até ±40%, depende da lente\". Valores máximos do projector; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "R9862005",
+   "brand": "Barco",
+   "model": "TLD+ 1.25–1.6 (R9862005)",
+   "type": "Zoom",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     1.25,
+     1.6
+    ],
+    "bw": [
+     1.17,
+     1.5
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -100,
+     130
+    ],
+    "h": [
+     -40,
+     40
+    ],
+    "verified": false,
+    "note": "Barco: \"vertical −100% a +130%, horizontal até ±40%, depende da lente\". Valores máximos do projector; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "R9862010",
+   "brand": "Barco",
+   "model": "TLD+ 1.5–2.0 (R9862010)",
+   "type": "Zoom",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     1.49,
+     2.03
+    ],
+    "bw": [
+     1.39,
+     1.89
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -100,
+     130
+    ],
+    "h": [
+     -40,
+     40
+    ],
+    "verified": false,
+    "note": "Barco: \"vertical −100% a +130%, horizontal até ±40%, depende da lente\". Valores máximos do projector; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "R9862020",
+   "brand": "Barco",
+   "model": "TLD+ 2.0–2.8 (R9862020)",
+   "type": "Zoom",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     2.02,
+     2.73
+    ],
+    "bw": [
+     1.89,
+     2.55
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -100,
+     130
+    ],
+    "h": [
+     -40,
+     40
+    ],
+    "verified": false,
+    "note": "Barco: \"vertical −100% a +130%, horizontal até ±40%, depende da lente\". Valores máximos do projector; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "R9862030",
+   "brand": "Barco",
+   "model": "TLD+ 2.8–4.5 (R9862030)",
+   "type": "Zoom",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     2.74,
+     4.43
+    ],
+    "bw": [
+     2.56,
+     4.13
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -100,
+     130
+    ],
+    "h": [
+     -40,
+     40
+    ],
+    "verified": false,
+    "note": "Barco: \"vertical −100% a +130%, horizontal até ±40%, depende da lente\". Valores máximos do projector; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "R9862040",
+   "brand": "Barco",
+   "model": "TLD+ 4.5–7.5 (R9862040)",
+   "type": "Zoom",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     4.42,
+     7.46
+    ],
+    "bw": [
+     4.12,
+     6.97
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -100,
+     130
+    ],
+    "h": [
+     -40,
+     40
+    ],
+    "verified": false,
+    "note": "Barco: \"vertical −100% a +130%, horizontal até ±40%, depende da lente\". Valores máximos do projector; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "R9829997",
+   "brand": "Barco",
+   "model": "TLD+ 7.5–11.2 (R9829997)",
+   "type": "Zoom",
+   "family": "barco",
+   "tr": {
+    "b4k": [
+     7.41,
+     11.03
+    ],
+    "bw": [
+     6.92,
+     10.21
+    ]
+   },
+   "formula": {
+    "kind": "tr"
+   },
+   "shift": {
+    "v": [
+     -100,
+     130
+    ],
+    "h": [
+     -40,
+     40
+    ],
+    "verified": false,
+    "note": "Barco: \"vertical −100% a +130%, horizontal até ±40%, depende da lente\". Valores máximos do projector; confirmar no Barco Lens Calculator."
+   },
+   "src": [
+    "barcoLens",
+    "barcoSpec"
+   ]
+  },
+  {
+   "id": "CHR-144-136101",
+   "brand": "Christie",
+   "model": "ILS4 0.38:1 UST fixa HB (144-136101-XX)",
+   "type": "Fixa (UST)",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     0.38,
+     0.38
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     0.3864,
+     -0.144
+    ],
+    "T": [
+     0.3864,
+     -0.144
+    ]
+   },
+   "shift": {
+    "v": [
+     -60,
+     85
+    ],
+    "h": [
+     -35,
+     15
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%). Reduz o brilho até 30%; distância medida ao centro dos pés laterais."
+   },
+   "src": [
+    "chrLens"
+   ]
+  },
+  {
+   "id": "CHR-144-110103",
+   "brand": "Christie",
+   "model": "ILS4 0.72:1 fixa HB (144-110103-XX)",
+   "type": "Fixa",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     0.72,
+     0.72
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     0.7449,
+     0.24
+    ],
+    "T": [
+     0.7449,
+     0.24
+    ]
+   },
+   "shift": {
+    "v": [
+     0,
+     0
+    ],
+    "h": [
+     0,
+     0
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%). Sem lens shift."
+   },
+   "src": [
+    "chrLens"
+   ]
+  },
+  {
+   "id": "CHR-144-111014",
+   "brand": "Christie",
+   "model": "ILS4 0.9:1 fixa HB/UHC (144-111014-XX)",
+   "type": "Fixa",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     0.9,
+     0.9
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     0.9354,
+     0.242
+    ],
+    "T": [
+     0.9354,
+     0.242
+    ]
+   },
+   "shift": {
+    "v": [
+     -45,
+     45
+    ],
+    "h": [
+     -15,
+     15
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%)."
+   },
+   "src": [
+    "chrLens"
+   ]
+  },
+  {
+   "id": "CHR-144-129103",
+   "brand": "Christie",
+   "model": "ILS4 1.13–1.66:1 zoom HB/UHC (144-129103-XX)",
+   "type": "Zoom",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     1.13,
+     1.66
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     1.129,
+     0.236
+    ],
+    "T": [
+     1.67,
+     0.222
+    ]
+   },
+   "shift": {
+    "v": [
+     -45,
+     45
+    ],
+    "h": [
+     -20,
+     20
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%)."
+   },
+   "src": [
+    "chrLens"
+   ]
+  },
+  {
+   "id": "CHR-144-130105",
+   "brand": "Christie",
+   "model": "ILS4 1.45–2.17:1 zoom HB/UHC (144-130105-XX)",
+   "type": "Zoom",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     1.45,
+     2.17
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     1.449,
+     0.166
+    ],
+    "T": [
+     2.195,
+     0.075
+    ]
+   },
+   "shift": {
+    "v": [
+     -55,
+     55
+    ],
+    "h": [
+     -20,
+     20
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%)."
+   },
+   "src": [
+    "chrLens"
+   ]
+  },
+  {
+   "id": "CHR-144-131106",
+   "brand": "Christie",
+   "model": "ILS4 1.95–3.26:1 zoom HB/UHC (144-131106-XX)",
+   "type": "Zoom",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     1.95,
+     3.26
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     1.951,
+     0.053
+    ],
+    "T": [
+     3.318,
+     -0.041
+    ]
+   },
+   "shift": {
+    "v": [
+     -45,
+     45
+    ],
+    "h": [
+     -30,
+     30
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%). No 4K50-RGB precisa de extensão do lens hood de 30 mm (163-170109)."
+   },
+   "src": [
+    "chrLens"
+   ]
+  },
+  {
+   "id": "CHR-144-107109",
+   "brand": "Christie",
+   "model": "ILS4 2.71–3.89:1 zoom HB/UHC (144-107109-XX)",
+   "type": "Zoom",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     2.71,
+     3.89
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     2.734,
+     0.026
+    ],
+    "T": [
+     3.945,
+     -0.051
+    ]
+   },
+   "shift": {
+    "v": [
+     -45,
+     45
+    ],
+    "h": [
+     -15,
+     15
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%). No 4K50-RGB precisa de extensão de 185 mm (163-168106)."
+   },
+   "src": [
+    "chrLens"
+   ]
+  },
+  {
+   "id": "CHR-144-108100",
+   "brand": "Christie",
+   "model": "ILS4 3.89–5.43:1 zoom HB/UHC (144-108100-XX)",
+   "type": "Zoom",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     3.89,
+     5.43
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     3.942,
+     0.19
+    ],
+    "T": [
+     5.553,
+     0.098
+    ]
+   },
+   "shift": {
+    "v": [
+     -85,
+     85
+    ],
+    "h": [
+     -25,
+     25
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%). No 4K50-RGB precisa de extensão de 185 mm (163-168106)."
+   },
+   "src": [
+    "chrLens"
+   ]
+  },
+  {
+   "id": "CHR-144-109101",
+   "brand": "Christie",
+   "model": "ILS4 4.98–7.69:1 zoom HB (144-109101-XX)",
+   "type": "Zoom (longa)",
+   "family": "christie",
+   "tr": {
+    "chr4k": [
+     4.98,
+     7.69
+    ]
+   },
+   "formula": {
+    "kind": "lin",
+    "W": [
+     5.031,
+     0.039
+    ],
+    "T": [
+     7.86,
+     -0.068
+    ]
+   },
+   "shift": {
+    "v": [
+     -90,
+     90
+    ],
+    "h": [
+     -40,
+     40
+    ],
+    "verified": true,
+    "note": "Offsets oficiais Christie (tolerância de centragem ±7%). Extensão do lens hood: 185 mm no 4K35-RGB, 410 mm no 4K50-RGB."
+   },
+   "src": [
+    "chrLens"
+   ]
+  }
+ ]
+}
