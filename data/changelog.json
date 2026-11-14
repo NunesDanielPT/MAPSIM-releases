@@ -1,6 +1,22 @@
 {
   "versions": [
     {
+      "version": "0.19.1",
+      "date": "2026-11-14",
+      "title": "Consumos no desenho técnico e na visão geral",
+      "items": [
+        "O desenho técnico em PDF A3 tem agora a coluna Consumo (W e A) para cada projector e o total da projecção por baixo da tabela.",
+        "A folha da lista de material inclui os consumos eléctricos por modelo e o total da projecção (kW máximo e típico, amperes e amperes por fase em trifásico).",
+        "A Visão geral da instalação mostra o consumo total e a corrente total."
+      ],
+      "title_en": "Power figures in the technical drawing and overview",
+      "items_en": [
+        "The A3 PDF technical drawing now has a Power column (W and A) for each projector and the projection total below the table.",
+        "The bill of materials sheet includes power consumption by model and the projection total (maximum and typical kW, amps and amps per phase on three-phase).",
+        "The installation Overview shows the total power and total current."
+      ]
+    },
+    {
       "version": "0.19.0",
       "date": "2026-11-14",
       "title": "Previsão em ecrã inteiro num segundo ecrã",
