@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.22.0",
+      "date": "2026-11-14",
+      "title": "Mover objectos com as setas",
+      "items": [
+        "Com um projector, superfície ou truss seleccionado, as setas movem-no aos poucos: ← → para os lados, ↑ ↓ para cima e para baixo, Page Up / Page Down para o fundo e para a frente.",
+        "O movimento é relativo à vista: a seta para a esquerda leva o objecto para a esquerda do ecrã.",
+        "Shift + seta dá um passo 10× maior; Alt + seta dá um passo 5× mais fino. O passo (5 cm por defeito) muda-se em Definições → Predefinições.",
+        "Um projector preso na truss anda ao longo da truss. As teclas podem ser mudadas em Definições → Atalhos."
+      ],
+      "title_en": "Move objects with the arrow keys",
+      "items_en": [
+        "With a projector, surface or truss selected, the arrow keys move it in small steps: ← → sideways, ↑ ↓ up and down, Page Up / Page Down back and forth.",
+        "The movement is relative to the view: the left arrow moves the object to the left of the screen.",
+        "Shift + arrow gives a 10× bigger step; Alt + arrow gives a 5× finer step. The step (5 cm by default) is set in Settings → Defaults.",
+        "A projector mounted on a truss moves along the truss. The keys can be changed in Settings → Shortcuts."
+      ]
+    },
+    {
       "version": "0.21.0",
       "date": "2026-11-14",
       "title": "Destaque ao passar o rato e projectores centrados na truss",
