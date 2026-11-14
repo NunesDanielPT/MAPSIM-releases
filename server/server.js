@@ -1,6 +1,7 @@
 // MapSim — servidor de licenças (sem dependências; Node 18+)
 // Endpoints públicos: POST /api/activate, /api/check, /api/release · Painel: /admin (Basic Auth)
 'use strict';
+const SERVER_VERSION = '0.8.1';
 const http = require('http'), crypto = require('crypto'), fs = require('fs'), path = require('path');
 
 const DATA = process.env.DATA_DIR || '/data';
@@ -120,7 +121,7 @@ function adminPage(msg = '') {
 <style>body{font:14px system-ui,sans-serif;background:#0b0e12;color:#d8e0ea;margin:24px}h1{font-weight:500}h1 b{color:#14c4ef}table{border-collapse:collapse;width:100%;margin-top:16px}td,th{border-bottom:1px solid #232b35;padding:8px;text-align:left;vertical-align:top}th{color:#7f8b99;font-weight:500;font-size:12px;text-transform:uppercase}
 input,button{background:#151a21;color:#d8e0ea;border:1px solid #2b3540;border-radius:5px;padding:6px 9px;font:inherit}button{cursor:pointer}button:hover{border-color:#14c4ef}.danger{color:#ff7a7a}.ok{color:#3ddc97}.bad{color:#ff5d5d}
 .card{background:#0e1217;border:1px solid #232b35;border-radius:8px;padding:14px;margin:14px 0}code{font-family:Consolas,monospace;color:#9fd8ee}textarea{width:100%;height:110px;background:#151a21;color:#9fd8ee;border:1px solid #2b3540;font:12px Consolas,monospace}.news{border-top:1px solid #232b35;padding:10px 0}.news textarea{height:64px;margin:6px 0;color:#d8e0ea;font:13px system-ui}.msg{background:#04222c;border:1px solid #14c4ef;padding:10px;border-radius:6px}small{color:#7f8b99}</style>
-<h1><b>MapSim</b> — licenças</h1>${msg ? `<p class="msg">${msg}</p>` : ''}
+<h1><b>MapSim</b> — licenças <small>servidor v${SERVER_VERSION}</small></h1>${msg ? `<p class="msg">${msg}</p>` : ''}
 <div class="card"><form method="post" action="/admin/new"><b>Nova chave</b>&nbsp; <input name="owner" placeholder="Nome / empresa" required> <input name="note" placeholder="Nota (opcional)"> Validade <input type="date" name="exp"> <small>(vazio = permanente)</small> <button>Criar chave</button></form></div>
 <table><tr><th>Chave</th><th>Cliente</th><th>Estado</th><th>Validade</th><th>PC</th><th>Última verificação</th><th>Acções</th></tr>${rows || '<tr><td colspan="7"><small>Ainda não há chaves.</small></td></tr>'}</table>
 <div class="card"><b>Novidades (aparecem na app ao actualizar e em Definições → Updates)</b>
@@ -175,10 +176,10 @@ async function admin(req, res, url) {
 http.createServer(async (req, res) => {
   try {
     const url = req.url.split('?')[0], ip = ipOf(req);
-    if (url === '/health') return send(res, 200, { ok: true });
+    if (url === '/health') return send(res, 200, { ok: true, version: SERVER_VERSION });
     if (url === '/api/changelog' && req.method === 'GET') { await syncChangelog(false); return send(res, 200, { ok: true, versions: db.changelog.filter(e => !e.hidden).map(cleanEntry) }); }
     if (req.method === 'POST' && ['/api/activate', '/api/check', '/api/release'].includes(url)) return await api(req, res, url.slice(5), ip);
     if (url === '/admin' || url.startsWith('/admin/')) return await admin(req, res, url);
     send(res, 404, { ok: false, error: 'Não encontrado' });
   } catch (e) { console.error(e); send(res, 500, { ok: false, error: 'Erro interno' }); }
-}).listen(PORT, () => console.log(`MapSim licenças a ouvir em :${PORT}`));
+}).listen(PORT, () => console.log(`MapSim licenças v${SERVER_VERSION} a ouvir em :${PORT}`));
