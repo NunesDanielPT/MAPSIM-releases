@@ -1,6 +1,22 @@
 {
   "versions": [
     {
+      "version": "0.14.0",
+      "date": "2026-11-14",
+      "title": "Ajustar sem criar projectores",
+      "items": [
+        "Projectores soltos numa truss: novo botão ⚡ Ajustar automaticamente os projectores desta truss (no projector e na truss). Divide a superfície entre eles e ajusta cada um — sem acrescentar projectores.",
+        "Os projectores mantêm o nome, a cor e o modelo, e ficam agrupados num array para os poderes voltar a ajustar.",
+        "No array, o ajuste na truss nunca muda o número de projectores, mesmo com contagem automática."
+      ],
+      "title_en": "Adjust without creating projectors",
+      "items_en": [
+        "Single projectors on a truss: new ⚡ Automatically adjust the projectors on this truss button (on the projector and the truss). It splits the surface between them and adjusts each one — without adding projectors.",
+        "Projectors keep their name, colour and model, and are grouped in an array so you can adjust them again.",
+        "On an array, the truss adjustment never changes the number of projectors, even with automatic count."
+      ]
+    },
+    {
       "version": "0.13.0",
       "date": "2026-11-14",
       "title": "Ajuste automático na truss",
