@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.16.0",
+      "date": "2026-11-14",
+      "title": "Warp e keystone nos projectores",
+      "items": [
+        "Novo bloco Warp / Keystone em cada projector: keystone horizontal e vertical, ou warp de 4 cantos.",
+        "Keystone automático: um clique e a imagem fica rectangular e direita na superfície, mesmo com o projector inclinado ou de lado.",
+        "Como num projector real, a correcção é feita dentro do raster: vês na superfície a imagem corrigida e a zona que fica preta.",
+        "O MapSim mostra a resolução útil e a percentagem do raster que se perde com a correcção, e a ficha técnica inclui os valores de warp."
+      ],
+      "title_en": "Warp and keystone on projectors",
+      "items_en": [
+        "New Warp / Keystone section on each projector: horizontal and vertical keystone, or 4-corner warp.",
+        "Auto keystone: one click and the image becomes rectangular and level on the surface, even with the projector tilted or at an angle.",
+        "As on a real projector, the correction happens inside the raster: you see the corrected image on the surface and the area that goes black.",
+        "MapSim shows the usable resolution and how much of the raster is lost to the correction, and the spec sheet includes the warp values."
+      ]
+    },
+    {
       "version": "0.15.0",
       "date": "2026-11-14",
       "title": "Gravação automática e a tua truss intacta",
