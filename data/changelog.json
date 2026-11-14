@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.19.0",
+      "date": "2026-11-14",
+      "title": "Previsão em ecrã inteiro num segundo ecrã",
+      "items": [
+        "Novo botão 🖥 Ecrã inteiro na Simulação: mostra só o 3D, sem menus nem definições, no ecrã que escolheres.",
+        "A lista mostra os ecrãs ligados com resolução, frequência e qual é o principal; o MapSim escolhe logo o outro ecrã.",
+        "Controlas a câmara e a timeline a partir do MapSim; o ecrã de previsão segue tudo em tempo real.",
+        "Resolução nativa do ecrã ou metade (mais leve), e legenda opcional com o nome do projecto.",
+        "Esc fecha a previsão. Também podes gravar vídeo com a previsão aberta."
+      ],
+      "title_en": "Fullscreen preview on a second display",
+      "items_en": [
+        "New 🖥 Fullscreen button in Simulation: shows the 3D only, without menus or settings, on the display you choose.",
+        "The list shows the connected displays with resolution, refresh rate and which one is primary; MapSim picks the other display automatically.",
+        "You control the camera and the timeline from MapSim; the preview display follows everything in real time.",
+        "Display native or half resolution (lighter), and an optional caption with the project name.",
+        "Esc closes the preview. You can also record video while the preview is open."
+      ]
+    },
+    {
       "version": "0.18.0",
       "date": "2026-11-14",
       "title": "Gravar a simulação em vídeo",
