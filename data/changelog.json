@@ -1,6 +1,30 @@
 {
   "versions": [
     {
+      "version": "0.35.0",
+      "date": "2026-11-16",
+      "title": "Energia LED, vários processadores e distâncias entre LED walls",
+      "items": [
+        "Correcção: no LED não dava para escrever o nome do projecto (o campo perdia o foco a cada letra) — por isso não dava para guardar",
+        "Processamento: em vez da biblioteca à esquerda, botão \"+ Adicionar processador\" que abre a lista; o processador novo fica com os LED walls que ainda não estão ligados",
+        "Com vários processadores, o esquema de cabos de todos fica visível ao mesmo tempo (cada um com as suas cores e caixa)",
+        "Cablagem manual: não deixa passar dos 100 % da capacidade da porta — pára e avisa quantos painéis a porta leva",
+        "LED wall: distância entre LED walls vizinhos (lado a lado e uns por cima dos outros) no desenho e no PDF; coluna \"Ao LED à direita\" na folha de medidas",
+        "Novo separador Energia: amperes necessários (total e por fase), circuitos de 16 A calculados pelo consumo dos painéis, quadros de 16 / 32 / 63 / 125 / 400 A à escolha com medidas, peso e saídas por defeito (Schuko, CEE 16 A, Socapex 6 × 16 A, CEE 32/63/125 A) editáveis, distribuição automática pelas fases e avisos acima de 80 %",
+        "Documentação LED: folhas de energia com esquema dos quadros e lista de circuitos (quadro, saída, fase, tiles, amperes); quadros e cabos de alimentação na lista de material"
+      ],
+      "title_en": "LED power, multiple processors and distances between LED walls",
+      "items_en": [
+        "Fix: in LED the project name could not be typed (the field lost focus on every letter) — so the project could not be saved",
+        "Processing: instead of the library on the left, a \"+ Add processor\" button opens the list; the new processor takes the LED walls not yet connected",
+        "With several processors, all cabling diagrams stay visible at the same time (each with its own colours and box)",
+        "Manual cabling: cannot go over 100 % of the port capacity — it stops and tells how many panels the port takes",
+        "LED wall: distance between neighbouring LED walls (side by side and stacked) in the drawing and in the PDF; \"To the LED on the right\" column on the dimensions sheet",
+        "New Power tab: required amps (total and per phase), 16 A circuits from panel consumption, 16 / 32 / 63 / 125 / 400 A distros of your choice with editable default size, weight and outputs (Schuko, CEE 16 A, Socapex 6 × 16 A, CEE 32/63/125 A), automatic phase balancing and warnings above 80 %",
+        "LED documentation: power sheets with the distro diagram and circuit list (distro, output, phase, tiles, amps); distros and feed cables in the bill of materials"
+      ]
+    },
+    {
       "version": "0.34.0",
       "date": "2026-11-16",
       "title": "Output LED: test patterns ao vivo, ecrãs do PC e janelas para NDI",
