@@ -1,6 +1,22 @@
 {
   "versions": [
     {
+      "version": "0.41.0",
+      "date": "2026-11-16",
+      "title": "3D claro na documentação, sobreposições ajustáveis e novo técnico",
+      "items": [
+        "Documentação LED: a vista 3D da estrutura passa a ser clara (chão claro, luz de estúdio de vários lados) para se verem os pormenores dos stacks, truss e estropos",
+        "Output: opção \"Mostrar sobreposições\" que desliga de uma vez guias, nome/resolução, números, cronómetro e logótipo; tamanho dos círculos, espessura das linhas e tamanho do nome/resolução ajustáveis",
+        "Output · Boneco: nova personagem — técnico com capacete amarelo, colete laranja reflector, luvas e cinto de ferramentas; traz cada tile nas mãos, monta-o no lugar e volta rapidamente a buscar o seguinte; depois passa os cabos MAIN"
+      ],
+      "title_en": "Bright 3D in documentation, adjustable overlays and new technician",
+      "items_en": [
+        "LED documentation: the structure 3D view is now bright (light floor, studio lighting from several sides) so stack, truss and sling details are visible",
+        "Output: \"Show overlays\" option turns guides, name/resolution, numbers, timer and logo off at once; adjustable circle size, line thickness and name/resolution size",
+        "Output · Character: new character — technician with yellow helmet, reflective orange vest, gloves and tool belt; carries each tile in his hands, mounts it and quickly goes back for the next; then runs the MAIN cables"
+      ]
+    },
+    {
       "version": "0.40.0",
       "date": "2026-11-16",
       "title": "Output: padrões, guias, cronómetro, hue rotate e MP4",
