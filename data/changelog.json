@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.30.0",
+      "date": "2026-11-16",
+      "title": "Cablagem manual com setas e tile de início no PDF",
+      "items": [
+        "Cablagem manual: escolhe a porta, clica no tile onde o cabo começa e continua com as setas do teclado (ou arrastando o rato). Seta para trás ou Backspace desfaz; clicar num tile da linha volta até ele",
+        "O tile onde está a porta activa fica marcado a tracejado na vista 2D",
+        "Documentação PDF: a tabela de portas tem as colunas \"Começa no tile\" e \"Acaba no tile\", e no desenho cada porta mostra o tile de início (ex.: P1 MAIN → 6.1)",
+        "Correcção: no Processamento a vista ficava presa em 3D (sem esquema de cabos) se tivesses escolhido 3D no LED wall — o Processamento é agora sempre em 2D"
+      ],
+      "title_en": "Manual cabling with arrow keys and start tile in the PDF",
+      "items_en": [
+        "Manual cabling: pick the port, click the tile where the cable starts and continue with the keyboard arrows (or by dragging the mouse). Arrow back or Backspace undoes; clicking a tile on the line goes back to it",
+        "The tile where the active port is gets a dashed outline in the 2D view",
+        "PDF documentation: the port table has \"Starts at tile\" and \"Ends at tile\" columns, and on the drawing each port shows its start tile (e.g. P1 MAIN → 6.1)",
+        "Fix: in Processing the view stayed stuck in 3D (no cabling diagram) if you had chosen 3D in LED wall — Processing is now always 2D"
+      ]
+    },
+    {
       "version": "0.29.1",
       "date": "2026-11-16",
       "title": "Correcção: exportar PDF grande deixava o MapSim preso",
