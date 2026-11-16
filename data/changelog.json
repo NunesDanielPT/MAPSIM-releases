@@ -1,6 +1,22 @@
 {
   "versions": [
     {
+      "version": "0.49.1",
+      "date": "2026-11-16",
+      "title": "Energia: o automático respeita o quadro e apagar o quadro limpa as linhas",
+      "items": [
+        "Automatic POWER: com um quadro que não chega para tudo, liga só o que o quadro aguenta (saídas e amperes) e o resto fica em branco — a pré-visualização diz quantos painéis ficam sem circuito",
+        "Apagar um quadro apaga também os circuitos desenhados nas saídas dele — já não ficam linhas soltas sem quadro",
+        "Automatic POWER refaz os circuitos que estavam desenhados mas sem saída de quadro (por exemplo, para trocar por um quadro maior); os que já estão ligados ficam"
+      ],
+      "title_en": "Power: automatic respects the distro and deleting the distro clears its lines",
+      "items_en": [
+        "Automatic POWER: with a distro that is not big enough, it only connects what the distro can take (outputs and amps) and leaves the rest blank — the preview says how many panels are left without a circuit",
+        "Deleting a distro also deletes the circuits drawn on its outputs — no more loose lines without a distro",
+        "Automatic POWER redoes circuits that were drawn but have no distro output (e.g. to switch to a bigger distro); connected ones stay"
+      ]
+    },
+    {
       "version": "0.49.0",
       "date": "2026-11-16",
       "title": "Mira mais limpa, equipa de montagem sincronizada e desenhos sem sobreposições",
