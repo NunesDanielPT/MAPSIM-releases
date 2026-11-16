@@ -1,6 +1,28 @@
 {
   "versions": [
     {
+      "version": "0.44.0",
+      "date": "2026-11-16",
+      "title": "Backup desenhado à mão, circuitos de energia desenhados e NDI nativo",
+      "items": [
+        "Processamento: linhas de BACKUP desenhadas à mão — botão \"A desenhar: MAIN / BACKUP\"; o backup passa pelos mesmos tiles (tracejado e com \"B\"), com atalhos para copiar as MAIN ao contrário (entra pelo fim) ou iguais",
+        "Processamento: função do processador — Principal ou Backup de outro processador (máquina de backup); as linhas do processador de backup ficam todas como BACKUP, com cópia directa do principal; aparece assim no desenho, nas tabelas e na documentação PDF",
+        "Energia: circuitos desenhados à mão como a cablagem de dados — escolhe o circuito (C1, C2…), clica no tile onde entra a corrente e continua com as setas ou arrastando; pára no limite do circuito (disjuntor × utilização); \"Preencher automático (editável)\" e escolha da saída CEE / Socapex de cada circuito",
+        "Output: NDI nativo — nova saída \"NDI — enviar pela rede\" que cria uma fonte NDI visível nos outros PCs (NDI Studio Monitor, Resolume, vMix, OBS…), com nome e fps à escolha; usa o NDI Tools / NDI Runtime instalado no PC",
+        "Campos de texto: depois de uma pergunta de confirmação, o Windows deixava os campos sem escrever (nome do processador, etc.) — corrigido; duplo clique no nome de um processador, quadro ou output na lista para mudar o nome",
+        "Arranque: o MapSim já não mostra a área de projecção por instantes antes do ecrã inicial"
+      ],
+      "title_en": "Hand-drawn backup, drawn power circuits and native NDI",
+      "items_en": [
+        "Processing: hand-drawn BACKUP lines — \"Drawing: MAIN / BACKUP\" toggle; the backup runs over the same tiles (dashed, marked \"B\"), with shortcuts to copy the MAIN lines reversed (enters at the end) or as is",
+        "Processing: processor role — Main or Backup of another processor (backup machine); all lines of the backup processor are BACKUP, with a direct copy from the main one; shown as such in the drawing, tables and PDF documentation",
+        "Power: circuits drawn by hand like the data cabling — choose the circuit (C1, C2…), click the tile where power enters and continue with the arrows or by dragging; it stops at the circuit limit (breaker × load); \"Fill automatically (editable)\" and choice of the CEE / Socapex output for each circuit",
+        "Output: native NDI — new \"NDI — send over the network\" output that creates an NDI source visible on other PCs (NDI Studio Monitor, Resolume, vMix, OBS…), with custom name and fps; uses the NDI Tools / NDI Runtime installed on the PC",
+        "Text fields: after a confirmation question, Windows left fields unable to type (processor name, etc.) — fixed; double-click a processor, distro or output name in the list to rename it",
+        "Startup: MapSim no longer flashes the projection area before the start screen"
+      ]
+    },
+    {
       "version": "0.43.0",
       "date": "2026-11-16",
       "title": "Cablagem só automática a pedido, saídas CEE/Socapex por tile e fixação ao truss",
