@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.25.0",
+      "date": "2026-11-16",
+      "title": "MapSim LED: workspace com identidade própria",
+      "items": [
+        "O workspace LED wall tem agora aspecto próprio, em violeta (a projecção continua em azul): logótipo MAPSIM LED, cores, painéis e barras diferentes.",
+        "Nova vista principal Frente 2D: os LED walls desenhados de frente com cotas em metros e em píxeis, altura ao chão, numeração dos cabinets e grelha de píxeis com zoom. A vista 3D fica numa aba ao lado.",
+        "Ao passar o rato por um cabinet vês o número (linha.coluna) e o intervalo de píxeis que ocupa no canvas — útil para o pixel mapping.",
+        "Arrasta os LED walls na vista 2D para os posicionar; roda do rato faz zoom e duplo clique enquadra tudo.",
+        "Biblioteca de cabinets no painel da esquerda: clica para criar um LED wall ou para trocar o cabinet do seleccionado. Barra LED com +/− colunas, +/− linhas, Duplicar e Enquadrar."
+      ],
+      "title_en": "MapSim LED: a workspace with its own identity",
+      "items_en": [
+        "The LED wall workspace now has its own look, in violet (projection stays blue): MAPSIM LED logo, different colours, panels and bars.",
+        "New main Front 2D view: LED walls drawn from the front with dimensions in metres and pixels, height from the floor, cabinet numbering and a pixel grid when zoomed. The 3D view is on a tab next to it.",
+        "Hovering over a cabinet shows its number (row.column) and the pixel range it takes in the canvas — useful for pixel mapping.",
+        "Drag LED walls in the 2D view to position them; the mouse wheel zooms and double-click fits everything.",
+        "Cabinet library in the left panel: click to create an LED wall or to change the cabinet of the selected one. LED bar with +/− columns, +/− rows, Duplicate and Fit."
+      ]
+    },
+    {
       "version": "0.24.0",
       "date": "2026-11-16",
       "title": "Ecrã inicial, workspace LED wall e correcção das resoluções",
