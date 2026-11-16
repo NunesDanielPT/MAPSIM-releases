@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.33.0",
+      "date": "2026-11-16",
+      "title": "Botão direito na lista da projecção",
+      "items": [
+        "Projecção: botão direito do rato na lista da esquerda em superfícies, arrays, projectores e truss",
+        "Superfície: ver informação, duplicar (com os arrays), mudar o nome, focar, criar array, ocultar, bloquear, apagar",
+        "Array: ver informação, mudar o nome, focar, actualizar projectores, ligar/desligar todos, apagar",
+        "Projector: ver informação (distância, imagem, densidade, lux, resolução, consumo…), ligar/desligar, duplicar, test pattern, auto keystone, ocultar, bloquear, apagar",
+        "Truss: ver informação, duplicar, mudar o nome, focar, ajustar projectores, ocultar, bloquear, apagar"
+      ],
+      "title_en": "Right-click in the projection list",
+      "items_en": [
+        "Projection: right-click in the left list on surfaces, arrays, projectors and trusses",
+        "Surface: view info, duplicate (with its arrays), rename, focus, create array, hide, lock, delete",
+        "Array: view info, rename, focus, update projectors, turn all on/off, delete",
+        "Projector: view info (distance, image, density, lux, resolution, power…), turn on/off, duplicate, test pattern, auto keystone, hide, lock, delete",
+        "Truss: view info, duplicate, rename, focus, fit projectors, hide, lock, delete"
+      ]
+    },
+    {
       "version": "0.32.0",
       "date": "2026-11-16",
       "title": "Projecção e LED independentes",
