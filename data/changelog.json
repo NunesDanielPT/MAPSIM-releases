@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.33.3",
+      "date": "2026-11-16",
+      "title": "Documentação LED: tabelas longas continuam na folha seguinte",
+      "items": [
+        "Na documentação técnica LED, as tabelas que não cabem numa folha (portas dos processadores, medidas, lista de material, pesos) continuam na folha seguinte com o mesmo cabeçalho, em vez de ficarem cortadas",
+        "Com muitos LED walls, pesos e informação passam a ocupar folhas separadas"
+      ],
+      "title_en": "LED documentation: long tables continue on the next sheet",
+      "items_en": [
+        "In the LED technical documentation, tables that do not fit on one sheet (processor ports, dimensions, bill of materials, weights) continue on the next sheet with the same header, instead of being cut off",
+        "With many LED walls, weights and information now use separate sheets"
+      ]
+    },
+    {
       "version": "0.33.2",
       "date": "2026-11-16",
       "title": "Correcção da 0.33.1",
