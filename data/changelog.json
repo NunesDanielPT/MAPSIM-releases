@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.31.0",
+      "date": "2026-11-16",
+      "title": "Tela com qualquer inclinação (tecto, chão, rampa)",
+      "items": [
+        "Nova superfície Tela (Adicionar → Tela): largura, altura e moldura; a posição Y é o centro da tela",
+        "Todas as superfícies têm agora Orientação em três eixos: rotação Y, inclinação X e rolamento Z, para simular tectos inclinados, telas deitadas no chão ou em rampa",
+        "Botões rápidos: Vertical, Tecto, Chão, Inclinada 30°, 45° e 60°; a ferramenta Rodar (R) roda as superfícies nos três eixos",
+        "O array de projectores segue a inclinação da tela: numa tela de tecto os projectores ficam por baixo a apontar para cima, sem passar o chão"
+      ],
+      "title_en": "Screen with any tilt (ceiling, floor, ramp)",
+      "items_en": [
+        "New Screen surface (Add → Screen): width, height and frame; the Y position is the screen centre",
+        "All surfaces now have Orientation on three axes: Y rotation, X tilt and Z roll, to simulate sloped ceilings, screens lying on the floor or on a ramp",
+        "Quick buttons: Vertical, Ceiling, Floor, Tilted 30°, 45° and 60°; the Rotate tool (R) rotates surfaces on all three axes",
+        "The projector array follows the screen tilt: on a ceiling screen the projectors sit underneath pointing up, without going below the floor"
+      ]
+    },
+    {
       "version": "0.30.0",
       "date": "2026-11-16",
       "title": "Cablagem manual com setas e tile de início no PDF",
