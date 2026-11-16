@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.27.0",
+      "date": "2026-11-16",
+      "title": "Menu do botão direito e informação completa dos LED walls",
+      "items": [
+        "Botão direito num LED wall da lista da esquerda: Ver informação, Duplicar, Mudar o nome, Focar, Mostrar/Ocultar, Bloquear e Apagar.",
+        "Ver informação abre uma janela com tudo: canvas, píxeis, grelha, tamanho, pitch, painel (marca, modelo, medidas, peso, consumo, brilho, receiving card, máximos), peso e energia, estrutura, posição e as portas do processador que o alimentam. Botão Copiar texto.",
+        "Nos processadores, o botão direito também tem Duplicar, Mudar o nome e Apagar.",
+        "A biblioteca de cabinets saiu do painel da esquerda: os painéis escolhem-se no botão + Criar LED wall (ou no inspector)."
+      ],
+      "title_en": "Right-click menu and full LED wall information",
+      "items_en": [
+        "Right-click an LED wall in the left list: View information, Duplicate, Rename, Focus, Show/Hide, Lock and Delete.",
+        "View information opens a window with everything: canvas, pixels, grid, size, pitch, panel (brand, model, dimensions, weight, power, brightness, receiving card, limits), weight and power, rigging, position and the processor ports that drive it. Copy text button.",
+        "On processors, right-click also offers Duplicate, Rename and Delete.",
+        "The cabinet library has left the left panel: panels are chosen with the + Create LED wall button (or in the inspector)."
+      ]
+    },
+    {
       "version": "0.26.2",
       "date": "2026-11-16",
       "title": "Trocar entre MapSim Projecção e MapSim LED pelo logótipo",
