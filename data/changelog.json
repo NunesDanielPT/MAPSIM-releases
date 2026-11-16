@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.49.0",
+      "date": "2026-11-16",
+      "title": "Mira mais limpa, equipa de montagem sincronizada e desenhos sem sobreposições",
+      "items": [
+        "Output · Mira: guias com círculos muito mais pequenos; o logótipo MapSim passa para o canto superior direito, pequeno e discreto, e o botão liga/desliga mesmo",
+        "Output · Boneco: com LED walls de tamanhos diferentes, quem acaba primeiro fica sentado num tile a olhar para os outros; quando todos acabam vão ao LED maior, cumprimentam-se e saem; o LED fica montado 7 s e recomeça tudo",
+        "Vista 2D: linhas de sinal e de energia ficam finas ao afastar o zoom (como as linhas do LED); nomes dos LED walls nunca se sobrepõem — sobem e ficam ligados ao LED por um tracejado fino; medidas encolhem quando não cabem",
+        "PDF (Medidas, Ligação técnica, Energia): linhas finas e letras de novo leves, nomes dos LED walls por cima com tracejado de guia, processador / quadro pequenos no canto inferior esquerdo; folhas de ligação de dados e energia sem alterações"
+      ],
+      "title_en": "Cleaner test card, synchronised build crew and drawings without overlaps",
+      "items_en": [
+        "Output · Test card: guide circles much smaller; the MapSim logo moves to the top-right corner, small and subtle, and the toggle really turns it off",
+        "Output · Character: with LED walls of different sizes, whoever finishes first sits on a tile watching the others; when all finish they go to the biggest LED, greet each other and leave; the LED stays built for 7 s and everything restarts",
+        "2D view: signal and power lines get thin when zooming out (like the LED lines); LED wall names never overlap — they move up and are linked to the LED with a thin dashed line; dimensions shrink when they do not fit",
+        "PDF (Dimensions, Technical connection, Power): thin lines and light text again, LED wall names above with a dashed guide, processor / distro small in the bottom-left corner; data and power wiring sheets unchanged"
+      ]
+    },
+    {
       "version": "0.48.0",
       "date": "2026-11-16",
       "title": "Automatic POWER por quadro, desenho da energia mais fácil e Automatic DATA",
