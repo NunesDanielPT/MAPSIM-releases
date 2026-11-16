@@ -1,6 +1,28 @@
 {
   "versions": [
     {
+      "version": "0.26.0",
+      "date": "2026-11-16",
+      "title": "LED: base de dados, estrutura e workspace Processamento com cabos MAIN/backup",
+      "items": [
+        "Ao escolher LED wall no ecrã inicial, o projecto abre vazio. O botão + Criar LED wall abre a base de dados de painéis por marca e modelo, com pesquisa — a começar pelo PROLIGHTS OmegaPix 26BE (Omega 2.6).",
+        "Indicas os metros que queres de largura e de altura e o MapSim calcula os painéis, o tamanho real, o canvas, o peso e o consumo antes de criar.",
+        "Estrutura (rigging): ground stack ou suspenso, com o peso total, o peso por coluna, as barras (códigos do fabricante), o número de pés e de stacks (escoras), a carga por pé e os pontos de suspensão. As regras são editáveis.",
+        "Novo workspace Processamento: biblioteca de processadores NovaStar (MX40 Pro, MX30, MX20, VX2000 Pro, VX1000, VX600, VX400 Pro, MCTRL660) com a capacidade oficial por porta.",
+        "Esquema de cabos de rede automático: as portas MAIN entram em baixo e sobem e descem pelas colunas, e cada BACKUP liga ao último cabinet da cadeia. Calcula portas, carga por porta, número de processadores e cabos; também com processador espelho.",
+        "A ficha técnica LED inclui agora a estrutura e a tabela de portas MAIN / BACKUP."
+      ],
+      "title_en": "LED: database, rigging and Processing workspace with MAIN/backup cables",
+      "items_en": [
+        "When you choose LED wall on the start screen, the project opens empty. The + Create LED wall button opens the panel database by brand and model, with search — starting with the PROLIGHTS OmegaPix 26BE (Omega 2.6).",
+        "You enter the width and height in metres you want and MapSim works out the panels, actual size, canvas, weight and power before creating it.",
+        "Rigging: ground stack or flown, with total weight, weight per column, bars (manufacturer codes), number of feet and stacks (braces), load per foot and rigging points. The rules are editable.",
+        "New Processing workspace: NovaStar processor library (MX40 Pro, MX30, MX20, VX2000 Pro, VX1000, VX600, VX400 Pro, MCTRL660) with the official capacity per port.",
+        "Automatic network cable diagram: MAIN ports enter at the bottom and go up and down the columns, and each BACKUP connects to the last cabinet of the chain. It works out ports, load per port, number of processors and cables; also with a mirror processor.",
+        "The LED spec sheet now includes the rigging and the MAIN / BACKUP port table."
+      ]
+    },
+    {
       "version": "0.25.0",
       "date": "2026-11-16",
       "title": "MapSim LED: workspace com identidade própria",
