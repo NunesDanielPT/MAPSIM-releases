@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.26.1",
+      "date": "2026-11-16",
+      "title": "Barras de ground stack de 1 m e 0,5 m",
+      "items": [
+        "Ground stack e fly bars com barras de 1 m e de 0,5 m: automático (barras de 1 m e a sobra em 0,5 m), só 1 m ou só 0,5 m.",
+        "Pés contados por tipo de barra (pés por barra de 1 m e por barra de 0,5 m, editáveis).",
+        "Para o OmegaPix 26B/26BE aparecem os códigos Prolights: OXHGB02 (1 m, 2 colunas) e OXHGB01 (0,5 m, 1 coluna).",
+        "A ficha técnica LED inclui agora a estrutura: barras, pés, stacks, peso total e carga por pé."
+      ],
+      "title_en": "1 m and 0.5 m ground stack bars",
+      "items_en": [
+        "Ground stack and fly bars with 1 m and 0.5 m bars: automatic (1 m bars and the remainder in 0.5 m), 1 m only or 0.5 m only.",
+        "Feet counted per bar type (feet per 1 m bar and per 0.5 m bar, editable).",
+        "For the OmegaPix 26B/26BE the Prolights codes are shown: OXHGB02 (1 m, 2 columns) and OXHGB01 (0.5 m, 1 column).",
+        "The LED spec sheet now includes the rigging: bars, feet, stacks, total weight and load per foot."
+      ]
+    },
+    {
       "version": "0.26.0",
       "date": "2026-11-16",
       "title": "LED: base de dados, estrutura e workspace Processamento com cabos MAIN/backup",
