@@ -1,6 +1,28 @@
 {
   "versions": [
     {
+      "version": "0.29.0",
+      "date": "2026-11-16",
+      "title": "Estrutura LED em 3D, lastro e desenhos de rigging; NovaStar MCTRL4K",
+      "items": [
+        "Novo processador NovaStar MCTRL4K (16 portas Gigabit, 4 portas de fibra, 8,8 Mpx, até 7680 px de largura ou altura)",
+        "Vista 3D LED com a estrutura: em suspenso mostra as fly bars em cima, os estropos de aço, a truss e os motores; em ground stack mostra as barras e os pés por baixo, os stacks (escoras traseiras) e os pesos de lastro",
+        "Pesos de lastro por stack calculados automaticamente contra o derrube (carga horizontal editável), ou escritos à mão; o número de stacks e de motores também pode ser automático ou manual",
+        "Estropos de aço, manilhas, segmentos de truss, motores e pesos de lastro entram na lista de material",
+        "Documentação técnica LED: nova folha \"Estrutura — desenhos\" por LED wall com vista 3D, vista de frente, vista lateral e planta, com cotas, stacks, lastro, truss e estropos",
+        "Novo LED wall em ground stack começa com a base a 0,15 m (altura das barras e dos pés)"
+      ],
+      "title_en": "LED structure in 3D, ballast and rigging drawings; NovaStar MCTRL4K",
+      "items_en": [
+        "New NovaStar MCTRL4K processor (16 Gigabit ports, 4 fibre ports, 8.8 Mpx, up to 7680 px wide or high)",
+        "3D LED view with the structure: flown shows the fly bars on top, steel slings, truss and hoists; ground stack shows the bars and feet underneath, the stacks (rear braces) and the ballast weights",
+        "Ballast weights per stack calculated automatically against overturning (editable horizontal load), or typed by hand; the number of stacks and hoists can also be automatic or manual",
+        "Steel slings, shackles, truss segments, hoists and ballast weights are added to the bill of materials",
+        "LED technical documentation: new \"Structure — drawings\" sheet per LED wall with 3D view, front view, side view and plan, with dimensions, stacks, ballast, truss and slings",
+        "A new ground-stack LED wall starts with its base at 0.15 m (height of bars and feet)"
+      ]
+    },
+    {
       "version": "0.28.0",
       "date": "2026-11-16",
       "title": "Cablagem manual e documentação técnica LED",
