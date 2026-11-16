@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.40.0",
+      "date": "2026-11-16",
+      "title": "Output: padrões, guias, cronómetro, hue rotate e MP4",
+      "items": [
+        "Output: novos padrões — xadrez de cores com cores A / B / C / D à escolha, barras de cor, escala de cinzentos, RGB e CMY, com opção de movimento",
+        "Sobreposições em todos os padrões: nome e resolução ao centro num círculo ou hexágono, guias (diagonais, círculo central e círculos nos cantos), números dos tiles (linha,coluna), cronómetro grande (contador ou relógio) e logótipo MapSim",
+        "Efeito hue rotate: as cores rodam em contínuo, com a velocidade à escolha",
+        "Exportar o output em MP4 (10 s a 2 min, 25–60 fps) à resolução do output; PNG do frame; botão para o Resolume com os slices criados automaticamente (um por LED wall)",
+        "Adicionar processador: cada processador tem uma ilustração da frente (caixa de rack 1U/2U com as portas)"
+      ],
+      "title_en": "Output: patterns, guides, timer, hue rotate and MP4",
+      "items_en": [
+        "Output: new patterns — colour checkerboard with A / B / C / D colours of your choice, colour bands, grey scale, RGB and CMY, with optional motion",
+        "Overlays on every pattern: name and resolution in the centre in a circle or hexagon, guides (diagonals, centre circle and corner circles), tile numbers (row,column), large timer (count-up or clock) and MapSim logo",
+        "Hue rotate effect: colours rotate continuously at the speed you choose",
+        "Export the output as MP4 (10 s to 2 min, 25–60 fps) at the output resolution; frame PNG; Resolume button with slices created automatically (one per LED wall)",
+        "Add processor: each processor has a front-panel illustration (1U/2U rack box with its ports)"
+      ]
+    },
+    {
       "version": "0.39.0",
       "date": "2026-11-16",
       "title": "Quadros eléctricos personalizados e biblioteca",
