@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.46.0",
+      "date": "2026-11-16",
+      "title": "Definições LED / Projecção e PDF legível",
+      "items": [
+        "Definições separadas por modo: no LED aparece o separador \"LED\" e saem as definições da projecção (feixes, densidade, lux, projector por defeito…); as comuns ficam (gráfica, interface, ficheiros, atalhos, tensão da rede)",
+        "Novas definições LED: cablagem de dados automática ou desenhada à mão ao adicionar um processador, backup por defeito, circuitos de energia automáticos ou desenhados à mão e ligação às saídas dos quadros (automática ou só manual)",
+        "PDF mais legível: \"Medidas e nomes\", \"Ligação técnica\" e \"Energia — desenho de ligação\" desenhados em escala de papel — nome do LED, processador, medidas em metros e numeração dos tiles muito maiores; na ligação técnica o número do tile vai para o canto para não ficar por baixo dos cabos",
+        "PDF: esquema de cada quadro eléctrico numa folha própria, em grande, com as saídas (CEE / Socapex e via), fases e circuitos legíveis"
+      ],
+      "title_en": "LED / Projection settings and legible PDF",
+      "items_en": [
+        "Settings split by mode: in LED there is an \"LED\" tab and projection settings are hidden (beams, density, lux, default projector…); common ones stay (graphics, interface, files, shortcuts, mains voltage)",
+        "New LED settings: automatic or hand-drawn data cabling when adding a processor, default backup, automatic or hand-drawn power circuits and connection to distro outputs (automatic or manual only)",
+        "More legible PDF: \"Dimensions and names\", \"Technical connection\" and \"Power — wiring drawing\" drawn at paper scale — LED name, processor, dimensions in metres and tile numbering much larger; on the technical connection the tile number moves to the corner so cables do not cover it",
+        "PDF: each power distro schematic on its own sheet, large, with outputs (CEE / Socapex and way), phases and circuits readable"
+      ]
+    },
+    {
       "version": "0.45.0",
       "date": "2026-11-16",
       "title": "Stacks colocados por ti, a meio das base plates, com verificação de segurança",
