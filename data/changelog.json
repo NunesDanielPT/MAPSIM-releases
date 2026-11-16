@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.32.0",
+      "date": "2026-11-16",
+      "title": "Projecção e LED independentes",
+      "items": [
+        "Projecção e LED passam a ser projectos independentes: o que fazes num não aparece no outro. Cada um tem o seu nome, ficheiro e Desfazer/Refazer",
+        "Ao trocar de modo pela seta junto ao logótipo, o projecto actual fica em memória (e é gravado automaticamente se tiver alterações) e voltas a encontrá-lo como o deixaste",
+        "Guardar grava só o projecto do modo em que estás; abrir um ficheiro LED abre no modo LED sem mexer no projecto de projecção, e vice-versa",
+        "Ficheiros antigos com projecção e LED juntos são separados ao abrir: a outra parte aparece no outro modo como projecto por guardar"
+      ],
+      "title_en": "Projection and LED are independent",
+      "items_en": [
+        "Projection and LED are now independent projects: what you do in one no longer shows in the other. Each has its own name, file and Undo/Redo",
+        "When you switch mode with the arrow next to the logo, the current project stays in memory (and is autosaved if it has changes) and you find it again as you left it",
+        "Save stores only the project of the current mode; opening an LED file opens in LED mode without touching the projection project, and vice versa",
+        "Old files with projection and LED together are split when opened: the other part appears in the other mode as an unsaved project"
+      ]
+    },
+    {
       "version": "0.31.0",
       "date": "2026-11-16",
       "title": "Tela com qualquer inclinação (tecto, chão, rampa)",
