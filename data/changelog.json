@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.45.0",
+      "date": "2026-11-16",
+      "title": "Stacks colocados por ti, a meio das base plates, com verificação de segurança",
+      "items": [
+        "Estrutura · stacks: agora és tu que os pões — \"+ Adicionar stack\" e escolhes em que base plate fica; o stack fica sempre a meio da base (numa base de 1 m = na junção entre os dois tiles). Para cada stack: medida para trás (base do stack) e número de pesos. Botões \"Sugerir (MapSim)\" e \"Limpar\"; acabou o \"1 stack a cada N colunas\"",
+        "Biblioteca de stacks: ★ guarda o stack (nome e medida para trás) neste computador para os próximos eventos; o tipo da marca (ROE BP2 1,04 m, ROE DM 0,91 m, Absen PL 1,0 m) também aparece na lista",
+        "Verificação de segurança com os stacks e pesos que puseste: derrube (carga horizontal a meia altura × 1,5) contra o lastro de cada stack, maior troço de LED sem stack (máx. 2 m) e regra prática do lastro ≥ peso do LED — mostra \"Estável\" ou \"NÃO SEGURO\" com os valores",
+        "Stacks bem marcados: S1, S2… a laranja na vista 2D, nos desenhos e na planta; nova folha no PDF \"Estrutura — posição dos stacks\" com o desenho em grande, os números das colunas e a tabela (base plate, junção das colunas, distância à esquerda, medida para trás, pesos e lastro)"
+      ],
+      "title_en": "Stacks placed by you, at the middle of base plates, with a safety check",
+      "items_en": [
+        "Structure · stacks: you now place them — \"+ Add stack\" and choose which base plate it goes on; the stack always sits at the middle of the base (on a 1 m base = at the joint between the two tiles). For each stack: backward length (stack base) and number of weights. \"Suggest (MapSim)\" and \"Clear\" buttons; \"1 stack every N columns\" is gone",
+        "Stack library: ★ saves the stack (name and backward length) on this computer for future events; the brand type (ROE BP2 1.04 m, ROE DM 0.91 m, Absen PL 1.0 m) is also listed",
+        "Safety check with the stacks and weights you set: overturning (horizontal load at mid height × 1.5) against each stack's ballast, longest LED span without a stack (max 2 m) and the rule of thumb ballast ≥ LED weight — shows \"Stable\" or \"NOT SAFE\" with the values",
+        "Stacks clearly marked: S1, S2… in orange in the 2D view, drawings and plan; new PDF sheet \"Structure — stack positions\" with a large drawing, column numbers and a table (base plate, column joint, distance from left, backward length, weights and ballast)"
+      ]
+    },
+    {
       "version": "0.44.0",
       "date": "2026-11-16",
       "title": "Backup desenhado à mão, circuitos de energia desenhados e NDI nativo",
