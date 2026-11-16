@@ -1,6 +1,28 @@
 {
   "versions": [
     {
+      "version": "0.34.0",
+      "date": "2026-11-16",
+      "title": "Output LED: test patterns ao vivo, ecrãs do PC e janelas para NDI",
+      "items": [
+        "Novo separador Output no modo LED: test patterns ao vivo, sempre à resolução nativa dos LED walls (1 píxel = 1 píxel do LED)",
+        "Enviar para um ecrã do PC (saída de vídeo em ecrã inteiro, escolhendo o ecrã) ou para uma janela com a resolução exacta, para enviar por NDI com NDI Tools ou OBS",
+        "Cada output pode ter um ou vários LED walls: lado a lado, uns por baixo dos outros ou em posições manuais (X / Y em píxeis); vários outputs ao mesmo tempo",
+        "Conteúdos: mira animada com movimento em todos os tiles, boneco a colocar quadrados do tamanho de cada tile (da esquerda para a direita ou da direita para a esquerda), logótipo à escolha (centro, a pulsar, a saltar ou em cada tile), grelha de tiles, cablagem por porta do processador, cores sólidas, varrimento de linhas, gradientes, xadrez e texto a passar",
+        "Pré-visualização ao vivo no centro, com velocidade, brilho e nomes/números configuráveis; guardar o frame em PNG",
+        "Exportar: test patterns LED em PNG (um por LED wall e um por output) e preset de Resolume Arena Advanced Output para LED (um ecrã por output, uma slice por LED wall)"
+      ],
+      "title_en": "LED Output: live test patterns, PC displays and windows for NDI",
+      "items_en": [
+        "New Output tab in LED mode: live test patterns, always at the LED walls native resolution (1 pixel = 1 LED pixel)",
+        "Send to a PC display (fullscreen video output, choosing the display) or to a window at the exact resolution, to send over NDI with NDI Tools or OBS",
+        "Each output can carry one or several LED walls: side by side, stacked or at manual positions (X / Y in pixels); several outputs at the same time",
+        "Content: animated test card with motion in every tile, a character placing tile-sized squares (left to right or right to left), logo of your choice (centre, pulsing, bouncing or in every tile), tile grid, cabling by processor port, solid colours, line sweep, gradients, checkerboard and scrolling text",
+        "Live preview in the centre, with configurable speed, brightness and names/numbers; save the frame as PNG",
+        "Export: LED test patterns as PNG (one per LED wall and one per output) and a Resolume Arena Advanced Output preset for LED (one screen per output, one slice per LED wall)"
+      ]
+    },
+    {
       "version": "0.33.3",
       "date": "2026-11-16",
       "title": "Documentação LED: tabelas longas continuam na folha seguinte",
