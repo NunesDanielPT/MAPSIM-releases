@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.37.0",
+      "date": "2026-11-16",
+      "title": "Desenho de ligação da energia",
+      "items": [
+        "Energia: novo \"Desenho de ligação\" na vista de frente, como o dos cabos de dados — quadros por baixo do chão, cabo de alimentação até à entrada de corrente (◆) de cada circuito, links de energia entre painéis com setas e a corrente que passa em cada cabo; cores por fase (L1 vermelho, L2 azul, L3 verde)",
+        "Botões \"Desenho de ligação\" e \"Esquema dos quadros\" no separador Energia",
+        "Documentação LED: nova folha \"Energia — desenho de ligação\" e, na lista de circuitos, a corrente no cabo de entrada e nos links de energia",
+        "Adicionar processador: lista dividida por marca (pronta para mais marcas)"
+      ],
+      "title_en": "Power wiring drawing",
+      "items_en": [
+        "Power: new \"Wiring drawing\" in the front view, like the data cabling — distros below the floor, feed cable to the power input (◆) of each circuit, power links between panels with arrows and the current in each cable; colours by phase (L1 red, L2 blue, L3 green)",
+        "\"Wiring drawing\" and \"Distro schematic\" buttons in the Power tab",
+        "LED documentation: new \"Power — wiring drawing\" sheet and, in the circuit list, the current in the input cable and power links",
+        "Add processor: list grouped by brand (ready for more brands)"
+      ]
+    },
+    {
       "version": "0.36.0",
       "date": "2026-11-16",
       "title": "Cabos MAIN no boneco, marca de água e ligação para NovaLCT",
