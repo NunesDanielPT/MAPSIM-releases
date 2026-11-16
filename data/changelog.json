@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.28.0",
+      "date": "2026-11-16",
+      "title": "Cablagem manual e documentação técnica LED",
+      "items": [
+        "Processamento: modo Automático ou Manual — no manual escolhes a porta (P1, P2…) e clicas ou arrastas sobre os painéis pela ordem do cabo; clicar no último painel desfaz e Shift + clique tira o painel da porta",
+        "Cada porta mostra a carga em %; avisos para portas acima da capacidade, ligações entre painéis não vizinhos e painéis sem cabo de dados",
+        "Botões \"Limpar esta porta\", \"Limpar tudo\" e \"Começar com o automático\" (copia a cablagem automática para editares)",
+        "Nova Documentação técnica LED (PDF A4 horizontal), no menu Exportar: 1) medidas e nomes; 2) ligação técnica com o esquema MAIN/BACKUP e a tabela de portas por processador; 3) lista de material (painéis, barras, pés, stacks, processadores, cabos de rede e de energia); 4) pesos, consumos, amperes por fase e toda a informação dos LED walls",
+        "Vista 2D volta a enquadrar sozinha quando a janela muda de tamanho (até moveres a vista à mão)"
+      ],
+      "title_en": "Manual cabling and LED technical documentation",
+      "items_en": [
+        "Processing: Automatic or Manual mode — in manual you pick the port (P1, P2…) and click or drag over the panels in cable order; clicking the last panel undoes it and Shift + click removes the panel from the port",
+        "Each port shows its load in %; warnings for ports over capacity, links between non-adjacent panels and panels without a data cable",
+        "\"Clear this port\", \"Clear all\" and \"Start from automatic\" buttons (copies the automatic cabling so you can edit it)",
+        "New LED technical documentation (A4 landscape PDF), in the Export menu: 1) dimensions and names; 2) technical connection with the MAIN/BACKUP diagram and the port table per processor; 3) bill of materials (panels, bars, feet, stacks, processors, network and power cables); 4) weights, consumption, amps per phase and all LED wall information",
+        "2D view re-fits automatically when the window is resized (until you move the view by hand)"
+      ]
+    },
+    {
       "version": "0.27.0",
       "date": "2026-11-16",
       "title": "Menu do botão direito e informação completa dos LED walls",
