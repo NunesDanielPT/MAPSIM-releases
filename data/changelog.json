@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.39.0",
+      "date": "2026-11-16",
+      "title": "Quadros eléctricos personalizados e biblioteca",
+      "items": [
+        "Energia: botão direito nos quadros da lista — ver informação, duplicar, mudar o nome, guardar na minha biblioteca, saídas por defeito, apagar",
+        "O desenho de ligação da energia e as folhas de energia do PDF só aparecem depois de adicionares um quadro",
+        "Quadros personalizados: cria um quadro com a entrada, fases, corrente, saídas, medidas e peso da tua empresa e guarda-o na tua biblioteca (fica neste computador); aparece em \"Os meus quadros\" ao adicionar",
+        "Biblioteca de quadros: gerir, apagar, exportar para ficheiro e importar noutro PC",
+        "Cada quadro do projecto guarda a sua definição — o projecto abre igual noutro computador mesmo sem a biblioteca"
+      ],
+      "title_en": "Custom power distros and library",
+      "items_en": [
+        "Power: right-click on distros in the list — view info, duplicate, rename, save to my library, default outputs, delete",
+        "The power wiring drawing and the PDF power sheets only appear after you add a distro",
+        "Custom distros: create a distro with your company input, phases, current, outputs, dimensions and weight and save it to your library (stored on this computer); it appears under \"My distros\" when adding",
+        "Distro library: manage, delete, export to a file and import on another PC",
+        "Each distro in the project keeps its definition — the project opens the same on another computer even without the library"
+      ]
+    },
+    {
       "version": "0.38.0",
       "date": "2026-11-16",
       "title": "Folhas de ligação em grande e stacks reais",
