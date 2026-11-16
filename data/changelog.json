@@ -1,6 +1,30 @@
 {
   "versions": [
     {
+      "version": "0.42.0",
+      "date": "2026-11-16",
+      "title": "Base plates oficiais, estrutura visível, novas marcas e numeração de baixo para cima",
+      "items": [
+        "Numeração das linhas de baixo para cima (1 = linha de baixo) em todo o lado: números por fora do LED, folhas de ligação, tabelas, test patterns e IDs dos tiles (1.1 = canto inferior esquerdo)",
+        "Output · Boneco: o técnico volta a passar os cabos MAIN depois de montar os tiles; nova opção Animação — montar e passar cabos, só montar, ou só passar os cabos (precisa de um processador no Processamento)",
+        "Estrutura: \"Pés\" substituídos por Base plates / floor bases oficiais — 0,5 m (1 painel) e 1 m (2 painéis), escolha automática ou só de um tamanho; acessórios do fabricante (base bars, header bars, kit de stacking) mostrados no inspector e na lista de material",
+        "Estrutura visível na vista de frente 2D, mesmo com vários LED walls: base plates por baixo com o tamanho, posição dos stacks, fly bars, estropos e truss com motores; botão Estrutura para mostrar/ocultar; mini desenhos de frente e lateral no inspector",
+        "Novos LED walls: ROE Visual Black Pearl BP2V2 e Diamond DM2.6, Absen PL2.5 Pro V10 e NT2.6 V2, Planar/Leyard CLI2.6 — com medidas, peso, consumo e acessórios das fichas oficiais",
+        "Novos processadores: NovaStar MCTRL4K, Brompton Tessera SX40, S8, S4 e M2, Colorlight X20 e X16E",
+        "Exportar ligação para o software do processador: um CSV por processador, com os termos de cada marca — NovaLCT (NovaStar), Tessera (Brompton), LEDVISION / iSet (Colorlight)"
+      ],
+      "title_en": "Official base plates, visible structure, new brands and bottom-up numbering",
+      "items_en": [
+        "Row numbering bottom-up (1 = bottom row) everywhere: numbers outside the LED, wiring sheets, tables, test patterns and tile IDs (1.1 = bottom-left corner)",
+        "Output · Character: the technician runs the MAIN cables again after building the tiles; new Animation option — build and cable, tiles only, or cables only (needs a processor in Processing)",
+        "Structure: \"Feet\" replaced by official base plates / floor bases — 0.5 m (1 panel) and 1 m (2 panels), automatic or a single size; manufacturer accessories (base bars, header bars, stacking kit) shown in the inspector and bill of materials",
+        "Structure visible in the 2D front view, even with several LED walls: base plates underneath with their size, stack positions, fly bars, slings and truss with hoists; Structure button to show/hide; front and side mini drawings in the inspector",
+        "New LED walls: ROE Visual Black Pearl BP2V2 and Diamond DM2.6, Absen PL2.5 Pro V10 and NT2.6 V2, Planar/Leyard CLI2.6 — with size, weight, power and accessories from official sheets",
+        "New processors: NovaStar MCTRL4K, Brompton Tessera SX40, S8, S4 and M2, Colorlight X20 and X16E",
+        "Export connection for the processor software: one CSV per processor, using each brand's terms — NovaLCT (NovaStar), Tessera (Brompton), LEDVISION / iSet (Colorlight)"
+      ]
+    },
+    {
       "version": "0.41.0",
       "date": "2026-11-16",
       "title": "3D claro na documentação, sobreposições ajustáveis e novo técnico",
