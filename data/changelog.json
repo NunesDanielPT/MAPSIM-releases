@@ -1,6 +1,22 @@
 {
   "versions": [
     {
+      "version": "0.36.0",
+      "date": "2026-11-16",
+      "title": "Cabos MAIN no boneco, marca de água e ligação para NovaLCT",
+      "items": [
+        "Output · Boneco: depois de colocar os tiles todos, o boneco passa os cabos MAIN de cada porta, tile a tile pela ordem da cablagem, com a ficha P1, P2… no início",
+        "Output · Mira animada: marca de água com o logótipo MAPSIM LED",
+        "Exportar → NovaStar NovaLCT: ficheiro CSV com a ligação de cada porta (processador, porta MAIN/BACKUP, ordem das receiving cards, tile, X / Y e tamanho de cada cabinet) para configurar o Screen Connection do NovaLCT ou o SmartLCT; também no Processamento"
+      ],
+      "title_en": "MAIN cables in the character animation, watermark and NovaLCT connection",
+      "items_en": [
+        "Output · Character: after placing all tiles, the character runs the MAIN cables of each port, tile by tile in cabling order, with the P1, P2… plug at the start",
+        "Output · Animated test card: MAPSIM LED logo watermark",
+        "Export → NovaStar NovaLCT: CSV file with each port connection (processor, MAIN/BACKUP port, receiving card order, tile, X / Y and size of each cabinet) to set up NovaLCT Screen Connection or SmartLCT; also in Processing"
+      ]
+    },
+    {
       "version": "0.35.0",
       "date": "2026-11-16",
       "title": "Energia LED, vários processadores e distâncias entre LED walls",
