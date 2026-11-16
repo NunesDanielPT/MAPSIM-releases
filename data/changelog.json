@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.47.0",
+      "date": "2026-11-16",
+      "title": "Automatic POWER com pré-visualização e Output simplificado que segue o LED wall",
+      "items": [
+        "Energia: deixa de ser automática — ao adicionar um quadro não se liga nada; desenhas os circuitos à mão (como na cablagem de dados) e escolhes a saída CEE / Socapex",
+        "Energia: botão \"⚡ Automatic POWER\" (na barra e no inspector) — mostra a pré-visualização dos circuitos e das saídas dos quadros; \"Aceitar\" aplica (e continua editável), \"Não\" mantém o desenho à mão",
+        "Output simplificado: padrões em botões grandes — Mira animada, Boneco a montar, Tiles por porta e Gradiente em movimento; opções em botões em vez de listas; tirados o cronómetro, o hue rotate e os outros padrões",
+        "Output: a disposição segue o separador LED wall — \"Como no LED wall\" (posição real: esquerda/direita e altura) ou \"Como no LED wall, sem espaços\"; também no Resolume e na exportação para o software do processador",
+        "Definições LED: por defeito a energia é desenhada à mão e a ligação às saídas é manual"
+      ],
+      "title_en": "Automatic POWER with preview and simplified Output following the LED wall layout",
+      "items_en": [
+        "Power: no longer automatic — adding a distro connects nothing; you draw the circuits by hand (like the data cabling) and choose the CEE / Socapex output",
+        "Power: \"⚡ Automatic POWER\" button (toolbar and inspector) — previews the circuits and distro outputs; \"Accept\" applies them (still editable), \"No\" keeps hand drawing",
+        "Simplified output: patterns as big buttons — Animated test card, Character building, Tiles by port and Moving gradient; options as buttons instead of lists; timer, hue rotate and the other patterns removed",
+        "Output: the layout follows the LED wall tab — \"As in the LED wall tab\" (real position: left/right and height) or \"no gaps\"; also in Resolume and the processor-software export",
+        "LED settings: by default power is drawn by hand and output connection is manual"
+      ]
+    },
+    {
       "version": "0.46.0",
       "date": "2026-11-16",
       "title": "Definições LED / Projecção e PDF legível",
