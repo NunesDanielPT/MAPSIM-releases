@@ -1,6 +1,28 @@
 {
   "versions": [
     {
+      "version": "0.43.0",
+      "date": "2026-11-16",
+      "title": "Cablagem só automática a pedido, saídas CEE/Socapex por tile e fixação ao truss",
+      "items": [
+        "Processamento: a cablagem já não é feita sozinha — um processador novo começa sem linhas; o automático só entra quando carregas em \"Preencher automático (editável)\" ou \"Ligar automático\", e há botões para o tirar (\"Tirar o automático\", \"Limpar tudo\", \"Limpar esta porta\")",
+        "Energia: clica num tile do LED para escolher o quadro e a saída desse circuito — CEE 16 A, Schuko ou Socapex com a via (1–6), com a fase; as saídas ocupadas aparecem bloqueadas. Opção \"Só manual\" para planear cada saída à mão; lista dos circuitos no inspector e na documentação PDF (✎ = escolhido à mão)",
+        "Estrutura suspensa: fixação ao truss à escolha — argola (eyebolt) + manilha + estropo de aço, garra (clamp) da barra directa ao truss, ou sistema da marca (adaptador de truss); cada painel traz a do fabricante (ROE BP2V2 / DM2.6: header com clamp; Absen PL2.5: hanging bar com eyebolts). Desenhado em 2D, 3D e nas folhas do PDF; garras, manilhas, adaptadores e cabos de segurança na lista de material",
+        "Pontos de suspensão: 2 por barra de 1 m e 1 por barra de 0,5 m",
+        "Vista 2D: com o LED suspenso, o nome sobe para cima do truss e os números das colunas passam para baixo para não taparem a estrutura",
+        "Inspector da estrutura: corrigida a lista que mostrava linhas de ground stack em LED suspenso"
+      ],
+      "title_en": "Cabling automatic only on request, CEE/Socapex outputs per tile and truss attachment",
+      "items_en": [
+        "Processing: cabling is no longer done on its own — a new processor starts with no lines; automatic only applies when you click \"Fill automatically (editable)\" or \"Turn automatic on\", with buttons to remove it (\"Remove automatic\", \"Clear all\", \"Clear this port\")",
+        "Power: click an LED tile to choose the distro and output for that circuit — CEE 16 A, Schuko or Socapex with the way (1–6), with its phase; busy outputs are locked. \"Manual only\" option to plan every output by hand; circuit list in the inspector and in the PDF documentation (✎ = chosen by hand)",
+        "Flown structure: truss attachment of your choice — eyebolt + shackle + steel sling, bar clamp directly onto the truss, or brand system (truss adapter); each panel brings the manufacturer's (ROE BP2V2 / DM2.6: header with clamp; Absen PL2.5: hanging bar with eyebolts). Drawn in 2D, 3D and the PDF sheets; clamps, shackles, adapters and safety cables in the bill of materials",
+        "Rigging points: 2 per 1 m bar and 1 per 0.5 m bar",
+        "2D view: with a flown LED the name moves above the truss and the column numbers move below so they do not cover the structure",
+        "Structure inspector: fixed the list that showed ground-stack rows on flown LED walls"
+      ]
+    },
+    {
       "version": "0.42.0",
       "date": "2026-11-16",
       "title": "Base plates oficiais, estrutura visível, novas marcas e numeração de baixo para cima",
