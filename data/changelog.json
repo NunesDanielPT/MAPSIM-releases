@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.38.0",
+      "date": "2026-11-16",
+      "title": "Folhas de ligação em grande e stacks reais",
+      "items": [
+        "Documentação LED: novas folhas \"Ligação de dados\" e \"Ligação de energia\", uma por LED wall e em grande, para ler bem em A4 impresso e montar os cabos",
+        "Em cada tile aparece a porta (P1, P2…) com o processador, ou a fase (L1/L2/L3) com o quadro e a saída, e a ordem (#) na cadeia; linhas grossas com setas pela ordem do cabo",
+        "Etiquetas MAIN / BKP e IN fora do LED, junto ao tile de entrada; corrente em cada cabo de energia",
+        "Números das linhas e das colunas por fora do LED wall (no PDF e na vista 2D)",
+        "Stacks em 3D e nos desenhos refeitos como ground support real: escada vertical atrás do LED, base no chão para trás com pé traseiro, diagonal, pés niveladores, abraçadeiras ao LED e lastro na base; vista 3D da estrutura no PDF vista de trás"
+      ],
+      "title_en": "Large wiring sheets and real stacks",
+      "items_en": [
+        "LED documentation: new \"Data wiring\" and \"Power wiring\" sheets, one per LED wall and large, readable on printed A4 for cable rigging",
+        "Each tile shows the port (P1, P2…) with the processor, or the phase (L1/L2/L3) with the distro and output, and the order (#) in the chain; thick lines with arrows in cable order",
+        "MAIN / BKP and IN labels outside the LED, next to the input tile; current on each power cable",
+        "Row and column numbers outside the LED wall (in the PDF and in the 2D view)",
+        "Stacks in 3D and in the drawings redone as real ground support: vertical ladder behind the LED, floor base going back with rear foot, diagonal, levelling feet, clamps to the LED and ballast on the base; structure 3D view in the PDF seen from behind"
+      ]
+    },
+    {
       "version": "0.37.0",
       "date": "2026-11-16",
       "title": "Desenho de ligação da energia",
