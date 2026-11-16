@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.48.0",
+      "date": "2026-11-16",
+      "title": "Automatic POWER por quadro, desenho da energia mais fácil e Automatic DATA",
+      "items": [
+        "Automatic POWER pergunta primeiro que quadro(s) vais usar (ou adiciona um ali mesmo), depois mostra a pré-visualização; os circuitos já desenhados à mão ficam e o automático só preenche o resto",
+        "Quadro: botão \"⚡ Automatic POWER — neste quadro\" e secção \"Desenhar circuitos\" com as saídas do quadro em botões (Socapex com a via, CEE, fase e o circuito ligado)",
+        "Desenho à mão da energia: clicar numa saída (no inspector ou no quadro desenhado em baixo) começa o circuito dessa saída; clicar num tile longe da linha larga-a e começa um circuito novo; Enter termina o circuito",
+        "Processamento: botão \"⚡ Automatic DATA\" (na barra e no inspector) — escolhes o percurso (colunas/linhas) e o canto de início em botões, vês a pré-visualização e aceitas ou continuas à mão; tirados o modo automático e as opções escondidas; Enter passa à porta seguinte"
+      ],
+      "title_en": "Automatic POWER per distro, easier power drawing and Automatic DATA",
+      "items_en": [
+        "Automatic POWER first asks which distro(s) you will use (or add one right there), then shows the preview; hand-drawn circuits stay and automatic only fills the rest",
+        "Distro: \"⚡ Automatic POWER — on this distro\" button and a \"Draw circuits\" section with the distro outputs as buttons (Socapex with way, CEE, phase and connected circuit)",
+        "Hand-drawn power: clicking an output (in the inspector or on the distro drawn below) starts that output's circuit; clicking a tile away from the line releases it and starts a new circuit; Enter finishes the circuit",
+        "Processing: \"⚡ Automatic DATA\" button (toolbar and inspector) — choose the path (columns/rows) and start corner with buttons, see the preview and accept or keep drawing by hand; automatic mode and hidden options removed; Enter moves to the next port"
+      ]
+    },
+    {
       "version": "0.47.0",
       "date": "2026-11-16",
       "title": "Automatic POWER com pré-visualização e Output simplificado que segue o LED wall",
