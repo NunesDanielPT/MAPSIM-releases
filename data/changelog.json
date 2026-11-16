@@ -1,6 +1,30 @@
 {
   "versions": [
     {
+      "version": "0.33.2",
+      "date": "2026-11-16",
+      "title": "Correcção da 0.33.1",
+      "items": [
+        "A versão 0.33.1 não arrancava (erro no código). Corrigido — inclui os nomes de ficheiro com LED ou PROJ"
+      ],
+      "title_en": "Fix for 0.33.1",
+      "items_en": [
+        "Version 0.33.1 did not start (code error). Fixed — includes the file names ending in LED or PROJ"
+      ]
+    },
+    {
+      "version": "0.33.1",
+      "date": "2026-11-16",
+      "title": "Nome dos ficheiros com LED ou PROJ",
+      "items": [
+        "Ao guardar, o nome do ficheiro termina automaticamente em LED (projectos LED) ou PROJ (projectos de projecção), por exemplo \"Gala 2026 LED.mapsim\" e \"Gala 2026 PROJ.mapsim\". Também na gravação automática. Se o nome já terminar assim, não é repetido"
+      ],
+      "title_en": "File names end in LED or PROJ",
+      "items_en": [
+        "When saving, the file name automatically ends in LED (LED projects) or PROJ (projection projects), e.g. \"Gala 2026 LED.mapsim\" and \"Gala 2026 PROJ.mapsim\". Also for autosave. If the name already ends that way it is not repeated"
+      ]
+    },
+    {
       "version": "0.33.0",
       "date": "2026-11-16",
       "title": "Botão direito na lista da projecção",
