@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.23.0",
+      "date": "2026-11-16",
+      "title": "Lentes trancadas aos limites reais",
+      "items": [
+        "O zoom de cada lente fica trancado ao alcance oficial do fabricante: não é possível passar do mínimo nem do máximo (por exemplo, uma lente de 1,49–2,03:1 pára em 2,03).",
+        "O lens shift vertical e horizontal também fica trancado aos limites reais da lente, incluindo a redução quando se combina shift V e H.",
+        "Se escreveres um valor fora do alcance, o MapSim corrige para o limite e mostra um aviso com o alcance real.",
+        "Os campos mostram o alcance permitido (zoom e shift) e, ao trocar de lente ou de projector, os valores são ajustados à lente nova.",
+        "Projectos antigos com valores fora do alcance são corrigidos ao abrir."
+      ],
+      "title_en": "Lenses locked to their real limits",
+      "items_en": [
+        "Each lens's zoom is locked to the manufacturer's official range: you cannot go below the minimum or above the maximum (for example, a 1.49–2.03:1 lens stops at 2.03).",
+        "Vertical and horizontal lens shift are also locked to the lens's real limits, including the reduction when V and H shift are combined.",
+        "If you type a value out of range, MapSim corrects it to the limit and shows a message with the real range.",
+        "The fields show the allowed range (zoom and shift) and, when you change lens or projector, the values are adjusted to the new lens.",
+        "Older projects with out-of-range values are corrected when opened."
+      ]
+    },
+    {
       "version": "0.22.1",
       "date": "2026-11-14",
       "title": "Painel da esquerda mais arrumado",
