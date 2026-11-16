@@ -1,6 +1,22 @@
 {
   "versions": [
     {
+      "version": "0.29.1",
+      "date": "2026-11-16",
+      "title": "Correcção: exportar PDF grande deixava o MapSim preso",
+      "items": [
+        "Exportar a documentação LED em PDF com vários LED walls dava erro (documento acima do limite de 2 MB de um URL) e deixava uma janela escondida aberta — o MapSim ficava a correr em fundo e ao abrir de novo aparecia \"Object has been destroyed\". O PDF agora é gerado a partir de um ficheiro temporário, sem limite de tamanho",
+        "Ao fechar a janela principal, o MapSim fecha também janelas escondidas e termina o processo",
+        "Se o PDF falhar, aparece um aviso em vez de um erro"
+      ],
+      "title_en": "Fix: exporting a large PDF left MapSim stuck",
+      "items_en": [
+        "Exporting the LED documentation to PDF with several LED walls failed (document above the 2 MB URL limit) and left a hidden window open — MapSim kept running in the background and reopening showed \"Object has been destroyed\". The PDF is now generated from a temporary file, with no size limit",
+        "Closing the main window also closes hidden windows and ends the process",
+        "If the PDF fails, a warning is shown instead of an error"
+      ]
+    },
+    {
       "version": "0.29.0",
       "date": "2026-11-16",
       "title": "Estrutura LED em 3D, lastro e desenhos de rigging; NovaStar MCTRL4K",
