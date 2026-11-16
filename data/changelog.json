@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.24.0",
+      "date": "2026-11-16",
+      "title": "Ecrã inicial, workspace LED wall e correcção das resoluções",
+      "items": [
+        "Corrigido: projectores com pixel shift (Panasonic PT-RQ, Barco UDX-4K, Epson EB-PQ) apareciam com resolução 4K. Agora os cálculos usam a resolução nativa do chip (ex.: PT-RQ25K 1920×1200, sinal 3840×2400). Em Definições → Predefinições podes escolher usar a resolução do sinal.",
+        "Corrigido: ao mudar o modelo de um projector de um array, o MapSim pergunta se muda em todos; se for só num, o array avisa que o canvas está calculado com o modelo do array.",
+        "Novo ecrã inicial: ao abrir o MapSim escolhes o tipo de projecto — Projecção ou LED wall — ou abres/continuas um projecto.",
+        "Novo workspace LED wall: LED walls com cabinets (genéricos ou personalizados), grelha numerada em 3D, canvas em píxeis, tamanho, pitch, peso, consumo e corrente, e ficha técnica LED.",
+        "Separadores Projecção / LED wall no topo: o mesmo projecto pode ter as duas partes. A electrónica dos LED (processadores, receiving cards, cablagem) vem a seguir."
+      ],
+      "title_en": "Start screen, LED wall workspace and resolution fix",
+      "items_en": [
+        "Fixed: projectors with pixel shift (Panasonic PT-RQ, Barco UDX-4K, Epson EB-PQ) showed a 4K resolution. Calculations now use the native chip resolution (e.g. PT-RQ25K 1920×1200, 3840×2400 signal). In Settings → Defaults you can choose the signal resolution instead.",
+        "Fixed: when you change the model of a projector in an array, MapSim asks whether to change all of them; if only one, the array warns that its canvas is calculated with the array model.",
+        "New start screen: when MapSim opens you choose the project type — Projection or LED wall — or open/continue a project.",
+        "New LED wall workspace: LED walls with cabinets (generic or custom), numbered grid in 3D, canvas in pixels, size, pitch, weight, power and current, and an LED spec sheet.",
+        "Projection / LED wall tabs at the top: the same project can have both parts. LED electronics (processors, receiving cards, cabling) come next."
+      ]
+    },
+    {
       "version": "0.23.0",
       "date": "2026-11-16",
       "title": "Lentes trancadas aos limites reais",

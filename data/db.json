@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": "2026.11.14.5",
+ "version": "2026.11.16.1",
  "updated": "2026-11-14",
  "sources": {
   "panaRQ25": {
@@ -215,7 +215,11 @@
      "barco4K40pw"
     ],
     "note": "200-240 V ±10%, 20 A"
-   }
+   },
+   "nativeRes": [
+    2560,
+    1600
+   ]
   },
   {
    "id": "udx-w32",
@@ -290,7 +294,11 @@
      "barcoSpec"
     ],
     "note": "200-240 V ±10%, 20 A"
-   }
+   },
+   "nativeRes": [
+    2560,
+    1600
+   ]
   },
   {
    "id": "udx-4k28",
@@ -326,7 +334,11 @@
      "barco4K28"
     ],
     "note": "Manual Barco: 200-240 V (±10%) \"32A\"; 120-160 V 20 A (potência reduzida)"
-   }
+   },
+   "nativeRes": [
+    2560,
+    1600
+   ]
   },
   {
    "id": "udx-w26",
@@ -399,7 +411,11 @@
      "barco4K22"
     ],
     "note": "1900 W @ 230 V; 200-240 V ±10%, 20 A"
-   }
+   },
+   "nativeRes": [
+    2560,
+    1600
+   ]
   },
   {
    "id": "hdx-w20",
@@ -575,7 +591,11 @@
      "epsonPQ"
     ],
     "note": "Normal 1431 W / Quiet 975 W (220-240 V)"
-   }
+   },
+   "nativeRes": [
+    1920,
+    1080
+   ]
   },
   {
    "id": "eb-pq2216b",
@@ -610,7 +630,11 @@
      "epsonPQ"
     ],
     "note": "Normal 1114 W / Quiet 784 W (220-240 V)"
-   }
+   },
+   "nativeRes": [
+    1920,
+    1080
+   ]
   },
   {
    "id": "eb-pq2216w",
@@ -645,7 +669,11 @@
      "epsonPQ"
     ],
     "note": "Normal 1114 W / Quiet 784 W (220-240 V)"
-   }
+   },
+   "nativeRes": [
+    1920,
+    1080
+   ]
   },
   {
    "id": "eb-pq2213b",
@@ -680,7 +708,11 @@
      "epsonPQ"
     ],
     "note": "Normal 925 W / Quiet 666 W (220-240 V)"
-   }
+   },
+   "nativeRes": [
+    1920,
+    1080
+   ]
   },
   {
    "id": "eb-pu2120w",
@@ -931,7 +963,11 @@
     "src": [
      "panaRQ25"
     ]
-   }
+   },
+   "nativeRes": [
+    1920,
+    1200
+   ]
   },
   {
    "id": "pt-rz24k",
@@ -1001,7 +1037,11 @@
     "src": [
      "panaRQ18"
     ]
-   }
+   },
+   "nativeRes": [
+    1920,
+    1200
+   ]
   },
   {
    "id": "pt-rz17k",
