@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.26.2",
+      "date": "2026-11-16",
+      "title": "Trocar entre MapSim Projecção e MapSim LED pelo logótipo",
+      "items": [
+        "Junto ao logótipo há agora uma seta ▾: clica e escolhe MapSim Projecção ou MapSim LED.",
+        "Os separadores LED wall / Processamento só aparecem dentro do MapSim LED."
+      ],
+      "title_en": "Switch between MapSim Projection and MapSim LED from the logo",
+      "items_en": [
+        "Next to the logo there is now a ▾ arrow: click it and choose MapSim Projection or MapSim LED.",
+        "The LED wall / Processing tabs only appear inside MapSim LED."
+      ]
+    },
+    {
       "version": "0.26.1",
       "date": "2026-11-16",
       "title": "Barras de ground stack de 1 m e 0,5 m",
