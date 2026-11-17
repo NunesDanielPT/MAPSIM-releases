@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.51.0",
+      "date": "2026-11-17",
+      "title": "Altura dos stacks e LED em cima de stage deck / riser",
+      "items": [
+        "Stacks: altura de cada stack em metros (peças de 1 m e de 0,5 m quando sobra meio metro) — sugestão de 3/4 da altura do LED, aviso se ficar abaixo de 2/3 ou acima do LED; peças na lista de material, na folha de posição dos stacks e nos desenhos; a altura também fica guardada na tua biblioteca de stacks",
+        "Stage deck / riser: o LED pode ser montado em cima de praticáveis 2 × 1 m e 1 × 1 m — Prolyte StageDex, Eurotruss Pro Deck ou Global Truss; pés fixos (0,2 a 1,2 m) ou telescópicos; a altura do deck sobe o LED automaticamente",
+        "Planta dos praticáveis no inspector: arrastar e encaixar (grelha de 0,5 m e arestas dos outros decks e do LED, sem sobreposição), duplo clique para rodar, \"Cobrir automaticamente\" por baixo do LED e dos stacks",
+        "Cálculo do stage deck: carga de cada praticável (pés das base plates, stacks e lastro) contra 750 kg/m² e a carga pontual do fabricante, carga por pé, apoios sem deck por baixo; decks e pés na lista de material, desenhos 2D/3D e nova folha \"Estrutura — stage deck / riser\" no PDF",
+        "Modo LED: o menu Adicionar já não deixa pôr linhas de truss (são da projecção)"
+      ],
+      "title_en": "Stack height and LED on a stage deck / riser",
+      "items_en": [
+        "Stacks: height of each stack in metres (1 m pieces plus 0.5 m when half a metre is left) — suggested 3/4 of the LED height, warning below 2/3 or above the LED; pieces in the bill of materials, the stack positions sheet and drawings; height is also saved in your stack library",
+        "Stage deck / riser: the LED can be mounted on 2 × 1 m and 1 × 1 m decks — Prolyte StageDex, Eurotruss Pro Deck or Global Truss; fixed legs (0.2 to 1.2 m) or telescopic; the deck height raises the LED automatically",
+        "Deck plan in the inspector: drag and snap (0.5 m grid and edges of other decks and the LED, no overlap), double-click to rotate, \"Cover automatically\" under the LED and stacks",
+        "Stage deck calculation: load on each deck (base plate feet, stacks and ballast) against 750 kg/m² and the manufacturer point load, load per leg, supports without a deck; decks and legs in the bill of materials, 2D/3D drawings and a new \"Structure — stage deck / riser\" PDF sheet",
+        "LED mode: the Add menu no longer allows truss lines (they belong to projection)"
+      ]
+    },
+    {
       "version": "0.50.0",
       "date": "2026-11-16",
       "title": "Suporte dentro da app e painel de admin mais prático",
