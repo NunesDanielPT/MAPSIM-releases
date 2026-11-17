@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.50.0",
+      "date": "2026-11-16",
+      "title": "Suporte dentro da app e painel de admin mais prático",
+      "items": [
+        "Definições → Suporte: enviar uma mensagem ao Daniel Nunes com nome e email — Reportar bug, Pedido para a base de dados ou Pedido de nova funcionalidade (com a versão e o sistema, se quiseres)",
+        "As mensagens ficam guardadas na app em \"As minhas mensagens\", com a conversa, o estado (aberto, respondido, encerrado) e resposta; aviso e número vermelho em Definições quando há resposta nova",
+        "Casos encerrados ficam visíveis na app 30 dias e depois desaparecem sozinhos (no painel de admin ficam arquivados)",
+        "Painel de admin (servidor 0.10.0): secção Suporte com abertos e arquivo — responder, responder e encerrar, encerrar, reabrir; os encerrados só abrem quando clicas",
+        "Painel de admin · Novidades: lista compacta com seleção múltipla (esconder / mostrar / remover várias), \"esconder tudo excepto as últimas N\", mostrar na app só as últimas N versões e opção para as versões novas chegarem escondidas"
+      ],
+      "title_en": "In-app support and a more practical admin panel",
+      "items_en": [
+        "Settings → Support: send a message to Daniel Nunes with name and email — Report a bug, Database request or Feature request (with version and system if you want)",
+        "Messages are kept in the app under \"My messages\", with the conversation, status (open, answered, closed) and reply; notice and red badge on Settings when there is a new reply",
+        "Closed cases stay visible in the app for 30 days and then disappear automatically (they stay archived in the admin panel)",
+        "Admin panel (server 0.10.0): Support section with open cases and archive — reply, reply and close, close, reopen; closed ones only open when clicked",
+        "Admin panel · News: compact list with multi-select (hide / show / remove several), \"hide all except the latest N\", show only the latest N versions in the app and an option for new versions to arrive hidden"
+      ]
+    },
+    {
       "version": "0.49.1",
       "date": "2026-11-16",
       "title": "Energia: o automático respeita o quadro e apagar o quadro limpa as linhas",

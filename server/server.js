@@ -1,7 +1,7 @@
 // MapSim — servidor de licenças (sem dependências; Node 18+)
 // Endpoints públicos: POST /api/activate, /api/check, /api/release · Painel: /admin (Basic Auth)
 'use strict';
-const SERVER_VERSION = '0.9.0';
+const SERVER_VERSION = '0.10.0';
 const http = require('http'), crypto = require('crypto'), fs = require('fs'), path = require('path');
 
 const DATA = process.env.DATA_DIR || '/data';
@@ -27,6 +27,8 @@ const publicRaw = crypto.createPublicKey(publicPem).export({ type: 'spki', forma
 const DBF = path.join(DATA, 'keys.json');
 let db = fs.existsSync(DBF) ? JSON.parse(fs.readFileSync(DBF, 'utf8')) : { keys: [], log: [] };
 db.changelog ||= []; // [{version,date,title,items[],hidden,edited}]
+db.tickets ||= [];   // suporte: [{id, token, machine, key, owner, name, email, type, subject, status:'open'|'answered'|'closed', created, updated, closedAt, appVersion, msgs:[{from:'user'|'admin', t, text}]}]
+db.settings ||= {};  // { newsMax: N (só as últimas N versões visíveis na app; 0 = todas), newHidden: bool (versões novas chegam escondidas) }
 const save = () => { const t = DBF + '.tmp'; fs.writeFileSync(t, JSON.stringify(db, null, 1)); fs.renameSync(t, DBF); };
 const log = (ev, k, ip, extra = '') => { db.log.unshift({ t: Date.now(), ev, key: k, ip, extra }); db.log = db.log.slice(0, 500); };
 const newKey = () => 'MAPS-' + Array.from({ length: 4 }, () => crypto.randomBytes(3).toString('hex').toUpperCase().slice(0, 5)).join('-');
@@ -59,7 +61,7 @@ async function syncChangelog(force) {
     for (const e of (j.versions || []).map(cleanEntry)) {
       if (!/^\d+\.\d+\.\d+$/.test(e.version)) continue;
       const cur = db.changelog.find(x => x.version === e.version);
-      if (!cur) { db.changelog.push({ ...e, hidden: false, edited: false }); changed = true; }
+      if (!cur) { db.changelog.push({ ...e, hidden: !!db.settings.newHidden, edited: false }); changed = true; }
       else if (!cur.edited && JSON.stringify([cur.date, cur.title, cur.items, cur.title_en, cur.items_en]) !== JSON.stringify([e.date, e.title, e.items, e.title_en, e.items_en])) { Object.assign(cur, e); changed = true; }
       else if (cur.edited && !cur.title_en && e.title_en) { cur.title_en = e.title_en; cur.items_en = e.items_en; changed = true; }
     }
@@ -107,6 +109,31 @@ async function api(req, res, route, ip) {
   send(res, 200, { ok: true, license: sign(k) });
 }
 
+/* ---------- suporte: mensagens da app (bug, base de dados, funcionalidades) ---------- */
+const TTYPE = { bug: 'Reportar bug', db: 'Pedido para a base de dados', feature: 'Pedido de nova funcionalidade' };
+const shits = new Map(); const slimited = ip => { const now = Date.now(), a = (shits.get(ip) || []).filter(t => now - t < 3600e3); a.push(now); shits.set(ip, a); return a.length > 240; };
+const tView = t => ({ id: t.id, type: t.type, subject: t.subject, status: t.status, created: t.created, updated: t.updated, closedAt: t.closedAt || null, msgs: t.msgs });
+async function supportApi(req, res, op, ip) {
+  if (slimited(ip)) return send(res, 429, { ok: false, error: 'Demasiados pedidos. Tenta mais tarde.' });
+  let q; try { q = JSON.parse(await body(req) || '{}'); } catch { return send(res, 400, { ok: false, error: 'Pedido inválido.' }); }
+  const machine = String(q.machine || '').slice(0, 64); if (!/^[0-9a-f]{32}$/.test(machine)) return send(res, 400, { ok: false, error: 'Identificador do PC inválido.' });
+  const txt = (v, n) => String(v || '').replace(/\r/g, '').trim().slice(0, n);
+  if (op === 'new') {
+    const name = txt(q.name, 80), email = txt(q.email, 120), type = TTYPE[q.type] ? q.type : 'bug', subject = txt(q.subject, 140), text = txt(q.message, 5000);
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !text) return send(res, 400, { ok: false, error: 'Preenche o nome, um email válido e a mensagem.' });
+    if (db.tickets.filter(t => t.machine === machine && t.status !== 'closed').length >= 20) return send(res, 429, { ok: false, error: 'Tens demasiados pedidos em aberto.' });
+    const k = db.keys.find(x => x.key === String(q.key || '').toUpperCase());
+    const t = { id: 'T' + Date.now().toString(36).toUpperCase() + crypto.randomBytes(2).toString('hex').toUpperCase(), token: crypto.randomBytes(16).toString('hex'), machine, key: k?.key || '', owner: k?.owner || '',
+      name, email, type, subject: subject || TTYPE[type], status: 'open', created: Date.now(), updated: Date.now(), appVersion: txt(q.appVersion, 20), system: txt(q.system, 400), unread: true, msgs: [{ from: 'user', t: Date.now(), text }] };
+    db.tickets.unshift(t); save(); return send(res, 200, { ok: true, id: t.id, token: t.token, ticket: tView(t) });
+  }
+  const list = Array.isArray(q.tickets) ? q.tickets.slice(0, 100) : [];
+  const mine = list.map(x => db.tickets.find(t => t.id === x?.id && t.token === x?.token && t.machine === machine)).filter(Boolean);
+  if (op === 'list') return send(res, 200, { ok: true, tickets: mine.map(tView) });
+  if (op === 'reply') { const t = mine[0], text = txt(q.message, 5000); if (!t || !text) return send(res, 400, { ok: false, error: 'Pedido inválido.' }); if (t.status === 'closed') return send(res, 400, { ok: false, error: 'Este caso já foi encerrado.' });
+    t.msgs.push({ from: 'user', t: Date.now(), text }); t.status = 'open'; t.updated = Date.now(); t.unread = true; save(); return send(res, 200, { ok: true, ticket: tView(t) }); }
+  send(res, 404, { ok: false, error: 'Não encontrado' });
+}
 const fmtT = t => t ? new Date(t).toLocaleString('pt-PT', { timeZone: process.env.TZ || 'Europe/Lisbon' }) : '—';
 const EV = { create: 'chave criada', activate: 'ativação', check: 'verificação', release: 'PC libertado pelo cliente', 'activate-fail': 'ativação recusada', 'check-fail': 'verificação recusada', 'release-fail': 'libertação recusada',
   'admin-revoke': 'revogada', 'admin-unrevoke': 'reativada', 'admin-free': 'PC libertado', 'admin-setexp': 'validade alterada', 'admin-perm': 'validade permanente', 'admin-delete': 'chave apagada' };
@@ -117,9 +144,14 @@ nav a{display:flex;justify-content:space-between;color:#c4ccd6;text-decoration:n
 main{flex:1;padding:26px 30px;min-width:0}h2{font-weight:500;margin:0 0 16px}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #232b35;padding:8px;text-align:left;vertical-align:top}th{color:#7f8b99;font-weight:500;font-size:12px;text-transform:uppercase}
 input,button,select{background:#151a21;color:#d8e0ea;border:1px solid #2b3540;border-radius:5px;padding:6px 9px;font:inherit}button{cursor:pointer}button:hover{border-color:#14c4ef}.danger{color:#ff7a7a}.ok{color:#3ddc97}.bad{color:#ff5d5d}.warn{color:#f5a524}
 .card{background:#0e1217;border:1px solid #232b35;border-radius:8px;padding:14px;margin:0 0 16px}code{font-family:Consolas,monospace;color:#9fd8ee}textarea{width:100%;background:#151a21;color:#d8e0ea;border:1px solid #2b3540;border-radius:5px;padding:8px;font:13px system-ui}
-.msg{background:#04222c;border:1px solid #14c4ef;padding:10px;border-radius:6px;margin-bottom:16px}small,.muted{color:#7f8b99}.news{border-top:1px solid #232b35;padding:12px 0}.news textarea{height:70px;margin:6px 0}.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}</style>
+.msg{background:#04222c;border:1px solid #14c4ef;padding:10px;border-radius:6px;margin-bottom:16px}small,.muted{color:#7f8b99}.news{border-top:1px solid #232b35;padding:12px 0}.news textarea{height:70px;margin:6px 0}.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+details.t{border:1px solid #232b35;border-radius:8px;margin:0 0 8px;background:#0e1217}details.t>summary{cursor:pointer;padding:10px 12px;display:grid;grid-template-columns:110px 190px 1fr 170px 90px;gap:10px;align-items:center;list-style:none}details.t>summary::-webkit-details-marker{display:none}
+details.t[open]>summary{border-bottom:1px solid #232b35}.tb{padding:12px}.bub{max-width:80%;padding:9px 12px;border-radius:10px;margin:6px 0;white-space:pre-wrap}.bub.u{background:#151a21;border:1px solid #2b3540}.bub.a{background:#04222c;border:1px solid #14c4ef;margin-left:auto}
+.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;border:1px solid #2b3540}.pill.open{color:#f5a524;border-color:#f5a524}.pill.answered{color:#14c4ef;border-color:#14c4ef}.pill.closed{color:#7f8b99}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff5d5d;margin-right:6px}
+.tabs a{color:#c4ccd6;text-decoration:none;padding:7px 12px;border-radius:6px;border:1px solid #232b35;margin-right:6px}.tabs a.on{background:#04222c;color:#14c4ef;border-color:#14c4ef}
+table.news td{padding:6px 8px}tr.hid td{opacity:.5}</style>
 <nav><h1><b>MapSim</b> licenças</h1><span class="v">servidor v${SERVER_VERSION}</span>
-${[['keys', '/admin', 'Chaves', db.keys.length], ['news', '/admin/news', 'Novidades', db.changelog.length], ['log', '/admin/log', 'Registo', db.log.length], ['config', '/admin/config', 'Configuração', '']]
+${[['keys', '/admin', 'Chaves', db.keys.length], ['support', '/admin/support', 'Suporte', db.tickets.filter(t => t.status !== 'closed').length || ''], ['news', '/admin/news', 'Novidades', db.changelog.length], ['log', '/admin/log', 'Registo', db.log.length], ['config', '/admin/config', 'Configuração', '']]
   .map(([k, u, t, n]) => `<a href="${u}" class="${k === section ? 'on' : ''}">${t}<em>${n}</em></a>`).join('')}</nav>
 <main><h2>${esc(title)}</h2>${msg ? `<div class="msg">${msg}</div>` : ''}${inner}</main></html>`;
 
@@ -139,15 +171,47 @@ function pageKeys(msg, q) {
 <form method="get" action="/admin" class="row" style="margin-bottom:10px"><input name="q" value="${esc(q.get('q') || '')}" placeholder="Procurar chave, cliente, PC…" style="width:280px"><button>Procurar</button>${f ? ' <a href="/admin" style="color:#14c4ef">limpar</a>' : ''}</form>
 <table><tr><th>Chave</th><th>Cliente</th><th>Estado</th><th>Validade</th><th>PC</th><th>Última verificação</th><th>Acções</th></tr>${rows || '<tr><td colspan="7"><small>Sem chaves.</small></td></tr>'}</table>`, msg);
 }
-function pageNews(msg) {
-  const forms = [{ version: '', date: new Date().toISOString().slice(0, 10), title: '', items: [], hidden: false, isNew: true }, ...db.changelog].map(e => `<form method="post" action="/admin/news" class="news">
-<div class="row"><input name="version" value="${esc(e.version)}" placeholder="0.9.0" ${e.isNew ? '' : 'readonly'} style="width:84px"> <input type="date" name="date" value="${esc(e.date)}"> <input name="title" value="${esc(e.title)}" placeholder="Título curto" style="width:340px">
-<label><input type="checkbox" name="hidden" ${e.hidden ? 'checked' : ''}> esconder</label> ${e.isNew ? '<b>nova versão</b>' : e.edited ? '<small class="ok">editado por ti</small>' : '<small>do GitHub</small>'}</div>
-<div class="row" style="align-items:flex-start"><div style="flex:1"><small>Português</small><textarea name="items" placeholder="Uma novidade por linha">${esc((e.items || []).join('\n'))}</textarea></div>
-<div style="flex:1"><small>English</small> <input name="title_en" value="${esc(e.title_en || '')}" placeholder="Title (English)" style="width:100%;margin:2px 0 0"><textarea name="items_en" placeholder="One item per line (English)">${esc((e.items_en || []).join('\n'))}</textarea></div></div>
-<div class="row"><button name="do" value="save">Guardar</button>${e.isNew ? '' : ` ${e.edited ? '<button name="do" value="reset">Repor texto do GitHub</button>' : ''} <button name="do" value="delete" class="danger" onclick="return confirm('Remover a versão ${esc(e.version)} das novidades?')">Remover</button>`}</div></form>`).join('');
-  return layout('news', 'Novidades', `<div class="card row"><form method="post" action="/admin/news"><button name="do" value="sync">Sincronizar com o GitHub</button></form>
-<small>Aparecem na app ao actualizar e em Definições → Updates · uma linha por novidade · as versões editadas aqui não são substituídas pelo GitHub</small></div><div class="card">${forms}</div>`, msg);
+function pageNews(msg, q = new URLSearchParams()) {
+  // lista compacta: escolhe várias de uma vez e esconde/mostra em bloco; editar abre só a versão escolhida
+  const f = (q.get('q') || '').toLowerCase(), show = q.get('show') || 'all', page = Math.max(1, +q.get('p') || 1), per = 50;
+  const all = db.changelog.filter(e => (!f || `${e.version} ${e.title}`.toLowerCase().includes(f)) && (show === 'all' || (show === 'hidden' ? e.hidden : !e.hidden)));
+  const list = all.slice((page - 1) * per, page * per), pages = Math.max(1, Math.ceil(all.length / per)), vis = db.changelog.filter(e => !e.hidden).length;
+  const edit = q.get('edit'), e0 = edit === 'new' ? { version: '', date: new Date().toISOString().slice(0, 10), title: '', items: [], isNew: true } : db.changelog.find(x => x.version === edit);
+  const form = e0 ? `<div class="card"><form method="post" action="/admin/news" class="news">
+<div class="row"><b>${e0.isNew ? 'Nova versão' : 'Editar ' + esc(e0.version)}</b> <input name="version" value="${esc(e0.version)}" placeholder="0.9.0" ${e0.isNew ? '' : 'readonly'} style="width:84px"> <input type="date" name="date" value="${esc(e0.date)}"> <input name="title" value="${esc(e0.title)}" placeholder="Título curto" style="width:340px">
+<label><input type="checkbox" name="hidden" ${e0.hidden ? 'checked' : ''}> esconder</label></div>
+<div class="row" style="align-items:flex-start"><div style="flex:1"><small>Português</small><textarea name="items" style="height:120px">${esc((e0.items || []).join('\n'))}</textarea></div>
+<div style="flex:1"><small>English</small> <input name="title_en" value="${esc(e0.title_en || '')}" placeholder="Title (English)" style="width:100%;margin:2px 0 0"><textarea name="items_en" style="height:120px">${esc((e0.items_en || []).join('\n'))}</textarea></div></div>
+<div class="row"><button name="do" value="save">Guardar</button>${!e0.isNew && e0.edited ? '<button name="do" value="reset">Repor texto do GitHub</button>' : ''} <a href="/admin/news" style="color:#14c4ef">fechar</a></div></form></div>` : '';
+  const qs = o => '/admin/news?' + new URLSearchParams({ q: q.get('q') || '', show, p: page, ...o }).toString();
+  const rows = list.map(e => `<tr class="${e.hidden ? 'hid' : ''}"><td><input type="checkbox" name="v" value="${esc(e.version)}" form="bulk"></td><td><b>${esc(e.version)}</b></td><td><small>${esc(e.date)}</small></td><td>${esc(e.title)}</td>
+  <td>${e.hidden ? '<span class="pill closed">escondida</span>' : '<span class="pill answered">visível</span>'} ${e.edited ? '<small class="ok">editada</small>' : ''}</td>
+  <td class="row"><form method="post" action="/admin/news"><input type="hidden" name="v" value="${esc(e.version)}"><button name="do" value="${e.hidden ? 'show' : 'hide'}">${e.hidden ? 'Mostrar' : 'Esconder'}</button></form><a href="${qs({ edit: e.version })}" style="color:#14c4ef">Editar</a></td></tr>`).join('');
+  return layout('news', 'Novidades', `<div class="card"><form method="post" action="/admin/news" class="row"><b>Na app:</b> mostrar só as últimas <input type="number" name="newsMax" min="0" max="200" value="${+db.settings.newsMax || 0}" style="width:70px"> versões visíveis <small>(0 = todas)</small>
+  <label><input type="checkbox" name="newHidden" ${db.settings.newHidden ? 'checked' : ''}> versões novas do GitHub chegam escondidas</label><button name="do" value="settings">Guardar</button></form>
+  <form method="post" action="/admin/news" class="row" style="margin-top:8px"><b>Limpeza rápida:</b> esconder tudo excepto as últimas <input type="number" name="keep" min="0" value="5" style="width:60px"> <button name="do" value="keep">Aplicar</button> <button name="do" value="hideall">Esconder todas</button> <button name="do" value="showall">Mostrar todas</button> <button name="do" value="sync">Sincronizar com o GitHub</button></form>
+  <small>${db.changelog.length} versões · ${vis} visíveis${+db.settings.newsMax > 0 ? ` · a app mostra as ${Math.min(vis, +db.settings.newsMax)} mais recentes` : ''}</small></div>
+  ${form}
+  <form method="get" action="/admin/news" class="row" style="margin-bottom:10px"><input name="q" value="${esc(q.get('q') || '')}" placeholder="Procurar versão ou título" style="width:240px"><select name="show"><option value="all">Todas</option><option value="visible" ${show === 'visible' ? 'selected' : ''}>Visíveis</option><option value="hidden" ${show === 'hidden' ? 'selected' : ''}>Escondidas</option></select><button>Filtrar</button> <a href="${qs({ edit: 'new' })}" style="color:#14c4ef">+ nova versão manual</a></form>
+  <form method="post" action="/admin/news" id="bulk" class="row" style="margin-bottom:8px"><label><input type="checkbox" onclick="document.querySelectorAll('input[name=v][form=bulk]').forEach(c=>c.checked=this.checked)"> seleccionar todas desta página</label>
+  <button name="do" value="bulkhide">Esconder seleccionadas</button><button name="do" value="bulkshow">Mostrar seleccionadas</button><button name="do" value="bulkdel" class="danger" onclick="return confirm('Remover as versões seleccionadas das novidades?')">Remover seleccionadas</button></form>
+  <table class="news"><tr><th></th><th>Versão</th><th>Data</th><th>Título</th><th>Estado</th><th></th></tr>${rows || '<tr><td colspan="6"><small>Sem versões.</small></td></tr>'}</table>
+  ${pages > 1 ? `<div class="row" style="margin-top:10px">${Array.from({ length: pages }, (_, i) => `<a href="${qs({ p: i + 1 })}" style="color:${i + 1 === page ? '#14c4ef' : '#c4ccd6'}">${i + 1}</a>`).join(' ')}</div>` : ''}`, msg);
+}
+function pageSupport(msg, q = new URLSearchParams()) {
+  const tab = q.get('tab') === 'closed' ? 'closed' : 'open', f = (q.get('q') || '').toLowerCase();
+  const list = db.tickets.filter(t => (tab === 'closed' ? t.status === 'closed' : t.status !== 'closed') && (!f || `${t.id} ${t.name} ${t.email} ${t.subject} ${t.owner}`.toLowerCase().includes(f)));
+  const openN = db.tickets.filter(t => t.status !== 'closed').length, closedN = db.tickets.length - openN, ST = { open: 'aberto', answered: 'respondido', closed: 'encerrado' };
+  const item = t => `<details class="t" ${q.get('id') === t.id ? 'open' : ''}><summary><span>${t.unread && t.status !== 'closed' ? '<span class="dot"></span>' : ''}<code>${esc(t.id)}</code></span><span>${esc(TTYPE[t.type] || t.type)}</span><span><b>${esc(t.subject)}</b><br><small>${esc(t.name)} · ${esc(t.email)}${t.owner ? ' · ' + esc(t.owner) : ''}</small></span><span><small>${fmtT(t.updated)}</small></span><span class="pill ${t.status}">${ST[t.status]}</span></summary>
+  <div class="tb"><small class="muted">Versão ${esc(t.appVersion || '—')} · ${esc(t.system || '')} · criado ${fmtT(t.created)}${t.closedAt ? ' · encerrado ' + fmtT(t.closedAt) : ''}</small>
+  ${t.msgs.map(m => `<div class="bub ${m.from === 'admin' ? 'a' : 'u'}"><small class="muted">${m.from === 'admin' ? 'Tu (MapSim)' : esc(t.name)} · ${fmtT(m.t)}</small><br>${esc(m.text)}</div>`).join('')}
+  ${t.status !== 'closed' ? `<form method="post" action="/admin/support"><input type="hidden" name="id" value="${esc(t.id)}"><textarea name="text" style="height:90px" placeholder="Resposta para ${esc(t.name)}…"></textarea>
+  <div class="row"><button name="do" value="reply">Responder</button><button name="do" value="replyclose">Responder e encerrar</button><button name="do" value="close" onclick="return confirm('Encerrar este caso?')">Encerrar caso</button><button name="do" value="read">Marcar como lido</button></div></form>`
+    : `<form method="post" action="/admin/support" class="row"><input type="hidden" name="id" value="${esc(t.id)}"><button name="do" value="reopen">Reabrir</button><button name="do" value="delete" class="danger" onclick="return confirm('Apagar definitivamente o caso ${esc(t.id)}?')">Apagar do arquivo</button></form>`}</div></details>`;
+  return layout('support', 'Suporte', `<div class="row tabs" style="margin-bottom:12px"><a href="/admin/support" class="${tab === 'open' ? 'on' : ''}">Abertos (${openN})</a><a href="/admin/support?tab=closed" class="${tab === 'closed' ? 'on' : ''}">Arquivo — encerrados (${closedN})</a>
+  <form method="get" action="/admin/support" class="row" style="margin-left:auto"><input type="hidden" name="tab" value="${tab}"><input name="q" value="${esc(q.get('q') || '')}" placeholder="Procurar nome, email, assunto…" style="width:240px"><button>Procurar</button></form></div>
+  ${tab === 'closed' ? '<p class="muted">Casos encerrados ficam aqui guardados; clica para ler. Na app do cliente o caso encerrado fica visível 30 dias e depois desaparece.</p>' : ''}
+  ${list.map(item).join('') || '<p class="muted">Sem mensagens.</p>'}`, msg);
 }
 function pageLog(q) {
   const f = (q.get('q') || '').toLowerCase(), ev = q.get('ev') || '';
@@ -168,7 +232,7 @@ function pageConfig() {
 async function admin(req, res, url) {
   if (!authed(req)) { res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="MapSim"' }); return res.end('Autenticação necessária'); }
   const q = new URLSearchParams(req.url.split('?')[1] || ''), html = h => send(res, 200, h, 'text/html; charset=utf-8');
-  if (req.method === 'GET') return html(url === '/admin/news' ? pageNews('') : url === '/admin/log' ? pageLog(q) : url === '/admin/config' ? pageConfig() : pageKeys('', q));
+  if (req.method === 'GET') return html(url === '/admin/news' ? pageNews('', q) : url === '/admin/support' ? pageSupport('', q) : url === '/admin/log' ? pageLog(q) : url === '/admin/config' ? pageConfig() : pageKeys('', q));
   // proteção CSRF: o POST tem de vir da própria página do painel
   const origin = req.headers.origin || req.headers.referer || '';
   try { if (new URL(origin).host !== req.headers.host) return send(res, 403, 'Origem inválida', 'text/plain'); } catch { return send(res, 403, 'Origem inválida', 'text/plain'); }
@@ -178,8 +242,13 @@ async function admin(req, res, url) {
     const k = { key: newKey(), owner: f.get('owner')?.slice(0, 80) || '—', note: f.get('note')?.slice(0, 120) || '', created: Date.now(), expires: dateMs(f.get('exp')), revoked: false, machine: null };
     db.keys.unshift(k); log('create', k.key, 'admin', k.owner); save(); msg = `Chave criada para <b>${esc(k.owner)}</b>: <code>${k.key}</code>`;
   } else if (url === '/admin/news') {
-    const d = f.get('do'), v = String(f.get('version') || '').trim();
+    const d = f.get('do'), v = String(f.get('version') || '').trim(), vs = new Set(f.getAll('v'));
     if (d === 'sync') { await syncChangelog(true); msg = 'Novidades sincronizadas com o GitHub.'; }
+    else if (d === 'settings') { db.settings.newsMax = Math.max(0, Math.min(200, +f.get('newsMax') || 0)); db.settings.newHidden = f.get('newHidden') === 'on'; save(); msg = 'Preferências das novidades guardadas.'; }
+    else if (d === 'keep') { const n = Math.max(0, +f.get('keep') || 0); db.changelog.forEach((e, i) => { e.hidden = i >= n; }); save(); msg = `Ficam visíveis as ${n} versões mais recentes; as outras foram escondidas.`; }
+    else if (d === 'hideall' || d === 'showall') { db.changelog.forEach(e => { e.hidden = d === 'hideall'; }); save(); msg = d === 'hideall' ? 'Todas as versões escondidas.' : 'Todas as versões visíveis.'; }
+    else if (d === 'hide' || d === 'show' || d === 'bulkhide' || d === 'bulkshow') { let n = 0; db.changelog.forEach(e => { if (vs.has(e.version)) { e.hidden = d.endsWith('hide'); n++; } }); save(); msg = `${n} versão(ões) ${d.endsWith('hide') ? 'escondida(s)' : 'visível(eis)'}.`; }
+    else if (d === 'bulkdel') { const n0 = db.changelog.length; db.changelog = db.changelog.filter(e => !vs.has(e.version)); save(); msg = `${n0 - db.changelog.length} versão(ões) removida(s).`; }
     else if (/^\d+\.\d+\.\d+$/.test(v)) {
       let e = db.changelog.find(x => x.version === v);
       if (d === 'reset' && e) { e.edited = false; save(); await syncChangelog(true); msg = `Versão ${esc(v)}: texto original reposto.`; }
@@ -192,6 +261,17 @@ async function admin(req, res, url) {
         db.changelog.sort((a, b) => vcmp(b.version, a.version)); save(); msg = `Versão ${esc(v)} guardada.`;
       }
     } else msg = 'Versão inválida (usa o formato 0.7.0).';
+  } else if (url === '/admin/support') {
+    const t = db.tickets.find(x => x.id === f.get('id')), d = f.get('do'), text = String(f.get('text') || '').trim().slice(0, 5000);
+    if (t) {
+      if ((d === 'reply' || d === 'replyclose') && text) { t.msgs.push({ from: 'admin', t: Date.now(), text }); t.status = 'answered'; t.updated = Date.now(); t.unread = false; msg = `Resposta enviada (${esc(t.id)}).`; }
+      if (d === 'close' || d === 'replyclose') { t.status = 'closed'; t.closedAt = Date.now(); t.updated = Date.now(); t.unread = false; msg = `Caso ${esc(t.id)} encerrado e arquivado.`; }
+      if (d === 'read') { t.unread = false; msg = 'Marcado como lido.'; }
+      if (d === 'reopen') { t.status = 'answered'; t.closedAt = null; t.updated = Date.now(); msg = `Caso ${esc(t.id)} reaberto.`; }
+      if (d === 'delete') { db.tickets = db.tickets.filter(x => x !== t); msg = `Caso ${esc(t.id)} apagado.`; }
+      save();
+    }
+    return html(pageSupport(msg, new URLSearchParams(d === 'close' || d === 'replyclose' || d === 'delete' ? '' : `id=${t?.id || ''}`)));
   } else if (url === '/admin/act') {
     const k = db.keys.find(x => x.key === f.get('key')); const d = f.get('do');
     if (k) {
@@ -208,8 +288,9 @@ http.createServer(async (req, res) => {
   try {
     const url = req.url.split('?')[0], ip = ipOf(req);
     if (url === '/health') return send(res, 200, { ok: true, version: SERVER_VERSION });
-    if (url === '/api/changelog' && req.method === 'GET') { await syncChangelog(false); return send(res, 200, { ok: true, versions: db.changelog.filter(e => !e.hidden).map(cleanEntry) }); }
+    if (url === '/api/changelog' && req.method === 'GET') { await syncChangelog(false); return send(res, 200, { ok: true, versions: db.changelog.filter(e => !e.hidden).slice(0, +db.settings.newsMax > 0 ? +db.settings.newsMax : 9999).map(cleanEntry) }); }
     if (req.method === 'POST' && ['/api/activate', '/api/check', '/api/release'].includes(url)) return await api(req, res, url.slice(5), ip);
+    if (req.method === 'POST' && ['/api/support/new', '/api/support/list', '/api/support/reply'].includes(url)) return await supportApi(req, res, url.slice(13), ip);
     if (url === '/admin' || url.startsWith('/admin/')) return await admin(req, res, url);
     send(res, 404, { ok: false, error: 'Não encontrado' });
   } catch (e) { console.error(e); send(res, 500, { ok: false, error: 'Erro interno' }); }
