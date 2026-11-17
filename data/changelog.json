@@ -1,6 +1,32 @@
 {
   "versions": [
     {
+      "version": "0.52.0",
+      "date": "2026-11-17",
+      "title": "LED curvo e processadores de vídeo (switchers)",
+      "items": [
+        "LED curvo: em painéis com fechadura de curva escolhes o ângulo junção a junção (coluna | coluna), sempre preso aos valores que a marca permite (ex.: Absen PL2.5 Pro −7,5° … +10° em passos de 2,5°); predefinições Plano, Côncavo, Convexo e Onda, planta vista de cima com corda, profundidade, ângulo total e raio",
+        "LED curvo em 3D: cada coluna é desenhada com o seu ângulo e a fatia certa da imagem; a frente 2D fica desenrolada (marcada com ∿)",
+        "LED curvo suspenso: truss curva (todas as colunas presas) ou truss direita tipo box — o MapSim põe a truss onde prende mais colunas, as outras ficam soltas e penduradas nas vizinhas; clica nas colunas da planta para escolher quais ficam presas; carga por coluna presa e avisos (colunas soltas seguidas, colunas longe da truss, máximo suspenso do fabricante)",
+        "LED curvo no chão: ondas e arcos em ground stack, com barras de 0,5 m por coluna e stacks a seguir a curva",
+        "Novos painéis: Unilumin URMIII 2.6 MK2 Pro, URMIII 1.9 MK2 Pro, URMIII 2.6 XS Flex (±40°), URMIII P3.9 outdoor, Upad III 2.6, INFiLED DB 2.3 e Hikvision Aries P2.6; curva adicionada ao ROE BP2V2, ROE DM2.6 e Absen PL2.5 Pro. Os painéis curvos têm o símbolo ∿ nas listas",
+        "Novos processadores LED: NovaStar VX1000 Pro, Colorlight Z6 e Colorlight Z3 (portas 5G)",
+        "Processamento → nova área Processador de vídeo / switcher: Barco E2 Gen 2, S3-4K Gen 2 e S3-4K Jr, Analog Way Aquilon RS4/RS3/RS2/RS1/RS alpha/C/C+, Pixelhue Q8, P80, P20 e P10, com saídas 4K, canvas e modos (PVW/PGM, só PGM)",
+        "Para cada LED wall: quantas saídas ocupa em nativo (cada saída com colunas e linhas inteiras de painéis, posição x/y de cada saída) e com scaling (formato 1080p / 1440p / 4K e escala máxima à escolha); se a máquina chega ou não; nova folha \"Processador de vídeo — saídas\" e folha \"Estrutura — LED curvo\" no PDF"
+      ],
+      "title_en": "Curved LED and video processors (switchers)",
+      "items_en": [
+        "Curved LED: on panels with a curve lock you choose the angle joint by joint (column | column), always locked to the values the brand allows (e.g. Absen PL2.5 Pro −7.5° … +10° in 2.5° steps); Flat, Concave, Convex and Wave presets, top plan with chord, depth, total angle and radius",
+        "Curved LED in 3D: each column is drawn at its angle with the right slice of the image; the 2D front stays unrolled (marked with ∿)",
+        "Flown curved LED: curved truss (all columns attached) or straight box truss — MapSim places the truss where it attaches the most columns, the others stay loose hanging from their neighbours; click the columns on the plan to choose which are attached; load per attached column and warnings (loose columns in a row, columns far from the truss, manufacturer's max flown)",
+        "Curved LED on the ground: waves and arcs in ground stack, with 0.5 m bars per column and stacks following the curve",
+        "New panels: Unilumin URMIII 2.6 MK2 Pro, URMIII 1.9 MK2 Pro, URMIII 2.6 XS Flex (±40°), URMIII P3.9 outdoor, Upad III 2.6, INFiLED DB 2.3 and Hikvision Aries P2.6; curve added to ROE BP2V2, ROE DM2.6 and Absen PL2.5 Pro. Curved panels show the ∿ symbol in the lists",
+        "New LED processors: NovaStar VX1000 Pro, Colorlight Z6 and Colorlight Z3 (5G ports)",
+        "Processing → new Video processor / switcher area: Barco E2 Gen 2, S3-4K Gen 2 and S3-4K Jr, Analog Way Aquilon RS4/RS3/RS2/RS1/RS alpha/C/C+, Pixelhue Q8, P80, P20 and P10, with 4K outputs, canvas and modes (PVW/PGM, PGM only)",
+        "For each LED wall: how many outputs it uses natively (each output with whole columns and rows of panels, x/y position of each output) and with scaling (1080p / 1440p / 4K format and max scale of your choice); whether the machine can do it; new \"Video processor — outputs\" and \"Structure — curved LED\" pages in the PDF"
+      ]
+    },
+    {
       "version": "0.51.0",
       "date": "2026-11-17",
       "title": "Altura dos stacks e LED em cima de stage deck / riser",
