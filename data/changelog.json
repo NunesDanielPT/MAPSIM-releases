@@ -1,6 +1,18 @@
 {
   "versions": [
     {
+      "version": "0.53.2",
+      "date": "2026-11-20",
+      "title": "YesTech MG7S P3.9 e MG6 P3.9",
+      "items": [
+        "Novos painéis YesTech: MG7S P3.9 (exterior, 128 × 128 px, 6,5 kg, 210 / 70 W, 4500 nit, curvo −15° … +15° ∿) e MG6 P3.9 interior (5,7 kg, 1200 nit); o MG7 P4.8 já estava na base de dados"
+      ],
+      "title_en": "YesTech MG7S P3.9 and MG6 P3.9",
+      "items_en": [
+        "New YesTech panels: MG7S P3.9 (outdoor, 128 × 128 px, 6.5 kg, 210 / 70 W, 4500 nit, curved −15° … +15° ∿) and MG6 P3.9 indoor (5.7 kg, 1200 nit); the MG7 P4.8 was already in the database"
+      ]
+    },
+    {
       "version": "0.53.1",
       "date": "2026-11-20",
       "title": "Base de dados LED no menu Ficheiro e no painel de admin",
