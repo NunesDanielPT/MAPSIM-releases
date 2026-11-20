@@ -1,6 +1,18 @@
 {
   "versions": [
     {
+      "version": "0.53.6",
+      "date": "2026-11-20",
+      "title": "Capacidade por porta conforme o manual",
+      "items": [
+        "Capacidade por porta dos processadores LED sempre conforme o manual do fabricante: a 50 Hz deixa de aumentar (ex.: MCTRL R5 fica nos 650 000 píxeis por porta a 8 bit, como no manual); a 120 Hz continua a baixar para metade; nota explicativa no processador"
+      ],
+      "title_en": "Per-port capacity as in the manual",
+      "items_en": [
+        "LED processor capacity per port always as stated in the manufacturer's manual: at 50 Hz it no longer increases (e.g. MCTRL R5 stays at 650,000 pixels per port at 8 bit, as in the manual); at 120 Hz it is still halved; explanatory note in the processor"
+      ]
+    },
+    {
       "version": "0.53.5",
       "date": "2026-11-20",
       "title": "Processador de vídeo: LEDs com o mesmo sinal",
