@@ -1,6 +1,18 @@
 {
   "versions": [
     {
+      "version": "0.53.3",
+      "date": "2026-11-20",
+      "title": "YesTech MG6S P4.8",
+      "items": [
+        "Novo painel YesTech MG6S P4.8 interior (104 × 104 px, 5,7 kg, 120 / 40 W, 1200 nit); MG6 P3.9 confirmado na página oficial da YesTech"
+      ],
+      "title_en": "YesTech MG6S P4.8",
+      "items_en": [
+        "New YesTech MG6S P4.8 indoor panel (104 × 104 px, 5.7 kg, 120 / 40 W, 1200 nit); MG6 P3.9 confirmed on the official YesTech page"
+      ]
+    },
+    {
       "version": "0.53.2",
       "date": "2026-11-20",
       "title": "YesTech MG7S P3.9 e MG6 P3.9",
