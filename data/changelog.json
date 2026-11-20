@@ -1,6 +1,18 @@
 {
   "versions": [
     {
+      "version": "0.53.7",
+      "date": "2026-11-20",
+      "title": "Contagem de links entre painéis corrigida",
+      "items": [
+        "Corrigido: os cabos de rede entre painéis (links) eram contados a dobrar com backup — com \"Processador espelho\" ou com um processador de backup, os links do LED somavam-se duas vezes (ex.: 144 painéis em 3 portas davam 282 links em vez de 141). Os links são os mesmos para MAIN e BACKUP e passam a contar uma vez; os cabos do processador ao LED continuam a contar MAIN + BACKUP"
+      ],
+      "title_en": "Panel link count fixed",
+      "items_en": [
+        "Fixed: network cables between panels (links) were counted twice with backup — with \"Mirror processor\" or a backup processor, the LED links were added twice (e.g. 144 panels on 3 ports gave 282 links instead of 141). Links are the same for MAIN and BACKUP and now count once; the processor → LED cables still count MAIN + BACKUP"
+      ]
+    },
+    {
       "version": "0.53.6",
       "date": "2026-11-20",
       "title": "Capacidade por porta conforme o manual",
