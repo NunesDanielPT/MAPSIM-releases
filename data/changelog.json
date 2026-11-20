@@ -1,6 +1,18 @@
 {
   "versions": [
     {
+      "version": "0.53.8",
+      "date": "2026-11-20",
+      "title": "Processador espelho automático",
+      "items": [
+        "Backup \"Processador espelho\": ao escolheres esta opção o MapSim cria um segundo processador igual (\"… BACKUP\"), com as linhas BACKUP automáticas que entram pelo fim de cada cadeia; o espelho segue sempre as linhas do principal (se mudares o principal, o backup acompanha). No backup podes escolher \"Linhas de backup\": espelho pelo fim, igual ao principal, ou à mão"
+      ],
+      "title_en": "Automatic mirror processor",
+      "items_en": [
+        "\"Mirror processor\" backup: choosing this option makes MapSim create a second identical processor (\"… BACKUP\"), with automatic BACKUP lines entering from the end of each chain; the mirror always follows the main's lines (change the main and the backup follows). On the backup you can choose \"Backup lines\": mirror from the end, same as the main, or by hand"
+      ]
+    },
+    {
       "version": "0.53.7",
       "date": "2026-11-20",
       "title": "Contagem de links entre painéis corrigida",
