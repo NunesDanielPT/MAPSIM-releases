@@ -1,16 +1,36 @@
 {
   "versions": [
     {
+      "version": "0.53.0",
+      "date": "2026-11-20",
+      "title": "Favoritos com extensão no nome e base de dados no painel de admin",
+      "items": [
+        "Favoritos: estrela ☆ nos painéis LED, processadores e quadros eléctricos — cada favorito pode ter uma extensão no nome (ex.: \"Absen PL2.5 Pro · Empresa X\"), e o mesmo modelo pode estar várias vezes com extensões diferentes para trabalhares para várias empresas",
+        "Os favoritos aparecem no topo das listas (Criar LED wall, Adicionar processador, Adicionar quadro, bibliotecas da barra lateral e menus do inspector); ✎ muda a extensão, ✕ tira dos favoritos; a extensão aparece no nome do painel, do processador e do quadro, também no PDF",
+        "Painel de admin (servidor 0.11.0) → nova secção Base de dados: acrescentar, editar, esconder ou apagar painéis LED (medidas, píxeis, peso, consumo, curva, fonte), processadores LED (portas e capacidade) e quadros eléctricos (fases, corrente, saídas)",
+        "A app junta automaticamente o que for acrescentado no painel de admin à sua base de dados (fica guardado para funcionar offline); os projectos guardam uma cópia do painel / processador usado",
+        "YesTech MG7 P4.8: nome sem a referência ao revendedor"
+      ],
+      "title_en": "Favourites with name extension and database in the admin panel",
+      "items_en": [
+        "Favourites: ☆ star on LED panels, processors and power distros — each favourite can have a name extension (e.g. \"Absen PL2.5 Pro · Company X\"), and the same model can be added several times with different extensions when you work for several companies",
+        "Favourites appear at the top of the lists (Create LED wall, Add processor, Add distro, sidebar libraries and inspector menus); ✎ changes the extension, ✕ removes it; the extension appears in the panel, processor and distro name, also in the PDF",
+        "Admin panel (server 0.11.0) → new Database section: add, edit, hide or delete LED panels (size, pixels, weight, power, curve, source), LED processors (ports and capacity) and power distros (phases, current, outputs)",
+        "The app automatically merges what is added in the admin panel into its database (cached to work offline); projects keep a copy of the panel / processor used",
+        "YesTech MG7 P4.8: name without the dealer reference"
+      ]
+    },
+    {
       "version": "0.52.1",
       "date": "2026-11-20",
       "title": "YesTech MG7 P4.8 e NovaStar MCTRL R5 / MCTRL660 PRO",
       "items": [
-        "Novo painel: YesTech MG7 P4.8 (Pixel Light) — 500 × 500 mm, 104 × 104 px, 6,5 kg, 150 / 50 W, 4500 nit, exterior, curvo de −15° a +15° (∿)",
+        "Novo painel: YesTech MG7 P4.8 — 500 × 500 mm, 104 × 104 px, 6,5 kg, 150 / 50 W, 4500 nit, exterior, curvo de −15° a +15° (∿)",
         "Novos processadores NovaStar: MCTRL R5 (8 portas, 3840 × 1080, rotação de imagem) e MCTRL660 PRO (6 portas, 1920 × 1200); o MCTRL660 e o MCTRL4K continuam na lista"
       ],
       "title_en": "YesTech MG7 P4.8 and NovaStar MCTRL R5 / MCTRL660 PRO",
       "items_en": [
-        "New panel: YesTech MG7 P4.8 (Pixel Light) — 500 × 500 mm, 104 × 104 px, 6.5 kg, 150 / 50 W, 4500 nit, outdoor, curved from −15° to +15° (∿)",
+        "New panel: YesTech MG7 P4.8 — 500 × 500 mm, 104 × 104 px, 6.5 kg, 150 / 50 W, 4500 nit, outdoor, curved from −15° to +15° (∿)",
         "New NovaStar processors: MCTRL R5 (8 ports, 3840 × 1080, image rotation) and MCTRL660 PRO (6 ports, 1920 × 1200); MCTRL660 and MCTRL4K remain in the list"
       ]
     },

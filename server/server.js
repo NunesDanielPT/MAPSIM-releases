@@ -1,7 +1,7 @@
 // MapSim — servidor de licenças (sem dependências; Node 18+)
 // Endpoints públicos: POST /api/activate, /api/check, /api/release · Painel: /admin (Basic Auth)
 'use strict';
-const SERVER_VERSION = '0.10.0';
+const SERVER_VERSION = '0.11.0';
 const http = require('http'), crypto = require('crypto'), fs = require('fs'), path = require('path');
 
 const DATA = process.env.DATA_DIR || '/data';
@@ -28,6 +28,7 @@ const DBF = path.join(DATA, 'keys.json');
 let db = fs.existsSync(DBF) ? JSON.parse(fs.readFileSync(DBF, 'utf8')) : { keys: [], log: [] };
 db.changelog ||= []; // [{version,date,title,items[],hidden,edited}]
 db.tickets ||= [];   // suporte: [{id, token, machine, key, owner, name, email, type, subject, status:'open'|'answered'|'closed', created, updated, closedAt, appVersion, msgs:[{from:'user'|'admin', t, text}]}]
+db.catalog ||= { leds: [], procs: [], boards: [], version: 0 };   // base de dados acrescentada à mão no painel (LED, processadores, quadros) — a app junta-a à sua
 db.settings ||= {};  // { newsMax: N (só as últimas N versões visíveis na app; 0 = todas), newHidden: bool (versões novas chegam escondidas) }
 const save = () => { const t = DBF + '.tmp'; fs.writeFileSync(t, JSON.stringify(db, null, 1)); fs.renameSync(t, DBF); };
 const log = (ev, k, ip, extra = '') => { db.log.unshift({ t: Date.now(), ev, key: k, ip, extra }); db.log = db.log.slice(0, 500); };
@@ -151,7 +152,7 @@ details.t[open]>summary{border-bottom:1px solid #232b35}.tb{padding:12px}.bub{ma
 .tabs a{color:#c4ccd6;text-decoration:none;padding:7px 12px;border-radius:6px;border:1px solid #232b35;margin-right:6px}.tabs a.on{background:#04222c;color:#14c4ef;border-color:#14c4ef}
 table.news td{padding:6px 8px}tr.hid td{opacity:.5}</style>
 <nav><h1><b>MapSim</b> licenças</h1><span class="v">servidor v${SERVER_VERSION}</span>
-${[['keys', '/admin', 'Chaves', db.keys.length], ['support', '/admin/support', 'Suporte', db.tickets.filter(t => t.status !== 'closed').length || ''], ['news', '/admin/news', 'Novidades', db.changelog.length], ['log', '/admin/log', 'Registo', db.log.length], ['config', '/admin/config', 'Configuração', '']]
+${[['keys', '/admin', 'Chaves', db.keys.length], ['support', '/admin/support', 'Suporte', db.tickets.filter(t => t.status !== 'closed').length || ''], ['catalog', '/admin/catalog', 'Base de dados', db.catalog.leds.length + db.catalog.procs.length + db.catalog.boards.length], ['news', '/admin/news', 'Novidades', db.changelog.length], ['log', '/admin/log', 'Registo', db.log.length], ['config', '/admin/config', 'Configuração', '']]
   .map(([k, u, t, n]) => `<a href="${u}" class="${k === section ? 'on' : ''}">${t}<em>${n}</em></a>`).join('')}</nav>
 <main><h2>${esc(title)}</h2>${msg ? `<div class="msg">${msg}</div>` : ''}${inner}</main></html>`;
 
@@ -222,6 +223,43 @@ function pageLog(q) {
   return `<tr><td><small>${fmtT(l.t)}</small></td><td class="${/fail/.test(l.ev) ? 'warn' : ''}">${esc(EV[l.ev] || l.ev)}</td><td><code>${esc(l.key)}</code></td><td>${esc(k?.owner || '')}</td><td><small>${esc(l.ip)}</small></td><td><small>${esc(l.extra)}</small></td></tr>`; }).join('') || '<tr><td colspan="6"><small>Sem registos.</small></td></tr>'}</table>
 <p class="muted">Mostra os últimos ${Math.min(list.length, 300)} de ${list.length} eventos (o servidor guarda os 500 mais recentes).</p>`, '');
 }
+
+/* ---------- base de dados acrescentada no painel: LED, processadores, quadros ---------- */
+const CAT_FIELDS = {
+  leds: [['brand', 'Marca', 't'], ['model', 'Modelo', 't'], ['series', 'Série', 't'], ['w', 'Largura (mm)', 'n'], ['h', 'Altura (mm)', 'n'], ['d', 'Profundidade (mm)', 'n'], ['pxW', 'Píxeis H', 'n'], ['pxH', 'Píxeis V', 'n'],
+    ['kg', 'Peso (kg)', 'n'], ['wMax', 'Consumo máx. (W)', 'n'], ['wTyp', 'Consumo típico (W)', 'n'], ['nits', 'Brilho (nits)', 'n'], ['hangMax', 'Máx. suspensos', 'n'], ['stackMax', 'Máx. empilhados', 'n'],
+    ['curveMin', 'Curva mín. (°, − convexo)', 'n'], ['curveMax', 'Curva máx. (°, + côncavo)', 'n'], ['curveStep', 'Passo da curva (°)', 'n'], ['rx', 'Receiving card', 't'], ['note', 'Nota', 't'], ['srcT', 'Fonte — título', 't'], ['srcU', 'Fonte — link', 't']],
+  procs: [['brand', 'Marca', 't'], ['model', 'Modelo', 't'], ['series', 'Série', 't'], ['ports', 'Portas de rede', 'n'], ['total', 'Capacidade total (px)', 'n'], ['port8', 'Píxeis por porta (8 bit)', 'n'], ['port10', 'Píxeis por porta (10 bit)', 'n'],
+    ['maxW', 'Largura máx. (px)', 'n'], ['maxH', 'Altura máx. (px)', 'n'], ['opt', 'Fibra / saídas extra', 't'], ['note', 'Nota', 't'], ['srcT', 'Fonte — título', 't'], ['srcU', 'Fonte — link', 't']],
+  boards: [['name', 'Nome', 't'], ['feed', 'Entrada (ex.: CEE 63 A 5P)', 't'], ['ph', 'Fases (1 ou 3)', 'n'], ['A', 'Corrente (A)', 'n'], ['dw', 'Largura (mm)', 'n'], ['dh', 'Altura (mm)', 'n'], ['dd', 'Profundidade (mm)', 'n'], ['kg', 'Peso (kg)', 'n'],
+    ['o_schuko', 'Saídas Schuko 16 A', 'n'], ['o_cee16', 'Saídas CEE 16 A 3P', 'n'], ['o_cee16_5', 'Saídas CEE 16 A 5P', 'n'], ['o_soca', 'Saídas Socapex', 'n'], ['o_cee32', 'Saídas CEE 32 A', 'n'], ['o_cee63', 'Saídas CEE 63 A', 'n'], ['o_cee125', 'Saídas CEE 125 A', 'n'], ['note', 'Nota', 't']],
+};
+const CAT_NAME = { leds: 'Painéis LED', procs: 'Processadores LED', boards: 'Quadros eléctricos' };
+const CAT_REQ = { leds: ['brand', 'model', 'w', 'h', 'pxW', 'pxH'], procs: ['brand', 'model', 'ports', 'total', 'port8'], boards: ['name', 'A'] };
+function catClean(kind, f) {
+  const o = {};
+  for (const [k, , t] of CAT_FIELDS[kind]) { const v = String(f.get(k) ?? '').trim(); if (v === '') continue; if (t === 'n') { const n = +v.replace(',', '.'); if (Number.isFinite(n)) o[k] = n; } else o[k] = v.slice(0, k === 'srcU' ? 400 : 200); }
+  if (o.srcU && !/^https?:\/\//i.test(o.srcU)) delete o.srcU;
+  const miss = CAT_REQ[kind].filter(k => o[k] == null);
+  return miss.length ? { err: 'Falta: ' + miss.map(k => CAT_FIELDS[kind].find(x => x[0] === k)[1]).join(', ') } : { o };
+}
+function pageCatalog(msg, q = new URLSearchParams()) {
+  const kind = CAT_FIELDS[q.get('k')] ? q.get('k') : 'leds', list = db.catalog[kind], ed = q.get('edit'), e0 = ed ? list.find(x => x.id === ed) || {} : {};
+  const label = x => kind === 'boards' ? x.name : `${x.brand} ${x.model}`;
+  const sum = x => kind === 'leds' ? `${x.w}×${x.h}${x.d ? '×' + x.d : ''} mm · ${x.pxW}×${x.pxH} px${x.kg ? ' · ' + x.kg + ' kg' : ''}${x.wMax ? ' · ' + x.wMax + ' W' : ''}${x.curveMax != null || x.curveMin != null ? ` · curva ${x.curveMin ?? 0}°…${x.curveMax ?? 0}°` : ''}`
+    : kind === 'procs' ? `${x.ports} portas · ${(x.total / 1e6).toFixed(2)} Mpx · ${x.port8} px/porta` : `${x.A} A · ${x.ph === 1 ? '1F' : '3F'} · ${x.feed || ''}`;
+  const form = `<div class="card"><form method="post" action="/admin/catalog"><input type="hidden" name="k" value="${kind}"><input type="hidden" name="id" value="${esc(e0.id || '')}">
+<b>${e0.id ? 'Editar' : 'Adicionar'} — ${CAT_NAME[kind]}</b><div class="catgrid">${CAT_FIELDS[kind].map(([k, l, t]) => `<label><small>${esc(l)}${CAT_REQ[kind].includes(k) ? ' *' : ''}</small><input name="${k}" ${t === 'n' ? 'inputmode="decimal"' : ''} value="${esc(e0[k] ?? '')}"></label>`).join('')}</div>
+<div class="row"><button name="do" value="save">${e0.id ? 'Guardar alterações' : 'Adicionar à base de dados'}</button>${e0.id ? `<a href="/admin/catalog?k=${kind}" style="color:#14c4ef">cancelar</a>` : ''}</div></form></div>`;
+  const rows = list.map(x => `<tr class="${x.hidden ? 'hid' : ''}"><td><b>${esc(label(x))}</b><br><small>${esc(sum(x))}</small></td><td>${x.hidden ? '<span class="pill closed">escondido</span>' : '<span class="pill answered">na app</span>'}</td>
+<td class="row"><a href="/admin/catalog?k=${kind}&edit=${x.id}" style="color:#14c4ef">Editar</a><form method="post" action="/admin/catalog"><input type="hidden" name="k" value="${kind}"><input type="hidden" name="id" value="${x.id}"><button name="do" value="${x.hidden ? 'show' : 'hide'}">${x.hidden ? 'Mostrar' : 'Esconder'}</button><button name="do" value="delete" class="danger" onclick="return confirm('Apagar ${esc(label(x)).replace(/'/g, '')} da base de dados? Os projectos que já o usam ficam com uma cópia.')">Apagar</button></form></td></tr>`).join('');
+  return layout('catalog', 'Base de dados', `<div class="tabs" style="margin-bottom:14px">${Object.keys(CAT_FIELDS).map(k => `<a href="/admin/catalog?k=${k}" class="${k === kind ? 'on' : ''}">${CAT_NAME[k]} (${db.catalog[k].length})</a>`).join('')}</div>
+<p class="muted">O que adicionares aqui aparece na app de todos os utilizadores (na próxima vez que abrirem o MapSim com internet), junto com a base de dados incluída. Versão da base de dados do painel: <b>${db.catalog.version}</b>.</p>
+${form}<table class="news"><tr><th>${CAT_NAME[kind]}</th><th>Estado</th><th></th></tr>${rows || '<tr><td colspan="3"><small>Ainda nada adicionado.</small></td></tr>'}</table>
+<style>.catgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}.catgrid label{display:flex;flex-direction:column;gap:2px}.catgrid input{width:100%}</style>`, msg);
+}
+const catalogPublic = () => ({ ok: true, version: db.catalog.version, leds: db.catalog.leds.filter(x => !x.hidden), procs: db.catalog.procs.filter(x => !x.hidden), boards: db.catalog.boards.filter(x => !x.hidden) });
+
 function pageConfig() {
   return layout('config', 'Configuração', `<div class="card"><b>Chave pública de assinatura</b><p class="muted">Está dentro da app (license-config.json). Não é secreta. Se a chave privada do servidor mudar, as licenças existentes deixam de ser válidas.</p><textarea readonly style="height:60px;font-family:Consolas,monospace;color:#9fd8ee">${esc(publicRaw)}</textarea></div>
 <div class="card"><b>Servidor</b><table><tr><td>Versão</td><td>${SERVER_VERSION}</td></tr><tr><td>Chaves</td><td>${db.keys.length} (${db.keys.filter(k => !k.revoked && !(k.expires && Date.now() > k.expires)).length} ativas, ${db.keys.filter(k => k.machine).length} com PC)</td></tr>
@@ -232,7 +270,7 @@ function pageConfig() {
 async function admin(req, res, url) {
   if (!authed(req)) { res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="MapSim"' }); return res.end('Autenticação necessária'); }
   const q = new URLSearchParams(req.url.split('?')[1] || ''), html = h => send(res, 200, h, 'text/html; charset=utf-8');
-  if (req.method === 'GET') return html(url === '/admin/news' ? pageNews('', q) : url === '/admin/support' ? pageSupport('', q) : url === '/admin/log' ? pageLog(q) : url === '/admin/config' ? pageConfig() : pageKeys('', q));
+  if (req.method === 'GET') return html(url === '/admin/catalog' ? pageCatalog('', q) : url === '/admin/news' ? pageNews('', q) : url === '/admin/support' ? pageSupport('', q) : url === '/admin/log' ? pageLog(q) : url === '/admin/config' ? pageConfig() : pageKeys('', q));
   // proteção CSRF: o POST tem de vir da própria página do painel
   const origin = req.headers.origin || req.headers.referer || '';
   try { if (new URL(origin).host !== req.headers.host) return send(res, 403, 'Origem inválida', 'text/plain'); } catch { return send(res, 403, 'Origem inválida', 'text/plain'); }
@@ -261,6 +299,17 @@ async function admin(req, res, url) {
         db.changelog.sort((a, b) => vcmp(b.version, a.version)); save(); msg = `Versão ${esc(v)} guardada.`;
       }
     } else msg = 'Versão inválida (usa o formato 0.7.0).';
+  } else if (url === '/admin/catalog') {
+    const kind = CAT_FIELDS[f.get('k')] ? f.get('k') : 'leds', list = db.catalog[kind], d = f.get('do'), id = f.get('id') || '', x = list.find(y => y.id === id);
+    if (d === 'save') { const r = catClean(kind, f);
+      if (r.err) return html(pageCatalog(r.err, new URLSearchParams(`k=${kind}${x ? '&edit=' + x.id : ''}`)));
+      if (x) Object.keys(x).forEach(k => { if (!['id', 'hidden', 'created'].includes(k)) delete x[k]; });
+      const it = x || { id: 'srv-' + crypto.randomBytes(4).toString('hex'), hidden: false, created: Date.now() }; Object.assign(it, r.o, { updated: Date.now() }); if (!x) list.push(it);
+      msg = `${x ? 'Alterado' : 'Adicionado'}: <b>${esc(kind === 'boards' ? it.name : it.brand + ' ' + it.model)}</b>`; }
+    else if (x && (d === 'hide' || d === 'show')) { x.hidden = d === 'hide'; msg = 'Feito.'; }
+    else if (x && d === 'delete') { db.catalog[kind] = list.filter(y => y !== x); msg = 'Apagado.'; }
+    db.catalog.version = (+db.catalog.version || 0) + 1; save();
+    return html(pageCatalog(msg, new URLSearchParams(`k=${kind}`)));
   } else if (url === '/admin/support') {
     const t = db.tickets.find(x => x.id === f.get('id')), d = f.get('do'), text = String(f.get('text') || '').trim().slice(0, 5000);
     if (t) {
@@ -288,6 +337,7 @@ http.createServer(async (req, res) => {
   try {
     const url = req.url.split('?')[0], ip = ipOf(req);
     if (url === '/health') return send(res, 200, { ok: true, version: SERVER_VERSION });
+    if (url === '/api/catalog' && req.method === 'GET') return send(res, 200, catalogPublic());
     if (url === '/api/changelog' && req.method === 'GET') { await syncChangelog(false); return send(res, 200, { ok: true, versions: db.changelog.filter(e => !e.hidden).slice(0, +db.settings.newsMax > 0 ? +db.settings.newsMax : 9999).map(cleanEntry) }); }
     if (req.method === 'POST' && ['/api/activate', '/api/check', '/api/release'].includes(url)) return await api(req, res, url.slice(5), ip);
     if (req.method === 'POST' && ['/api/support/new', '/api/support/list', '/api/support/reply'].includes(url)) return await supportApi(req, res, url.slice(13), ip);
