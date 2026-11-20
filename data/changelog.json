@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.53.4",
+      "date": "2026-11-20",
+      "title": "Automatic POWER com percurso e início, quadro 250 A com 6 Socapex",
+      "items": [
+        "Automatic POWER: tal como no sinal, escolhes o percurso dos circuitos — por colunas (sobe e desce) ou por linhas (vai e volta) — e o canto de início (↙ ↘ ↖ ↗), com a pré-visualização a actualizar na hora; a escolha fica guardada no projecto",
+        "Novo quadro: 250 A trifásico (Powerlock) com 6 saídas Socapex (36 circuitos de 16 A)"
+      ],
+      "title_en": "Automatic POWER with path and start corner, 250 A distro with 6 Socapex",
+      "items_en": [
+        "Automatic POWER: as with the signal, you choose the circuit path — by columns (up and down) or by rows (back and forth) — and the starting corner (↙ ↘ ↖ ↗), with the preview updating instantly; the choice is saved in the project",
+        "New distro: 250 A three-phase (Powerlock) with 6 Socapex outputs (36 × 16 A circuits)"
+      ]
+    },
+    {
       "version": "0.53.3",
       "date": "2026-11-20",
       "title": "YesTech MG6S P4.8",
