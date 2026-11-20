@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.53.5",
+      "date": "2026-11-20",
+      "title": "Processador de vídeo: LEDs com o mesmo sinal",
+      "items": [
+        "Processador de vídeo: cada LED wall tem a opção Sinal — \"Próprio\" ou \"Mesmo sinal que…\" outro LED. Os LEDs com o mesmo sinal (ex.: dois laterais iguais) usam as mesmas saídas e não contam para o canvas; o MapSim avisa quando há LEDs com a mesma resolução e quando escolhes o mesmo sinal com resoluções diferentes",
+        "Corrigido: com scaling, um LED que já cabe numa saída era contado como um formato 4K inteiro no canvas (ex.: Barco E2 com 3 LEDs pequenos aparecia como \"não dá\"); agora vai em nativo, sem scaling"
+      ],
+      "title_en": "Video processor: LEDs with the same signal",
+      "items_en": [
+        "Video processor: each LED wall has a Signal option — \"Own\" or \"Same signal as…\" another LED. LEDs with the same signal (e.g. two identical side screens) use the same outputs and do not count towards the canvas; MapSim points out LEDs with the same resolution and warns when you choose the same signal with different resolutions",
+        "Fixed: with scaling, an LED that already fits in one output was counted as a whole 4K format in the canvas (e.g. Barco E2 with 3 small LEDs showed as \"not enough\"); it now goes native, without scaling"
+      ]
+    },
+    {
       "version": "0.53.4",
       "date": "2026-11-20",
       "title": "Automatic POWER com percurso e início, quadro 250 A com 6 Socapex",
