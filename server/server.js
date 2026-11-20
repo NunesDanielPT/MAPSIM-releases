@@ -1,7 +1,7 @@
 // MapSim — servidor de licenças (sem dependências; Node 18+)
 // Endpoints públicos: POST /api/activate, /api/check, /api/release · Painel: /admin (Basic Auth)
 'use strict';
-const SERVER_VERSION = '0.11.0';
+const SERVER_VERSION = '0.12.0';
 const http = require('http'), crypto = require('crypto'), fs = require('fs'), path = require('path');
 
 const DATA = process.env.DATA_DIR || '/data';
@@ -29,6 +29,7 @@ let db = fs.existsSync(DBF) ? JSON.parse(fs.readFileSync(DBF, 'utf8')) : { keys:
 db.changelog ||= []; // [{version,date,title,items[],hidden,edited}]
 db.tickets ||= [];   // suporte: [{id, token, machine, key, owner, name, email, type, subject, status:'open'|'answered'|'closed', created, updated, closedAt, appVersion, msgs:[{from:'user'|'admin', t, text}]}]
 db.catalog ||= { leds: [], procs: [], boards: [], version: 0 };   // base de dados acrescentada à mão no painel (LED, processadores, quadros) — a app junta-a à sua
+db.builtin ||= null; // cópia da base de dados incluída na app (data/catalog-builtin.json no GitHub) — só para consulta no painel
 db.settings ||= {};  // { newsMax: N (só as últimas N versões visíveis na app; 0 = todas), newHidden: bool (versões novas chegam escondidas) }
 const save = () => { const t = DBF + '.tmp'; fs.writeFileSync(t, JSON.stringify(db, null, 1)); fs.renameSync(t, DBF); };
 const log = (ev, k, ip, extra = '') => { db.log.unshift({ t: Date.now(), ev, key: k, ip, extra }); db.log = db.log.slice(0, 500); };
@@ -225,6 +226,14 @@ function pageLog(q) {
 }
 
 /* ---------- base de dados acrescentada no painel: LED, processadores, quadros ---------- */
+const BUILTIN_URL = process.env.BUILTIN_URL || 'https://raw.githubusercontent.com/NunesDanielPT/MAPSIM-releases/main/data/catalog-builtin.json';
+let lastBuiltin = 0;
+async function syncBuiltin(force) {
+  if (!force && Date.now() - lastBuiltin < 10 * 60e3) return; lastBuiltin = Date.now();
+  try { const r = await fetch(BUILTIN_URL, { signal: AbortSignal.timeout(8000), cache: 'no-store' }); if (!r.ok) return; const j = await r.json(); if (Array.isArray(j.leds)) { db.builtin = j; save(); } } catch {}
+}
+const builtinOf = kind => (db.builtin?.[kind] || []).map(x => kind === 'boards' ? { ...x, dw: x.dims?.[0], dh: x.dims?.[1], dd: x.dims?.[2], ...Object.fromEntries(Object.entries(x.outs || {}).map(([k, v]) => ['o_' + k, v])) }
+  : { ...x, srcT: x.src?.[0]?.t || '', srcU: x.src?.[0]?.u || '' });
 const CAT_FIELDS = {
   leds: [['brand', 'Marca', 't'], ['model', 'Modelo', 't'], ['series', 'Série', 't'], ['w', 'Largura (mm)', 'n'], ['h', 'Altura (mm)', 'n'], ['d', 'Profundidade (mm)', 'n'], ['pxW', 'Píxeis H', 'n'], ['pxH', 'Píxeis V', 'n'],
     ['kg', 'Peso (kg)', 'n'], ['wMax', 'Consumo máx. (W)', 'n'], ['wTyp', 'Consumo típico (W)', 'n'], ['nits', 'Brilho (nits)', 'n'], ['hangMax', 'Máx. suspensos', 'n'], ['stackMax', 'Máx. empilhados', 'n'],
@@ -244,18 +253,26 @@ function catClean(kind, f) {
   return miss.length ? { err: 'Falta: ' + miss.map(k => CAT_FIELDS[kind].find(x => x[0] === k)[1]).join(', ') } : { o };
 }
 function pageCatalog(msg, q = new URLSearchParams()) {
-  const kind = CAT_FIELDS[q.get('k')] ? q.get('k') : 'leds', list = db.catalog[kind], ed = q.get('edit'), e0 = ed ? list.find(x => x.id === ed) || {} : {};
+  const kind = CAT_FIELDS[q.get('k')] ? q.get('k') : 'leds', list = db.catalog[kind], ed = q.get('edit'), bi = builtinOf(kind), from = q.get('from');
+  const e0 = ed ? list.find(x => x.id === ed) || {} : from ? (() => { const b = bi.find(x => x.id === from) || list.find(x => x.id === from) || {}; const c = { ...b }; delete c.id; return c; })() : {};
+  const qq = (q.get('q') || '').toLowerCase(), match = x => !qq || JSON.stringify([x.brand, x.model, x.name, x.series]).toLowerCase().includes(qq);
   const label = x => kind === 'boards' ? x.name : `${x.brand} ${x.model}`;
   const sum = x => kind === 'leds' ? `${x.w}×${x.h}${x.d ? '×' + x.d : ''} mm · ${x.pxW}×${x.pxH} px${x.kg ? ' · ' + x.kg + ' kg' : ''}${x.wMax ? ' · ' + x.wMax + ' W' : ''}${x.curveMax != null || x.curveMin != null ? ` · curva ${x.curveMin ?? 0}°…${x.curveMax ?? 0}°` : ''}`
     : kind === 'procs' ? `${x.ports} portas · ${(x.total / 1e6).toFixed(2)} Mpx · ${x.port8} px/porta` : `${x.A} A · ${x.ph === 1 ? '1F' : '3F'} · ${x.feed || ''}`;
   const form = `<div class="card"><form method="post" action="/admin/catalog"><input type="hidden" name="k" value="${kind}"><input type="hidden" name="id" value="${esc(e0.id || '')}">
-<b>${e0.id ? 'Editar' : 'Adicionar'} — ${CAT_NAME[kind]}</b><div class="catgrid">${CAT_FIELDS[kind].map(([k, l, t]) => `<label><small>${esc(l)}${CAT_REQ[kind].includes(k) ? ' *' : ''}</small><input name="${k}" ${t === 'n' ? 'inputmode="decimal"' : ''} value="${esc(e0[k] ?? '')}"></label>`).join('')}</div>
+<b>${e0.id ? 'Editar' : from ? 'Adicionar (a partir de um existente)' : 'Adicionar'} — ${CAT_NAME[kind]}</b><div class="catgrid">${CAT_FIELDS[kind].map(([k, l, t]) => `<label><small>${esc(l)}${CAT_REQ[kind].includes(k) ? ' *' : ''}</small><input name="${k}" ${t === 'n' ? 'inputmode="decimal"' : ''} value="${esc(e0[k] ?? '')}"></label>`).join('')}</div>
 <div class="row"><button name="do" value="save">${e0.id ? 'Guardar alterações' : 'Adicionar à base de dados'}</button>${e0.id ? `<a href="/admin/catalog?k=${kind}" style="color:#14c4ef">cancelar</a>` : ''}</div></form></div>`;
-  const rows = list.map(x => `<tr class="${x.hidden ? 'hid' : ''}"><td><b>${esc(label(x))}</b><br><small>${esc(sum(x))}</small></td><td>${x.hidden ? '<span class="pill closed">escondido</span>' : '<span class="pill answered">na app</span>'}</td>
+  const brow = x => `<tr><td><b>${esc(label(x))}</b><br><small>${esc(sum(x))}</small>${x.note ? `<br><small class="muted">${esc(x.note)}</small>` : ''}</td><td>${(x.src || []).map(s => s.u ? `<a href="${esc(s.u)}" target="_blank" style="color:#14c4ef">${esc(s.t)}</a>` : esc(s.t)).join('<br>') || '<small class="muted">—</small>'}</td>
+<td><a href="/admin/catalog?k=${kind}&from=${encodeURIComponent(x.id)}" style="color:#14c4ef" title="Abre o formulário preenchido com estes dados para criares uma variante">Usar como base</a></td></tr>`;
+  const bRows = bi.filter(match).map(brow).join('');
+  const rows = list.filter(match).map(x => `<tr class="${x.hidden ? 'hid' : ''}"><td><b>${esc(label(x))}</b><br><small>${esc(sum(x))}</small></td><td>${x.hidden ? '<span class="pill closed">escondido</span>' : '<span class="pill answered">na app</span>'}</td>
 <td class="row"><a href="/admin/catalog?k=${kind}&edit=${x.id}" style="color:#14c4ef">Editar</a><form method="post" action="/admin/catalog"><input type="hidden" name="k" value="${kind}"><input type="hidden" name="id" value="${x.id}"><button name="do" value="${x.hidden ? 'show' : 'hide'}">${x.hidden ? 'Mostrar' : 'Esconder'}</button><button name="do" value="delete" class="danger" onclick="return confirm('Apagar ${esc(label(x)).replace(/'/g, '')} da base de dados? Os projectos que já o usam ficam com uma cópia.')">Apagar</button></form></td></tr>`).join('');
   return layout('catalog', 'Base de dados', `<div class="tabs" style="margin-bottom:14px">${Object.keys(CAT_FIELDS).map(k => `<a href="/admin/catalog?k=${k}" class="${k === kind ? 'on' : ''}">${CAT_NAME[k]} (${db.catalog[k].length})</a>`).join('')}</div>
 <p class="muted">O que adicionares aqui aparece na app de todos os utilizadores (na próxima vez que abrirem o MapSim com internet), junto com a base de dados incluída. Versão da base de dados do painel: <b>${db.catalog.version}</b>.</p>
-${form}<table class="news"><tr><th>${CAT_NAME[kind]}</th><th>Estado</th><th></th></tr>${rows || '<tr><td colspan="3"><small>Ainda nada adicionado.</small></td></tr>'}</table>
+<form method="get" action="/admin/catalog" class="row" style="margin-bottom:10px"><input type="hidden" name="k" value="${kind}"><input name="q" value="${esc(q.get('q') || '')}" placeholder="Procurar marca ou modelo" style="width:260px"><button>Procurar</button>${qq ? `<a href="/admin/catalog?k=${kind}" style="color:#14c4ef">limpar</a>` : ''}</form>
+${form}<h3 style="margin:18px 0 6px">Acrescentados no painel (${list.length})</h3><table class="news"><tr><th>${CAT_NAME[kind]}</th><th>Estado</th><th></th></tr>${rows || '<tr><td colspan="3"><small>Ainda nada adicionado.</small></td></tr>'}</table>
+<h3 style="margin:22px 0 6px">Incluídos na app (${bi.length})${db.builtin?.version ? ` <small class="muted">· versão ${esc(db.builtin.version)}</small>` : ''}</h3>
+${bi.length ? `<table class="news"><tr><th>${CAT_NAME[kind]}</th><th>Fonte</th><th></th></tr>${bRows || '<tr><td colspan="3"><small>Nada encontrado.</small></td></tr>'}</table>` : `<p class="muted">Ainda não foi possível ler a base de dados da app (${esc(BUILTIN_URL)}). <a href="/admin/catalog?k=${kind}&sync=1" style="color:#14c4ef">Tentar agora</a></p>`}
 <style>.catgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}.catgrid label{display:flex;flex-direction:column;gap:2px}.catgrid input{width:100%}</style>`, msg);
 }
 const catalogPublic = () => ({ ok: true, version: db.catalog.version, leds: db.catalog.leds.filter(x => !x.hidden), procs: db.catalog.procs.filter(x => !x.hidden), boards: db.catalog.boards.filter(x => !x.hidden) });
@@ -270,6 +287,7 @@ function pageConfig() {
 async function admin(req, res, url) {
   if (!authed(req)) { res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="MapSim"' }); return res.end('Autenticação necessária'); }
   const q = new URLSearchParams(req.url.split('?')[1] || ''), html = h => send(res, 200, h, 'text/html; charset=utf-8');
+  if (req.method === 'GET' && url === '/admin/catalog') { await syncBuiltin(q.get('sync') === '1'); return html(pageCatalog('', q)); }
   if (req.method === 'GET') return html(url === '/admin/catalog' ? pageCatalog('', q) : url === '/admin/news' ? pageNews('', q) : url === '/admin/support' ? pageSupport('', q) : url === '/admin/log' ? pageLog(q) : url === '/admin/config' ? pageConfig() : pageKeys('', q));
   // proteção CSRF: o POST tem de vir da própria página do painel
   const origin = req.headers.origin || req.headers.referer || '';

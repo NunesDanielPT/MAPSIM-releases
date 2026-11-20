@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.53.1",
+      "date": "2026-11-20",
+      "title": "Base de dados LED no menu Ficheiro e no painel de admin",
+      "items": [
+        "Modo LED: o menu Ficheiro deixa de mostrar a base de dados de projectores e lentes; passa a ter \"Base de dados LED\" com painéis, processadores LED, quadros e processadores de vídeo — pesquisa, medidas, píxeis, consumo, curva, fontes, origem (app ou painel admin) e ☆ favoritos",
+        "Painel de admin (servidor 0.12.0) → Base de dados: mostra também tudo o que já vem incluído na app (com fontes), pesquisa e \"Usar como base\" para criar uma variante a partir de um painel, processador ou quadro existente"
+      ],
+      "title_en": "LED database in the File menu and in the admin panel",
+      "items_en": [
+        "LED mode: the File menu no longer shows the projector and lens database; it now has \"LED database\" with panels, LED processors, distros and video processors — search, size, pixels, power, curve, sources, origin (app or admin panel) and ☆ favourites",
+        "Admin panel (server 0.12.0) → Database: also shows everything already included in the app (with sources), search and \"Use as base\" to create a variant from an existing panel, processor or distro"
+      ]
+    },
+    {
       "version": "0.53.0",
       "date": "2026-11-20",
       "title": "Favoritos com extensão no nome e base de dados no painel de admin",
