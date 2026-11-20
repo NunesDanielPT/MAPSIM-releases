@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.52.1",
+      "date": "2026-11-20",
+      "title": "YesTech MG7 P4.8 e NovaStar MCTRL R5 / MCTRL660 PRO",
+      "items": [
+        "Novo painel: YesTech MG7 P4.8 (Pixel Light) — 500 × 500 mm, 104 × 104 px, 6,5 kg, 150 / 50 W, 4500 nit, exterior, curvo de −15° a +15° (∿)",
+        "Novos processadores NovaStar: MCTRL R5 (8 portas, 3840 × 1080, rotação de imagem) e MCTRL660 PRO (6 portas, 1920 × 1200); o MCTRL660 e o MCTRL4K continuam na lista"
+      ],
+      "title_en": "YesTech MG7 P4.8 and NovaStar MCTRL R5 / MCTRL660 PRO",
+      "items_en": [
+        "New panel: YesTech MG7 P4.8 (Pixel Light) — 500 × 500 mm, 104 × 104 px, 6.5 kg, 150 / 50 W, 4500 nit, outdoor, curved from −15° to +15° (∿)",
+        "New NovaStar processors: MCTRL R5 (8 ports, 3840 × 1080, image rotation) and MCTRL660 PRO (6 ports, 1920 × 1200); MCTRL660 and MCTRL4K remain in the list"
+      ]
+    },
+    {
       "version": "0.52.0",
       "date": "2026-11-17",
       "title": "LED curvo e processadores de vídeo (switchers)",
