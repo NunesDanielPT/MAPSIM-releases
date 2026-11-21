@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.54.0",
+      "date": "2026-11-21",
+      "title": "Automatic DATA para vários processadores e LED walls",
+      "items": [
+        "Automatic DATA do projecto (botão da barra de Processamento): escolhes que processador liga cada LED wall — um existente ou \"Novo processador 1…6\" — e vários LED walls podem ficar no mesmo processador; para cada processador escolhes o modelo (incluindo favoritos), o backup (portas de backup, processador espelho ou sem backup), o percurso e o canto de início",
+        "Pré-visualização de todos os processadores de uma vez, com equipamento, portas, cabos, links e avisos; ao aceitar, o MapSim cria os processadores novos, liga os LED walls, faz as linhas e cria os processadores espelho de backup. O botão Automatic DATA no inspector continua a fazer só o processador seleccionado"
+      ],
+      "title_en": "Automatic DATA for several processors and LED walls",
+      "items_en": [
+        "Project-wide Automatic DATA (Processing toolbar button): you choose which processor drives each LED wall — an existing one or \"New processor 1…6\" — and several LED walls can share the same processor; for each processor you choose the model (favourites included), the backup (backup ports, mirror processor or no backup), the path and the starting corner",
+        "Preview of all processors at once, with equipment, ports, cables, links and warnings; on accepting, MapSim creates the new processors, connects the LED walls, draws the lines and creates the mirror backup processors. The Automatic DATA button in the inspector still does only the selected processor"
+      ]
+    },
+    {
       "version": "0.53.8",
       "date": "2026-11-20",
       "title": "Processador espelho automático",
