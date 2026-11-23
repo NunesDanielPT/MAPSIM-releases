@@ -1,6 +1,28 @@
 {
   "versions": [
     {
+      "version": "0.57.0",
+      "date": "2026-11-23",
+      "title": "Colocar o projector a uma distância e altura reais",
+      "items": [
+        "Novo no inspector do projector: \"📍 Colocar em relação a uma superfície\" — escolhes a superfície, a distância da lente à superfície (ex.: 20 m), a altura da lente ao chão (ex.: 2 m) e o desvio para o lado; o MapSim põe o projector nessa posição real e calcula a rotação, o zoom (TR) e o lens shift",
+        "Duas formas de apontar: Nivelado (projector direito, a imagem sobe/desce com lens shift — como numa montagem real) ou Inclinado (aponta ao centro); zoom para cobrir tudo, só a largura, só a altura ou manter",
+        "Diz logo se é viável: troca para uma lente que faça o TR pedido, avisa se nenhuma lente do projector serve ou se o lens shift fica fora dos limites. Funciona em telas, ecrãs curvos, cúpulas, globos e modelos 3D",
+        "Medidas automáticas a verde sempre que um projector está seleccionado: Lente → chão e Lente → superfície (ao longo do eixo da imagem), e a altura da lente ao chão nos Resultados",
+        "Rotação explicada: Yaw = virar esquerda/direita, Pitch = inclinar cima/baixo, Roll = rodar sobre a lente, com uma frase \"Na prática: virado 10° para a direita · inclinado 4° para baixo\"",
+        "Corrigido: gerar um array numa cúpula dava erro (sList is not defined)"
+      ],
+      "title_en": "Place the projector at a real distance and height",
+      "items_en": [
+        "New in the projector inspector: \"📍 Place relative to a surface\" — choose the surface, the lens-to-surface distance (e.g. 20 m), the lens height above the floor (e.g. 2 m) and the side offset; MapSim puts the projector at that real position and calculates rotation, zoom (TR) and lens shift",
+        "Two ways to aim: Level (projector straight, the image moves with lens shift — as in a real rig) or Tilted (aims at the centre); zoom to cover all, width only, height only or keep",
+        "Tells you straight away if it is feasible: switches to a lens that makes the required TR, warns if no lens for that projector fits or if lens shift is out of range. Works on screens, curved screens, domes, globes and 3D models",
+        "Automatic green measurements whenever a projector is selected: Lens → floor and Lens → surface (along the image axis), plus lens height above floor in Results",
+        "Rotation explained: Yaw = turn left/right, Pitch = tilt up/down, Roll = rotate around the lens, with a sentence \"In practice: turned 10° to the right · tilted 4° down\"",
+        "Fixed: generating an array on a dome threw an error (sList is not defined)"
+      ]
+    },
+    {
       "version": "0.56.0",
       "date": "2026-11-23",
       "title": "Calculadora de lentes",
