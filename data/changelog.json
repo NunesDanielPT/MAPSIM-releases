@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "0.58.0",
+      "date": "2026-11-23",
+      "title": "Truss alinhada com a tela e projectores que não aparecem sozinhos",
+      "items": [
+        "Corrigido: mexer nas medidas ou na posição de uma superfície já não acrescenta projectores. O MapSim só reposiciona os que existem; um projector que apagaste de um array fica apagado (só volta se mudares tu o nº de colunas/linhas do array)",
+        "Novo na truss: \"📏 Alinhamento com uma superfície\" — mostra a altura do eixo e da parte de baixo ao chão, a distância à superfície, se está paralela (ou quantos graus de desvio, com a distância no início e no fim) e se está centrada (ou quantos metros para cada lado)",
+        "Botão \"Alinhar a truss\": metes a distância à superfície, a altura (à parte de baixo ou ao eixo) e o desvio; a truss fica paralela e centrada, e opcionalmente com o comprimento da superfície + margem. Os projectores montados acompanham",
+        "Medidas automáticas a verde com a truss seleccionada (Truss → chão, Truss → superfície, e início/fim quando está torta) e linhas guia azuis: eixo da superfície no chão, paralela ideal e sombra da truss no chão — actualizam enquanto arrastas a truss"
+      ],
+      "title_en": "Truss aligned with the screen and no more projectors appearing by themselves",
+      "items_en": [
+        "Fixed: changing a surface's size or position no longer adds projectors. MapSim only repositions the existing ones; a projector you deleted from an array stays deleted (it only comes back if you change the array's columns/rows yourself)",
+        "New on the truss: \"📏 Alignment with a surface\" — shows axis and bottom height above floor, distance to the surface, whether it is parallel (or how many degrees off, with the distance at start and end) and whether it is centred (or how many metres to each side)",
+        "\"Align the truss\" button: enter the distance to the surface, the height (to the bottom or the axis) and the offset; the truss becomes parallel and centred, optionally with the surface length + margin. Mounted projectors follow",
+        "Automatic green measurements with the truss selected (Truss → floor, Truss → surface, and start/end when it is skewed) and blue guide lines: surface axis on the floor, ideal parallel and truss shadow on the floor — updated while you drag the truss"
+      ]
+    },
+    {
       "version": "0.57.0",
       "date": "2026-11-23",
       "title": "Colocar o projector a uma distância e altura reais",
