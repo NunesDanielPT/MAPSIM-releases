@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.59.0",
+      "date": "2026-11-23",
+      "title": "Vista 2D: planta e alçados para pôr tudo no sítio",
+      "items": [
+        "Nova vista 2D na projecção (botões 3D · 2D + 3D · 2D no canto da vista): Planta (vista de cima), Alçado de frente e Alçado lateral, à escala, com grelha em metros e régua de escala",
+        "Na vista 2D arrastas projectores, truss e superfícies para o sítio (íman à grelha de 1 cm a 1 m; Alt = livre; Shift = só num eixo). Projectores montados numa truss deslizam ao longo dela",
+        "Pega amarela para rodar: na planta roda o Yaw do projector ou a direcção da truss, nos alçados inclina o Pitch do projector (de 1 em 1°, Shift = 15°)",
+        "Vês na 2D o feixe de cada projector até à superfície, o eixo da imagem, as tuas réguas e as medidas automáticas (lente → chão, lente → superfície, truss → superfície, linhas guia). No modo 2D + 3D o 3D actualiza enquanto arrastas",
+        "Roda = zoom, arrastar o fundo = mover a vista, duplo clique = enquadrar tudo; a vista escolhida fica guardada"
+      ],
+      "title_en": "2D view: plan and elevations to put everything in place",
+      "items_en": [
+        "New 2D view in projection (3D · 2D + 3D · 2D buttons in the corner of the view): Plan (top view), Front elevation and Side elevation, to scale, with a metre grid and scale bar",
+        "In the 2D view you drag projectors, trusses and surfaces into place (grid snap from 1 cm to 1 m; Alt = free; Shift = one axis only). Projectors mounted on a truss slide along it",
+        "Yellow handle to rotate: in the plan it turns the projector Yaw or the truss direction, in the elevations it tilts the projector Pitch (1° steps, Shift = 15°)",
+        "In 2D you see each projector's beam to the surface, the image axis, your rulers and the automatic measurements (lens → floor, lens → surface, truss → surface, guide lines). In 2D + 3D mode the 3D updates while you drag",
+        "Wheel = zoom, drag the background = pan, double-click = fit everything; the chosen view is remembered"
+      ]
+    },
+    {
       "version": "0.58.0",
       "date": "2026-11-23",
       "title": "Truss alinhada com a tela e projectores que não aparecem sozinhos",
