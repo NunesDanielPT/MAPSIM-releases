@@ -1,6 +1,18 @@
 {
   "versions": [
     {
+      "version": "0.55.1",
+      "date": "2026-11-23",
+      "title": "Correcção do export PLAYERSLICE",
+      "items": [
+        "Corrigido: exportar para PLAYERSLICE dava \"r is not defined\" e não gerava o ficheiro .psout"
+      ],
+      "title_en": "PLAYERSLICE export fix",
+      "items_en": [
+        "Fixed: exporting to PLAYERSLICE gave \"r is not defined\" and did not create the .psout file"
+      ]
+    },
+    {
       "version": "0.55.0",
       "date": "2026-11-23",
       "title": "Exportar para PLAYERSLICE",
