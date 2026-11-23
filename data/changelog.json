@@ -1,6 +1,18 @@
 {
   "versions": [
     {
+      "version": "0.55.0",
+      "date": "2026-11-23",
+      "title": "Exportar para PLAYERSLICE",
+      "items": [
+        "Exportar → PLAYERSLICE — LED: preset de saída .psout no formato nativo do PLAYERSLICE — um ecrã por output, uma slice por LED wall, píxel a píxel (o mesmo mapa do export Resolume). Escolhes se cada slice lê da composição ou de uma layer dedicada com o nome do LED wall; também no Output, ao lado do botão Resolume"
+      ],
+      "title_en": "Export to PLAYERSLICE",
+      "items_en": [
+        "Export → PLAYERSLICE — LED: .psout output preset in PLAYERSLICE's native format — one screen per output, one slice per LED wall, pixel to pixel (the same map as the Resolume export). You choose whether each slice reads the composition or a dedicated layer named after the LED wall; also in Output, next to the Resolume button"
+      ]
+    },
+    {
       "version": "0.54.0",
       "date": "2026-11-21",
       "title": "Automatic DATA para vários processadores e LED walls",
