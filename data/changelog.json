@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "0.56.0",
+      "date": "2026-11-23",
+      "title": "Calculadora de lentes",
+      "items": [
+        "Calculadora de lentes (projecção — botão 📐 na barra e no menu Ficheiro), como a da Barco: metes a tela (largura, altura, altura ao chão), o projector, a distância da lente à tela (fixa ou máxima) e a altura da lente (ex.: truss); o MapSim calcula quantos projectores lado a lado, a imagem de cada um, e mostra todas as lentes desse projector com TR, distância possível, zoom e lens shift V necessário — ★ a recomendada, ✓ as que servem, ✗ as que não servem",
+        "Vista lateral e vista de cima com as cotas, brilho (lm, lux, nits) e px/m; \"Criar na cena\" monta a tela, o array de projectores à distância e altura certas e fixa as réguas (distância lente → tela, altura da lente, largura e altura da tela) — sem precisar de modelo 3D da sala"
+      ],
+      "title_en": "Lens calculator",
+      "items_en": [
+        "Lens calculator (projection — 📐 button on the toolbar and in the File menu), like Barco's: enter the screen (width, height, height above floor), the projector, the lens-to-screen distance (fixed or maximum) and the lens height (e.g. truss); MapSim works out how many projectors side by side, each image size, and lists every lens for that projector with TR, possible distance, zoom and required vertical lens shift — ★ recommended, ✓ fits, ✗ does not fit",
+        "Side and top views with dimensions, brightness (lm, lux, nits) and px/m; \"Create in the scene\" builds the screen, the projector array at the right distance and height and pins the rulers (lens → screen distance, lens height, screen width and height) — no 3D room model needed"
+      ]
+    },
+    {
       "version": "0.55.1",
       "date": "2026-11-23",
       "title": "Correcção do export PLAYERSLICE",
