@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "0.60.0",
+      "date": "2026-11-24",
+      "title": "PDF em A4 ou A3 e escolhe o que entra",
+      "items": [
+        "Exportar PDF com escolha de folha A4 ou A3 na Ficha técnica, na Documentação técnica LED e no Desenho técnico; cada documento adapta-se à folha (A3 = desenhos e letra maiores; o desenho técnico em A4 fica reduzido à folha)",
+        "Caixas para escolher o que entra no PDF: desmarca o que não queres (ex.: lista de material, energia, estrutura, projectores um a um…). Há Marcar tudo / Desmarcar tudo e a pré-visualização actualiza logo; a numeração das folhas acompanha",
+        "As tuas escolhas ficam guardadas para cada tipo de documento",
+        "Ficha técnica em PDF com novo aspecto: cabeçalho com o logo, projecto e data, e cada secção numa caixa com título",
+        "Releases no GitHub com notas bonitas: logo, botão de download para Windows e novidades em português e inglês"
+      ],
+      "title_en": "PDF in A4 or A3 and choose what goes in",
+      "items_en": [
+        "PDF export with A4 or A3 sheet choice in the Spec sheet, the LED technical documentation and the Technical drawing; each document adapts to the sheet (A3 = bigger drawings and text; the technical drawing on A4 is scaled to the sheet)",
+        "Checkboxes to choose what goes into the PDF: untick what you don't want (e.g. equipment list, power, structure, projectors one by one…). There are Select all / Clear all and the preview updates immediately; sheet numbering follows",
+        "Your choices are remembered for each document type",
+        "Spec sheet PDF with a new look: header with the logo, project and date, and each section in a titled box",
+        "GitHub releases with nice notes: logo, Windows download button and what's new in Portuguese and English"
+      ]
+    },
+    {
       "version": "0.59.0",
       "date": "2026-11-23",
       "title": "Vista 2D: planta e alçados para pôr tudo no sítio",
